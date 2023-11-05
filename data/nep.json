@@ -1,0 +1,255 @@
+{
+  "b.a": {
+    "1": {
+      "major": [
+        {
+          "subject": "Economics",
+          "code": "ECO-CC-1110",
+          "paper": "Microeconomics-I"
+        },
+        {
+          "subject": "Education",
+          "code": "EDU-CC-1110",
+          "paper": "Foundation of Education"
+        },
+        {
+          "subject": "English",
+          "code": "ENG-CC-1110",
+          "paper": "History of English Literature"
+        },
+        {
+          "subject": "Geography",
+          "code": "GEOG-CC-1001",
+          "paper": "PHYSICAL GEOGRAPHY"
+        },
+        {
+          "subject": "Hindi",
+          "code": "HIN-CC-1110",
+          "paper": "Hindi Sahitya : Adikal se Bhaktikal(Ithas evon Rachanay)"
+        },
+        {
+          "subject": "History",
+          "code": "HIS-CC-1110",
+          "paper": "The Idea of Bharat"
+        },
+        {
+          "subject": "Political Science",
+          "code": "POL-MAJ-01",
+          "paper": "Understanding Politics"
+        }
+      ],
+      "minor": [
+        {
+          "subject": "Economics",
+          "code": "ECO-MC-1110",
+          "paper": " Elementary Microeconomics"
+        },
+        {
+          "subject": "Education",
+          "code": "EDU-MC-1110",
+          "paper": "Introduction to Education"
+        },
+        {
+          "subject": "English",
+          "code": "ENG-MC-1110",
+          "paper": "Introduction to the study of Literature"
+        },
+        {
+          "subject": "Geography",
+          "code": "GEOG-MC-1001",
+          "paper": "PHYSICAL GEOGRAPHY"
+        },
+        {
+          "subject": "Hindi",
+          "code": "HIN-MC-1110",
+          "paper": "Samanya Hindi"
+        },
+        {
+          "subject": "History",
+          "code": "HIS-MC-1110",
+          "paper": "The Idea of Bharat"
+        },
+        {
+          "subject": "Political Science",
+          "code": "POL-MIN-01",
+          "paper": "Understanding Politics"
+        }
+      ],
+      "mdc": [
+        {
+          "subject": "Economics",
+          "code": "ECO-MD-1110",
+          "paper": "Economic Theory-I"
+        },
+        {
+          "subject": "Education",
+          "code": "EDU-MD-1110",
+          "paper": "Foundation of Education"
+        },
+        {
+          "subject": "Geography",
+          "code": "GEOG-MDC-1001",
+          "paper": "DISASTER MANAGEMENT"
+        },
+        {
+          "subject": "Hindi",
+          "code": "HIN-MD-1110",
+          "paper": "Rashtriya Chetna ki Kabita"
+        },
+        {
+          "subject": "History",
+          "code": "HIS-MD-1120",
+          "paper": "Art, Architecture, and Heritage in India"
+        },
+        {
+          "subject": "Political Science",
+          "code": "POL-MDC-01",
+          "paper": "Indian Polity"
+        }
+      ],
+      "sec": [
+        {
+          "subject": "Economics",
+          "code": "ECO-SE-0010",
+          "paper": "Entrepreneurship Development"
+        },
+        {
+          "subject": "Education",
+          "code": "EDU-SB-1110",
+          "paper": "Teaching  Skills"
+        },
+        {
+          "subject": "English",
+          "code": "ENG-SE-0010",
+          "paper": "English Language Teaching"
+        },
+        {
+          "subject": "Geography",
+          "code": "GEOG-SEC-1001",
+          "paper": "FUNDAMENTALS OF CARTOGRAPHY"
+        },
+        {
+          "subject": "Hindi",
+          "code": "SEC-I",
+          "paper": "Hindi Shikshan"
+        },
+        {
+          "subject": "History",
+          "code": "SEC-1",
+          "paper": "Tourism in Arunachal Pradesh"
+        },
+        {
+          "subject": "Political Science",
+          "code": "POL-SEC-01",
+          "paper": "Managing Election  and Campaign"
+        }
+      ],
+      "aec": [
+        {
+          "subject": "English",
+          "code": "ENG-AE-1110",
+          "paper": "English Language & Communication Skills"
+        }
+      ],
+      "vac": [
+        {
+          "subject": "Environment Science",
+          "code": "EVS-VA-1210",
+          "paper": "Environmental Science"
+        }
+      ]
+    }
+  },
+  "b.com": {
+    "1": {
+      "major": [
+        {
+          "subject": "Commerce",
+          "code": "COM-CC-1110",
+          "paper": "Financial Accounting"
+        }
+      ],
+      "minor": [
+        {
+          "subject": "Commerce",
+          "code": "COM-MC-1110",
+          "paper": "Business Organisation and Management"
+        }
+      ],
+      "mdc": [
+        {
+          "subject": "Commerce",
+          "code": "COM-MD-1110",
+          "paper": "Personal Finance and Planning"
+        }
+      ],
+      "sec": [
+        {
+          "subject": "Commerce",
+          "code": "COM-SE-1110",
+          "paper": "Computerised Accounting - I"
+        }
+      ],
+      "aec": [
+        {
+          "subject": "English",
+          "code": "ENG-AE-1110",
+          "paper": "English Language & Communication Skills"
+        }
+      ],
+      "vac": [
+        {
+          "subject": "Environment Science",
+          "code": "EVS-VA-1210",
+          "paper": "Environmental Science"
+        }
+      ]
+    }
+  },
+  "b.sc": {
+    "1": {
+      "major": [
+        {
+          "subject": "",
+          "code": "",
+          "paper": ""
+        }
+      ],
+      "minor": [
+        {
+          "subject": "",
+          "code": "",
+          "paper": ""
+        }
+      ],
+      "mdc": [
+        {
+          "subject": "",
+          "code": "",
+          "paper": ""
+        }
+      ],
+      "sec": [
+        {
+          "subject": "",
+          "code": "",
+          "paper": ""
+        }
+      ],
+      "aec": [
+        {
+          "subject": "English",
+          "code": "ENG-AE-1110",
+          "paper": "English Language & Communication Skills"
+        }
+      ],
+      "vac": [
+        {
+          "subject": "Environment Science",
+          "code": "EVS-VA-1210",
+          "paper": "Environmental Science"
+        }
+      ]
+    }
+  }
+}

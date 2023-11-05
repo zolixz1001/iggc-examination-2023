@@ -1,0 +1,982 @@
+[
+  {
+    "programme": "b.a",
+    "semester": 1,
+    "subjects": [
+      {
+        "code": "BECO-101",
+        "title": "Economic Theory"
+      },
+      {
+        "code": "BEDU-101",
+        "title": "Elements Of Education"
+      },
+      {
+        "code": "BENG-101 (E)",
+        "title": "Introducing English Literature-I"
+      },
+      {
+        "code": "BGEO-101 (T)",
+        "title": "Physical Basis Of Geography"
+      },
+      {
+        "code": "BHIN-101",
+        "title": "सामान्य हिन्द-१"
+      },
+      {
+        "code": "BHIS-101",
+        "title": "History of Ancient India (Upto 1200 C)"
+      },
+      {
+        "code": "BPOL-101",
+        "title": "Political Theory-I"
+      },
+      {
+        "code": "BENG-101 (C)",
+        "title": "English Compulsory-I"
+      }
+    ]
+  },
+  {
+    "programme": "b.a",
+    "semester": 2,
+    "subjects": [
+      {
+        "code": "BECO-202",
+        "title": "Money, Banking And International Trade"
+      },
+      {
+        "code": "BEDU-202",
+        "title": "Indian Education And Its Problems"
+      },
+      {
+        "code": "BENG-102 (E)",
+        "title": "Introducing English Literature-II"
+      },
+      {
+        "code": "GEOGCT-151",
+        "title": "Human Geography"
+      },
+      {
+        "code": "BHIN-202",
+        "title": "सामान हिंदी-२"
+      },
+      {
+        "code": "BHIS-202",
+        "title": "History Of Medieval India (1200-1707)"
+      },
+      {
+        "code": "BPOL-202",
+        "title": "Indian Political System"
+      },
+      {
+        "code": "BENG-202 (C)",
+        "title": "English Compulsory-II"
+      }
+    ]
+  },
+  {
+    "programme": "b.a",
+    "semester": 3,
+    "subjects": [
+      {
+        "code": "BECO-303",
+        "title": "Public Finance And Statistices"
+      },
+      {
+        "code": "BEDU-303",
+        "title": "Foundations Of Education"
+      },
+      {
+        "code": "BENG-103 (E)",
+        "title": "Reading Poetry and Drama"
+      },
+      {
+        "code": "GEOGCT-201",
+        "title": "Economic Geography"
+      },
+      {
+        "code": "BHIN-103",
+        "title": "हिंदी गद्य "
+      },
+      {
+        "code": "BHIS-303",
+        "title": "History Of Modern India (1707-1947)"
+      },
+      {
+        "code": "BPOL-303",
+        "title": "International Relations"
+      },
+      {
+        "code": "BEVS-303 (C)",
+        "title": "Env. Studies Compulsory"
+      }
+    ]
+  },
+  {
+    "programme": "b.a",
+    "semester": 4,
+    "subjects": [
+      {
+        "code": "BECO-404",
+        "title": "Indian Economy And Economy of Arunachal Pradesh"
+      },
+      {
+        "code": "BSBC-404 (C)",
+        "title": "Skill Based Course for economics"
+      },
+      {
+        "code": "BEDU-404",
+        "title": "Teaching-Learning Process"
+      },
+      {
+        "code": "BSBC-404 (C)",
+        "title": "Skill Based Course"
+      },
+      {
+        "code": "BENG-404 (E)",
+        "title": "Reading Prose And Fiction"
+      },
+      {
+        "code": "BENG-404 (SBC)",
+        "title": "Skill Based Course in English"
+      },
+      {
+        "code": "GEOGCP-252",
+        "title": "Skill Based Course, Compulsory"
+      },
+      {
+        "code": "GEOGCT-251",
+        "title": "Geography Of India"
+      },
+      {
+        "code": "BHIN-104",
+        "title": "भारतीय काव्यशास्त्र और भाषा विज्ञान "
+      },
+      {
+        "code": "BHIN-SBC-104",
+        "title": "कौशल आधारित पाठ्यक्रम "
+      },
+      {
+        "code": "BHIS-404",
+        "title": "World History (1453-1945)"
+      },
+      {
+        "code": "BSBC-404 (C)",
+        "title": "Tourism in Arunachal Pradesh"
+      },
+      {
+        "code": "BPOL-404",
+        "title": "Comparative Political System"
+      },
+      {
+        "code": "BSBC-404 (C)",
+        "title": "Skill Based Course Compulsory"
+      },
+      {
+        "code": "BSBC-404 (C)",
+        "title": "Skill Based Course Compulsory"
+      }
+    ]
+  },
+  {
+    "programme": "b.a",
+    "semester": 5,
+    "subjects": [
+      {
+        "code": "BECO-505",
+        "title": "Micro Economic Theory"
+      },
+      {
+        "code": "BECO-506",
+        "title": "Macro Economic Theory"
+      },
+      {
+        "code": "BECO-507",
+        "title": "International Economics"
+      },
+      {
+        "code": "BECO-508",
+        "title": "Basic Mathematics And Statistics"
+      },
+      {
+        "code": "BEDU-501",
+        "title": "Educational Psychology"
+      },
+      {
+        "code": "BEDU-502",
+        "title": "Educational Technology"
+      },
+      {
+        "code": "BEDU-521",
+        "title": "Population Education"
+      },
+      {
+        "code": "BEDU-522",
+        "title": "Human Rights, Values & Peace Education"
+      },
+      {
+        "code": "BEDU-523",
+        "title": "Guidance & Counselling In Education"
+      },
+      {
+        "code": "BEDU-524",
+        "title": "Enviromental Education"
+      },
+      {
+        "code": "BENG-505 (M)",
+        "title": "History of English Literature"
+      },
+      {
+        "code": "BENG-506 (M)",
+        "title": "English Poetry from The Elizabethan to The Augustan Age"
+      },
+      {
+        "code": "BENG-507 (M)",
+        "title": "Rading Drama"
+      },
+      {
+        "code": "BENG-508 (M)",
+        "title": "Reading Fiction & Non-Fiction"
+      },
+      {
+        "code": "GEOGCT-302",
+        "title": "Geomorphology"
+      },
+      {
+        "code": "GEOGCP-303",
+        "title": "Geographical Data Analysis And Computer Applications"
+      },
+      {
+        "code": "GEOGCT-301",
+        "title": "Geography of N.E India with special reference to Arunachal Pradesh"
+      },
+      {
+        "code": "GEOGEP-313",
+        "title": "Population and Settlement  Geography"
+      },
+      {
+        "code": "BHIN-505",
+        "title": "हिंदी साहित्य का इतिहास - १ "
+      },
+      {
+        "code": "BHIN-506",
+        "title": "मध्यकालीनकाव्य  "
+      },
+      {
+        "code": "BHIN-507",
+        "title": "हिंदी भाषा एवं भाषा विज्ञानं "
+      },
+      {
+        "code": "BHIN-508",
+        "title": "प्रयोजनमूलक हिंदी "
+      },
+      {
+        "code": "BHIN-521",
+        "title": "छायावाद (विकल्प पत्र)"
+      },
+      {
+        "code": "BHIN-522",
+        "title": "आधुनिक काव्य (विकल्प पत्र)"
+      },
+      {
+        "code": "BHIS-505",
+        "title": "History Of Indian National Movements (1857-1947)"
+      },
+      {
+        "code": "BHIS-506",
+        "title": "History Of North East India (1824-1947)"
+      },
+      {
+        "code": "BHIS-507",
+        "title": "History Of Europe (1453-1789)"
+      },
+      {
+        "code": "BHIS-521",
+        "title": "Social And Economic History Of India (1757-1947)"
+      },
+      {
+        "code": "BHIS-522",
+        "title": "Gender In History"
+      },
+      {
+        "code": "BPOL-505",
+        "title": "Political Thought-I"
+      },
+      {
+        "code": "BPOL-506",
+        "title": "Dynamics Of Indian Political System"
+      },
+      {
+        "code": "BPOL-507",
+        "title": "Foreign Policy Of India"
+      },
+      {
+        "code": "BPOL-508",
+        "title": "Public Administration"
+      }
+    ]
+  },
+  {
+    "programme": "b.a",
+    "semester": 6,
+    "subjects": [
+      {
+        "code": "BECO-609",
+        "title": "Monetary Economics And Financial Institutions"
+      },
+      {
+        "code": "BECO-610",
+        "title": "Development Economics B"
+      },
+      {
+        "code": "BECO-611",
+        "title": "History Of Economic Thought"
+      },
+      {
+        "code": "BECO-612",
+        "title": "Issues of Indian Economy"
+      },
+      {
+        "code": "BEDU-601",
+        "title": "Curriculum Development"
+      },
+      {
+        "code": "BEDU-602",
+        "title": "Educational Measurement And Evaluation"
+      },
+      {
+        "code": "BEDU-621",
+        "title": "Adult & Continuing Education"
+      },
+      {
+        "code": "BEDU-622",
+        "title": "Educational Adminstration & Planning"
+      },
+      {
+        "code": "BEDU-623",
+        "title": "Teacher Education"
+      },
+      {
+        "code": "BEDU-624",
+        "title": "Special Education"
+      },
+      {
+        "code": "BENG-611 (M) A",
+        "title": "Indian Writing In English"
+      },
+      {
+        "code": "BENG-611 (M) B",
+        "title": "Literature From Indian Languages In Translation"
+      },
+      {
+        "code": "BENG-612 (M) A",
+        "title": "American Literature"
+      },
+      {
+        "code": "BENG-612 (M) B",
+        "title": "Linguistics"
+      },
+      {
+        "code": "BENG-610 (M)",
+        "title": "Literary Criticism"
+      },
+      {
+        "code": "BENG-609 (M)",
+        "title": "Poetry From Romantic to the Modern Age"
+      },
+      {
+        "code": "GEOGCT-352",
+        "title": "Climatology"
+      },
+      {
+        "code": "GEOGCT-351",
+        "title": "Fundamentals of RS, GIS, GNSS"
+      },
+      {
+        "code": "GOEGCP-353",
+        "title": "DIP and Spatial data analysis field study report"
+      },
+      {
+        "code": "GEOGET-363",
+        "title": "Geography Of Tourism"
+      },
+      {
+        "code": "BHIN-609",
+        "title": "हिंदी साहित्य का इतिहास - २ "
+      },
+      {
+        "code": "BHIN-610",
+        "title": "समकालीन काव्य "
+      },
+      {
+        "code": "BHIN-611",
+        "title": "भारतीय एवं पाश्चात्य काव्यशास्त्र "
+      },
+      {
+        "code": "BHIN-612",
+        "title": "हिंदी गद्य साहित्य "
+      },
+      {
+        "code": "BHIN-622",
+        "title": "Premchand (optional)"
+      },
+      {
+        "code": "BHIS-609",
+        "title": "History Of Arunachal Pradesh (Upto 1962)"
+      },
+      {
+        "code": "BHIS-610",
+        "title": "History Of Modern Europe (1789-1945)"
+      },
+      {
+        "code": "BHIS-622",
+        "title": "Historiography"
+      },
+      {
+        "code": "BHIS-611",
+        "title": "History Of USA (1776-1945)"
+      },
+      {
+        "code": "BHIS-623",
+        "title": "History Of China, Japan And South East Asia (Upto 1500)"
+      },
+      {
+        "code": "BPOL-609",
+        "title": "Political Thought-II"
+      },
+      {
+        "code": "BPOL-610",
+        "title": "Contemporary International Relations"
+      },
+      {
+        "code": "BPOL-611",
+        "title": "Political Theory-II"
+      },
+      {
+        "code": "BPOL-612",
+        "title": "Government And Politics In Arunachal Pradesh"
+      }
+    ]
+  },
+  {
+    "programme": "b.com",
+    "semester": 1,
+    "subjects": [
+      {
+        "code": "BENG-101",
+        "title": "Communicative English"
+      },
+      {
+        "code": "BCM-102",
+        "title": "Business Economics"
+      },
+      {
+        "code": "BCM-103",
+        "title": "Business Organisation"
+      },
+      {
+        "code": "BCM-104",
+        "title": "Financial Accounting - I"
+      },
+      {
+        "code": "BCM-105",
+        "title": "Environmental Studies(Non-Credit Paper)"
+      }
+    ]
+  },
+  {
+    "programme": "b.com",
+    "semester": 2,
+    "subjects": [
+      {
+        "code": "BCM-201",
+        "title": "Mathematics & Statistics"
+      },
+      {
+        "code": "BCM-202",
+        "title": "Business Law & Regulatory Framework"
+      },
+      {
+        "code": "BCM-203",
+        "title": "Financial Accounting - II"
+      },
+      {
+        "code": "BCM-204",
+        "title": "Principles Of Management"
+      }
+    ]
+  },
+  {
+    "programme": "b.com",
+    "semester": 3,
+    "subjects": [
+      {
+        "code": "BCM-301",
+        "title": "Income Tax"
+      },
+      {
+        "code": "BCM-302",
+        "title": "Indian Financial System"
+      },
+      {
+        "code": "BCM-303",
+        "title": "Company Law"
+      },
+      {
+        "code": "BCM-304",
+        "title": "Corporate Accounting"
+      }
+    ]
+  },
+  {
+    "programme": "b.com",
+    "semester": 4,
+    "subjects": [
+      {
+        "code": "BCM-401",
+        "title": "Marketing Management"
+      },
+      {
+        "code": "BCM-402",
+        "title": "Human Resource Management"
+      },
+      {
+        "code": "BCM-403",
+        "title": "Financial Mangagement"
+      },
+      {
+        "code": "BCM-404",
+        "title": "Entrepreneurship Development"
+      }
+    ]
+  },
+  {
+    "programme": "b.com",
+    "semester": 5,
+    "subjects": [
+      {
+        "code": "BCM-501",
+        "title": "Computerised Accounting (Skill Based Paper)"
+      },
+      {
+        "code": "BCM-502",
+        "title": "Advanced Financial Management"
+      },
+      {
+        "code": "BCM-503",
+        "title": "Cost Accounting"
+      },
+      {
+        "code": "BCM-504",
+        "title": "Advanced Accounting"
+      }
+    ]
+  },
+  {
+    "programme": "b.com",
+    "semester": 6,
+    "subjects": [
+      {
+        "code": "BCM-601",
+        "title": "Auditing (Skill Based Paper)"
+      },
+      {
+        "code": "BCM-602",
+        "title": "Management Accounting*"
+      },
+      {
+        "code": "BCM-603",
+        "title": "Investment Analysis and Portfolio Management*"
+      },
+      {
+        "code": "BCM-604",
+        "title": "Financial Analysis & Reporting*"
+      }
+    ]
+  },
+  {
+    "programme": "b.sc",
+    "semester": 1,
+    "subjects": [
+      {
+        "code": "BOT-111",
+        "title": "Microbes and Cryptogams"
+      },
+      {
+        "code": "BOT-102",
+        "title": "Practical based on BOT  111"
+      },
+      {
+        "code": "CHEM-(T)111",
+        "title": "Inorganic, Organic & Physical Chemistry - I"
+      },
+      {
+        "code": "CHEM-(P) 111",
+        "title": "Chemistry Laboratory Course I"
+      },
+      {
+        "code": "BENG-101(C)",
+        "title": "English Compulsory-I"
+      },
+      {
+        "code": "BENG-101",
+        "title": "Communicative English"
+      },
+      {
+        "code": "MATH-111",
+        "title": "Higher Algebra And Trigonometry"
+      },
+      {
+        "code": "PHY-111",
+        "title": "Mechanics, Properties of Matter And Waves, Oscillation and sound"
+      },
+      {
+        "code": "PHY-111P",
+        "title": "Physics Practical - 1"
+      },
+      {
+        "code": "ZOO-T1-101",
+        "title": "Invertebrate Biosystematics and type specimen studies"
+      }
+    ]
+  },
+  {
+    "programme": "b.sc",
+    "semester": 2,
+    "subjects": [
+      {
+        "code": "BOT-121",
+        "title": "Phanerogams and Palaeobotany"
+      },
+      {
+        "code": "BOT-122",
+        "title": "Practical based on BOT 121"
+      },
+      {
+        "code": "CHEM-(T) 121",
+        "title": "Inorganic, Organic & Physical Chemistry - II"
+      },
+      {
+        "code": "CHEM-(P) 121",
+        "title": "Chemistry Laboratory Course - II"
+      },
+      {
+        "code": "EVS",
+        "title": "Environmental Studies"
+      },
+      {
+        "code": "MATH-121",
+        "title": "Calculus & Differential Equations"
+      },
+      {
+        "code": "PHY-121",
+        "title": "Heat And Thermodynamics"
+      },
+      {
+        "code": "PHY-121P",
+        "title": "Physics Practical - 2"
+      },
+      {
+        "code": "ZOO-T2-202",
+        "title": "Vertebrate Biosystematics, Comparative anatomy and Evolution"
+      },
+      {
+        "code": "ZOO-P2-202",
+        "title": "Identification, Dissection & Slide preparation of Vertebrate & Invertebrate specimens(Practical)"
+      }
+    ]
+  },
+  {
+    "programme": "b.sc",
+    "semester": 3,
+    "subjects": [
+      {
+        "code": "BOT-231",
+        "title": "Microbiology & Plant Pathology"
+      },
+      {
+        "code": "BOT-232",
+        "title": "Practical Based on BOT 231"
+      },
+      {
+        "code": "SBST-2313 (Option-I)",
+        "title": "Nursery Techniques"
+      },
+      {
+        "code": "CHEM(SB) 232",
+        "title": "Water Treatment and Analysis"
+      },
+      {
+        "code": "CHEM-(T) 231",
+        "title": "Inorganic, Organic & Physical  Chemistry - III"
+      },
+      {
+        "code": "CHEM-(P) 231",
+        "title": "Chemistry Laboratory Course - III"
+      },
+      {
+        "code": "MATH-231",
+        "title": "Coordinate Geometry"
+      },
+      {
+        "code": "MATH-232 (Skill Based)",
+        "title": "Fundamentals of Computing"
+      },
+      {
+        "code": "PHY-231",
+        "title": "Electricity, Magnetism and Geometrical optics"
+      },
+      {
+        "code": "PHY-231P",
+        "title": "Physics Practical - 3"
+      },
+      {
+        "code": "PHYSK-231",
+        "title": "Electronics in Everyday Life"
+      },
+      {
+        "code": "ZOO-T3-303",
+        "title": "Cell Biology, Biochemistry and Genetics"
+      },
+      {
+        "code": "ZOO-P3-303",
+        "title": "Practical"
+      },
+      {
+        "code": "SBST/2303 (Optional -II)",
+        "title": "Animal Care and Breeding"
+      }
+    ]
+  },
+  {
+    "programme": "b.sc",
+    "semester": 4,
+    "subjects": [
+      {
+        "code": "BOT-241",
+        "title": "Plant Physiology"
+      },
+      {
+        "code": "BOT-242",
+        "title": "Practical"
+      },
+      {
+        "code": "CHEM-(T) 241",
+        "title": "Inorganic, Organic & Physical Chemistry - IV"
+      },
+      {
+        "code": "CHEM-(P) 241",
+        "title": "Chemistry Laboratory Course - IV"
+      },
+      {
+        "code": "CHEM(SB) 242",
+        "title": "Soil and Agricultural Chemistry"
+      },
+      {
+        "code": "MATH-241",
+        "title": "Real Analysis - I"
+      },
+      {
+        "code": "MATH-242 (Skill Based)",
+        "title": "Introduction to C"
+      },
+      {
+        "code": "PHY-241",
+        "title": "Physical Optics and Modern Physics"
+      },
+      {
+        "code": "PHY-241P",
+        "title": "Physical Practical - 4"
+      },
+      {
+        "code": "PHYSK-241",
+        "title": "Fundamental of Computers"
+      },
+      {
+        "code": "ZOO-T4-404",
+        "title": "Physiology and Developmental Biology"
+      },
+      {
+        "code": "ZOO-P4-404",
+        "title": "Practical"
+      },
+      {
+        "code": "SBST-2404",
+        "title": "Skill Based Subject"
+      }
+    ]
+  },
+  {
+    "programme": "b.sc",
+    "semester": 5,
+    "subjects": [
+      {
+        "code": "BOT-351",
+        "title": "Comparative Study of Crytogams"
+      },
+      {
+        "code": "BOT-352",
+        "title": "Plant Systematics Economic Botany"
+      },
+      {
+        "code": "BOT-353",
+        "title": "Cell Biology, Genetics and Evolution"
+      },
+      {
+        "code": "BOT-354",
+        "title": "Practical Based on BOT 351-353"
+      },
+      {
+        "code": "CHEM-351",
+        "title": "Inorganic Chemistry - I"
+      },
+      {
+        "code": "CHEM-352",
+        "title": "Organic Chemistry -I"
+      },
+      {
+        "code": "CHEM-353",
+        "title": "Physical Chemistry - I"
+      },
+      {
+        "code": "CHEM-354",
+        "title": "Chemistry Laboratory Course - V"
+      },
+      {
+        "code": "MATH-351",
+        "title": "Algebra"
+      },
+      {
+        "code": "MATH-352",
+        "title": "Real Analysis - II"
+      },
+      {
+        "code": "MATH-353",
+        "title": "Mechanics"
+      },
+      {
+        "code": "MATH-354",
+        "title": "Complex and Numerical Analysis"
+      },
+      {
+        "code": "PHY-351",
+        "title": "Mathematical Physics"
+      },
+      {
+        "code": "PHY-352",
+        "title": "Classical Mechanics and Electromagnetic Theory"
+      },
+      {
+        "code": "PHY-353",
+        "title": "Quantum Mechanics and Statistical Mechanics"
+      },
+      {
+        "code": "PHY-354P",
+        "title": "Physics Practical - 5"
+      },
+      {
+        "code": "ZOO-T5-505",
+        "title": "Ecology, Ethology and Biostatistics"
+      },
+      {
+        "code": "ZOO-T5-506",
+        "title": "Histology, Biochemistry and Biochemical Techniques"
+      },
+      {
+        "code": "ZOO-T5-507",
+        "title": "Cytogenetics and Bioinformatics"
+      },
+      {
+        "code": "ZOO-T5-508",
+        "title": "Practical"
+      }
+    ]
+  },
+  {
+    "programme": "b.sc",
+    "semester": 6,
+    "subjects": [
+      {
+        "code": "BOT-361",
+        "title": "Enviromental Biology and Biostatistics"
+      },
+      {
+        "code": "BOT-362",
+        "title": "Biochemistry and Biological Techniques"
+      },
+      {
+        "code": "BOT-363",
+        "title": "Molecular Biology, Plant Biotechnology and Bioinformatics"
+      },
+      {
+        "code": "BOT-364",
+        "title": "Practical"
+      },
+      {
+        "code": "CHEM-361",
+        "title": "Inorganic Chemistry - II"
+      },
+      {
+        "code": "CHEM-362",
+        "title": "Organic Chemistry - II"
+      },
+      {
+        "code": "CHEM-363",
+        "title": "Physical Chemistry - II"
+      },
+      {
+        "code": "CHEM-364",
+        "title": "Chemistry Laboratory Course VI"
+      },
+      {
+        "code": "MATH-361",
+        "title": "Hydrostatics & Mathematical Methods"
+      },
+      {
+        "code": "MATH-362",
+        "title": "Number Theory & Metric Space"
+      },
+      {
+        "code": "MATH-363",
+        "title": "Discrete Mathematics"
+      },
+      {
+        "code": "MATH-364",
+        "title": "Mathematical Statistics & Linear Programming"
+      },
+      {
+        "code": "PHY-361",
+        "title": "Atomic Physic and Nuclear Physics"
+      },
+      {
+        "code": "PHY-362",
+        "title": "Solid State Physics"
+      },
+      {
+        "code": "PHY-363",
+        "title": "Electronics and communications"
+      },
+      {
+        "code": "PHY-364P",
+        "title": "Physics Practical - 6"
+      },
+      {
+        "code": "ZOO-T6-609",
+        "title": "Endocrinology and Immunology"
+      },
+      {
+        "code": "ZOO-T6-610",
+        "title": "Biodiversity and Conservation Biology"
+      },
+      {
+        "code": "ZOO-T6-611",
+        "title": "Molecular Biology and Recombinant Technology"
+      },
+      {
+        "code": "ZOO-T6-612",
+        "title": "Practical"
+      }
+    ]
+  }
+]

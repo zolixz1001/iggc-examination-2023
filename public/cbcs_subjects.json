@@ -1,0 +1,744 @@
+[
+    {
+        "programme": "b.a",
+        "semester": 1,
+        "subjects": {
+            "core": [
+                {
+                    "title": "ECONOMICS",
+                    "papers": [
+                        {
+                            "code": "ECO-C-111",
+                            "type": "CORE-I",
+                            "title": "MICRO ECONOMICS-I"
+                        },
+                        {
+                            "code": "ECO-C-112",
+                            "type": "CORE-II",
+                            "title": "MACRO ECONOMICS-I"
+                        }
+                    ]
+                },
+                {
+                    "title": "EDUCATION",
+                    "papers": [
+                        {
+                            "code": "EDU-C-111",
+                            "type": "CORE-I",
+                            "title": "ELEMENTS OF EDUCATION"
+                        },
+                        {
+                            "code": "EDU-C-112",
+                            "type": "CORE-II",
+                            "title": "DEVELOPMENT OF EDUCATION IN NE INDIA"
+                        }
+                    ]
+                },
+                {
+                    "title": "ENGLISH",
+                    "papers": [
+                        {
+                            "code": "ENG-C-111",
+                            "type": "CORE-I",
+                            "title": "INDIAN CLASSICAL LITERATURE"
+                        },
+                        {
+                            "code": "ENG-C-112",
+                            "type": "CORE-II",
+                            "title": "EUROPEAN CLASSICAL LITERATURE"
+                        }
+                    ]
+                },
+                {
+                    "title": "GEOGRAPHY",
+                    "papers": [
+                        {
+                            "code": "GEO-C-112",
+                            "type": "CORE-I",
+                            "title": "GEOMORPHOLOGY"
+                        },
+                        {
+                            "code": "GEO-C-113",
+                            "type": "CORE-II",
+                            "title": "CARTOGRAPHIC TECHNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "title": "HINDI",
+                    "papers": [
+                        {
+                            "code": "HIN-C-112",
+                            "type": "CORE-I",
+                            "title": "HINDI SAHITYA : ADIKAL SE BHAKTIKAL"
+                        },
+                        {
+                            "code": "HIN-C-113",
+                            "type": "CORE-II",
+                            "title": "HINDI SAHITYA : RITIKAL"
+                        }
+                    ]
+                },
+                {
+                    "title": "HISTORY",
+                    "papers": [
+                        {
+                            "code": "HIS-C-111",
+                            "type": "CORE-I",
+                            "title": "IDEA OF BHARAT"
+                        },
+                        {
+                            "code": "HIS-C-112",
+                            "type": "CORE-II",
+                            "title": "HISTORY OF WORLD CIVILIZATION"
+                        }
+                    ]
+                },
+                {
+                    "title": "POLITICAL SCIENCE",
+                    "papers": [
+                        {
+                            "code": "POL-C-112",
+                            "type": "CORE-I",
+                            "title": "UNDERSTANDING POLITICS"
+                        },
+                        {
+                            "code": "POL-C-113",
+                            "type": "CORE-II",
+                            "title": "INDIAN CONSTITUTION"
+                        }
+                    ]
+                }
+            ],
+            "AECC": [
+                {
+                    "code": "ENG-A-111",
+                    "title": "ENGLISH FOR COMMUNICATION"
+                },
+                {
+                    "code": "HIN-A-111",
+                    "title": "HINDI SHIKHAN"
+                }
+            ],
+            "general_elective": [
+                {
+                    "code": "ECO-G-114",
+                    "subject": "ECONOMICS",
+                    "title": "ECONOMIC THEORY"
+                },
+                {
+                    "code": "EDU-G-113",
+                    "subject": "EDUCATION",
+                    "title": "ELEMENTS OF EDUCATION"
+                },
+                {
+                    "code": "ENG-G-114",
+                    "subject": "ENGLISH",
+                    "title": "ACADEMIC WRITING AND COMPOSITION"
+                },
+                {
+                    "code": "GEO-G-115",
+                    "subject": "GEOGRAPHY",
+                    "title": "GEOGRAPHY OF TOURISM & PILGRIMAGE"
+                },
+                {
+                    "code": "HIN-G-114",
+                    "subject": "HINDI",
+                    "title": "SRIJANATAMAK LEKHAN"
+                },
+                {
+                    "code": "HIS-G-114 A",
+                    "subject": "HISTORY",
+                    "title": "DELHI : ANCIENT"
+                },
+                {
+                    "code": "POL-G-114",
+                    "subject": "POLITICAL SCIENCE",
+                    "title": "GLOBALIZATION AND POLITICS"
+                }
+            ]
+        }
+    },
+    {
+        "programme": "b.a",
+        "semester": 2,
+        "subjects": {
+            "core": [
+                {
+                    "title": "ECONOMICS",
+                    "papers": [
+                        {
+                            "code": "ECO-C-121",
+                            "type": "CORE-I",
+                            "title": "MICROECONOMICS-II"
+                        },
+                        {
+                            "code": "ECO-C-122",
+                            "type": "CORE-II",
+                            "title": "MACROECONOMICS-II"
+                        }
+                    ]
+                },
+                {
+                    "title": "EDUCATION",
+                    "papers": [
+                        {
+                            "code": "EDU-C-121",
+                            "type": "CORE-I",
+                            "title": "FOUNDATION OF EDUCATION"
+                        },
+                        {
+                            "code": "EDU-C-122",
+                            "type": "CORE-II",
+                            "title": "EDUCATIONAL PSYCHOLOGY"
+                        }
+                    ]
+                },
+                {
+                    "title": "ENGLISH",
+                    "papers": [
+                        {
+                            "code": "ENG-C-121",
+                            "type": "CORE-I",
+                            "title": "INDIAN WRITING IN ENGLISH"
+                        },
+                        {
+                            "code": "ENG-C-122",
+                            "type": "CORE-II",
+                            "title": "BRITISH POETRY AND DRAMA 14TH TO 17TH CENTURIES"
+                        }
+                    ]
+                },
+                {
+                    "title": "GEOGRAPHY",
+                    "papers": [
+                        {
+                            "code": "GEO-C-122",
+                            "type": "CORE-I",
+                            "title": "GEOGRAPHY OF HUMAN AND CULTURAL LANDSCAPE"
+                        },
+                        {
+                            "code": "GEO-C-123",
+                            "type": "CORE-II",
+                            "title": "STATISTICAL METHODS IN GEOGRAPHY (PRACTICAL)"
+                        }
+                    ]
+                },
+                {
+                    "title": "HINDI",
+                    "papers": [
+                        {
+                            "code": "HIN-C-122",
+                            "type": "CORE-I",
+                            "title": "HINDI SAHITYA ADHUNIK KAL"
+                        },
+                        {
+                            "code": "HIN-C-123",
+                            "type": "CORE-II",
+                            "title": "HINDI SAHITYA PRAGABAT SAY BEWES SATHAWATI TAK"
+                        }
+                    ]
+                },
+                {
+                    "title": "HISTORY",
+                    "papers": [
+                        {
+                            "code": "HIS-C-121",
+                            "type": "CORE-I",
+                            "title": "HISTORY OF INDIA"
+                        },
+                        {
+                            "code": "HIS-C-122",
+                            "type": "CORE-II",
+                            "title": "HISTORY OF EUROPE FROM 13TH CENTURY TO 1789"
+                        }
+                    ]
+                },
+                {
+                    "title": "POLITICAL SCIENCE",
+                    "papers": [
+                        {
+                            "code": "POL-C-122",
+                            "type": "CORE-I",
+                            "title": "ANCIENT INDIAN POLITICAL THOUGHT"
+                        },
+                        {
+                            "code": "POL-C-123",
+                            "type": "CORE-II",
+                            "title": "POLITICAL THEORY"
+                        }
+                    ]
+                }
+            ],
+            "AECC": [
+                {
+                    "code": "EVS-A-121",
+                    "title": "ENVIRONMENTAL STUDIES"
+                }
+            ],
+            "general_elective": [
+                {
+                    "code": "ECO-G-124",
+                    "subject": "ECONOMICS",
+                    "title": "ISSUES IN ECONOMIC DEVELOPMENT"
+                },
+                {
+                    "code": "EDU-G-123",
+                    "subject": "EDUCATION",
+                    "title": "FOUNDATION OF EDUCATIONS"
+                },
+                {
+                    "code": "ENG-G-124",
+                    "subject": "ENGLISH",
+                    "title": "MEDIA AND COMMUNICATION SKILLS"
+                },
+                {
+                    "code": "GEO-G-125",
+                    "subject": "GEOGRAPHY",
+                    "title": "COUPLED HUMAN AND ENVIRONMENTAL SYSTEM"
+                },
+                {
+                    "code": "HIN-G-124",
+                    "subject": "HINDI",
+                    "title": "PATHKATHA TATHA SAMVAD LEKHAN"
+                },
+                {
+                    "code": "HIS-G-124B",
+                    "subject": "HISTORY",
+                    "title": "HISTORY OF NORTH EAST OF INDIA 1824-1947"
+                },
+                {
+                    "code": "POL-G-124",
+                    "subject": "POLITICAL SCIENCE",
+                    "title": "FEMINISM THEORY AND PRACTICE"
+                }
+            ]
+        }
+    },
+    {
+        "programme": "b.com",
+        "semester": 1,
+        "subjects": {
+            "core": [
+                {
+                    "title": "COMMERCE",
+                    "papers": [
+                        {
+                            "code": "COM-C-112",
+                            "type": "CORE-I",
+                            "title": "FINANCIAL ACCOUNTING"
+                        },
+                        {
+                            "code": "COM-C-113",
+                            "type": "CORE-II",
+                            "title": "BUSINESS LAW"
+                        },
+                        {
+                            "code": "COM-C-114",
+                            "type": "CORE-III",
+                            "title": "BUSINESS STATISTICS"
+                        }
+                    ]
+                }
+            ],
+            "AECC": [
+                {
+                    "code": "ENG-A-111",
+                    "title": "ENGLISH FOR COMMUNICATION"
+                },
+                {
+                    "code": "HIN-A-111",
+                    "title": "HINDI SHIKHAN"
+                }
+            ],
+            "general_elective": [
+                {
+                    "code": "COM-G-115 (A)",
+                    "subject": "COMMERCE",
+                    "title": "PERSONAL FINANCE & PLANNING"
+                },
+                {
+                    "code": "COM-G-115 (B)",
+                    "subject": "COMMERCE",
+                    "title": "ACCOUNTING FOR EVERYONE"
+                },
+                {
+                    "code": "ECO-G-114",
+                    "subject": "ECONOMICS",
+                    "title": "ECONOMIC THEORY"
+                },
+                {
+                    "code": "EDU-G-113",
+                    "subject": "EDUCATION",
+                    "title": "ELEMENTS OF EDUCATION"
+                },
+                {
+                    "code": "ENG-G-114",
+                    "subject": "ENGLISH",
+                    "title": "ACADEMIC WRITING AND COMPOSITION"
+                },
+                {
+                    "code": "GEO-G-115",
+                    "subject": "GEOGRAPHY",
+                    "title": "GEOGRAPHY OF TOURISM & PILGRIMAGE"
+                },
+                {
+                    "code": "HIN-G-114",
+                    "subject": "HINDI",
+                    "title": "SRIJANATAMAK LEKHAN"
+                },
+                {
+                    "code": "HIS-G-114 A",
+                    "subject": "HISTORY",
+                    "title": "DELHI : ANCIENT"
+                },
+                {
+                    "code": "POL-G-114",
+                    "subject": "POLITICAL SCIENCE",
+                    "title": "GLOBALIZATION AND POLITICS"
+                }
+            ]
+        }
+    },
+    {
+        "programme": "b.com",
+        "semester": 2,
+        "subjects": {
+            "core": [
+                {
+                    "title": "COMMERCE",
+                    "papers": [
+                        {
+                            "code": "COM-C-122",
+                            "type": "CORE-I",
+                            "title": "CORPORATE ACCOUNTING"
+                        },
+                        {
+                            "code": "COM-C-123",
+                            "type": "CORE-II",
+                            "title": "CORPORATE LAW"
+                        },
+                        {
+                            "code": "COM-C-124",
+                            "type": "CORE-III",
+                            "title": "BUSINESS ORGANISATION & MANAGEMENT"
+                        }
+                    ]
+                }
+            ],
+            "AECC": [
+                {
+                    "code": "EVS-A-121",
+                    "title": "ENVIRONMENTAL STUDIES"
+                }
+            ],
+            "general_elective": [
+                {
+                    "code": "ECO-G-124",
+                    "subject": "ECONOMICS",
+                    "title": "ISSUES IN ECONOMIC DEVELOPMENT"
+                },
+                {
+                    "code": "ENG-G-124",
+                    "subject": "ENGLISH",
+                    "title": "MEDIA AND COMMUNICATION SKILLS"
+                },
+                {
+                    "code": "GEO-G-125",
+                    "subject": "GEOGRAPHY",
+                    "title": "COUPLED HUMAN AND ENVIRONMENTAL SYSTEM"
+                }
+            ]
+        }
+    },
+    {
+        "programme": "b.sc",
+        "semester": 1,
+        "subjects": {
+            "core": [
+                {
+                    "title": "ZOOLOGY",
+                    "papers": [
+                        {
+                            "code": "ZOL-CC-111",
+                            "type": "CORE-I",
+                            "title": "SYSTEMATICS AND DIVERSITY OF PROTISTS AND NON-CHORDATES"
+                        },
+                        {
+                            "code": "ZOL-CC-112",
+                            "type": "CORE-II",
+                            "title": "CELL BIOLOGY AND HISTOLOGY"
+                        }
+                    ]
+                },
+                {
+                    "title": "BOTANY",
+                    "papers": [
+                        {
+                            "code": "BOT-CC-111",
+                            "type": "CORE-I",
+                            "title": "PHYCOLOGY AND MICROBIOLOGY"
+                        },
+                        {
+                            "code": "BOT-CC-112",
+                            "type": "CORE-II",
+                            "title": "BIOMOLECULES AND CELL BIOLOGY"
+                        }
+                    ]
+                },
+                {
+                    "title": "CHEMISTRY",
+                    "papers": [
+                        {
+                            "code": "CHE-CC-111",
+                            "type": "CORE-I",
+                            "title": "INORGANIC CHEMISTRY"
+                        },
+                        {
+                            "code": "CHE-CC-112",
+                            "type": "CORE-II",
+                            "title": "PHYSICAL CHEMISTRY"
+                        }
+                    ]
+                },
+                {
+                    "title": "MATHEMATICS",
+                    "papers": [
+                        {
+                            "code": "MAT-CC-111",
+                            "type": "CORE-I",
+                            "title": "CALCULUS"
+                        },
+                        {
+                            "code": "MAT-CC-122",
+                            "type": "CORE-II",
+                            "title": "HIGHER ALGEBRA"
+                        }
+                    ]
+                },
+                {
+                    "title": "PHYSICS",
+                    "papers": [
+                        {
+                            "code": "PHY-CC-111",
+                            "type": "CORE-I",
+                            "title": "MATHEMATICAL PHYSICS"
+                        },
+                        {
+                            "code": "PHY-CC-122",
+                            "type": "CORE-II",
+                            "title": "MECHANICS"
+                        }
+                    ]
+                }
+            ],
+            "AECC": [
+                {
+                    "code": "ENG-A-111",
+                    "title": "ENGLISH FOR COMMUNICATION"
+                },
+                {
+                    "code": "HIN-A-111",
+                    "title": "HINDI SHIKHAN"
+                }
+            ],
+            "general_elective": [
+                {
+                    "code": "ZOL-GE-010",
+                    "subject": "ZOOLOGY",
+                    "title": "ANIMAL DIVERSITY"
+                },
+                {
+                    "code": "BOT-GE-001",
+                    "subject": "BOTANY",
+                    "title": "MICROBES AND CRYPTOGAMS"
+                },
+                {
+                    "code": "CHE-GE-001",
+                    "subject": "CHEMISTRY",
+                    "title": "GENERAL CHEMISTRY-I"
+                },
+                {
+                    "code": "MAT-GE-003",
+                    "subject": "MATHEMATICS",
+                    "title": "DISCRETE MATHEMATICS"
+                },
+                {
+                    "subject": "PHYSICS",
+                    "code": "PHY-GE-001",
+                    "title": "MECHANICS"
+                }
+            ],
+            "skill_enhancement_course": [
+                {
+                    "code": "ZOL-SE-010",
+                    "subject": "ZOOLOGY",
+                    "title": "APICULTURE"
+                },
+                {
+                    "code": "BOT-SE-001",
+                    "subject": "BOTANY",
+                    "title": "ORGANIC FARMING"
+                },
+                {
+                    "code": "CHE-SE-001",
+                    "subject": "CHEMISTRY",
+                    "title": "WATER TREATMENT AND ANALYSIS-I"
+                },
+                {
+                    "code": "MAT-SE-001",
+                    "subject": "MATHEMATICS",
+                    "title": "FUNDAMENTAL OF COMPUTER"
+                },
+                {
+                    "code": "PHY-SE-001",
+                    "subject": "PHYSICS",
+                    "title": "BASICS OF ELECTRONIC CIRCUITS"
+                }
+            ]
+        }
+    },
+    {
+        "programme": "b.sc",
+        "semester": 2,
+        "subjects": {
+            "core": [
+                {
+                    "title": "ZOOLOGY",
+                    "papers": [
+                        {
+                            "code": "ZOL-CC-121",
+                            "type": "CORE-I",
+                            "title": "COMPARATIVE STRUCTURE AND FUNCTION OF CHORDATES"
+                        },
+                        {
+                            "code": "ZOL-CC-122",
+                            "type": "CORE-II",
+                            "title": "DEVELOPMENTAL BIOLOGY AND EVOLUTION"
+                        }
+                    ]
+                },
+                {
+                    "title": "BOTANY",
+                    "papers": [
+                        {
+                            "code": "BOT-CC-121",
+                            "type": "CORE-I",
+                            "title": "MYCOLOGY AND PHYTO PATHOLOGY"
+                        },
+                        {
+                            "code": "BOT-CC-122",
+                            "type": "CORE-II",
+                            "title": "ARCHEGONIATAE: BRYOPHYTES, PTERIDOPHYTES AND GYMNOSPERMS"
+                        }
+                    ]
+                },
+                {
+                    "title": "CHEMISTRY",
+                    "papers": [
+                        {
+                            "code": "CHE-CC-121",
+                            "type": "CORE-I",
+                            "title": "INORGANIC CHEMISTRY"
+                        },
+                        {
+                            "code": "CHE-CC-122",
+                            "type": "CORE-II",
+                            "title": "PHYSICAL CHEMISTRY"
+                        }
+                    ]
+                },
+                {
+                    "title": "MATHEMATICS",
+                    "papers": [
+                        {
+                            "code": "MAT-CC-121",
+                            "type": "CORE-I",
+                            "title": "REAL ANALYSIS"
+                        },
+                        {
+                            "code": "MAT-CC-122",
+                            "type": "CORE-II",
+                            "title": "ANALYTIC GEOMETRY"
+                        }
+                    ]
+                },
+                {
+                    "title": "PHYSICS",
+                    "papers": [
+                        {
+                            "code": "PHY-CC-121",
+                            "type": "CORE-I",
+                            "title": "ELECTRICITY AND MAGNETISM PHYSICS LAB"
+                        },
+                        {
+                            "code": "PHY-CC-122",
+                            "type": "CORE-II",
+                            "title": "WAVES AND OPTICS PHYSICS LAB"
+                        }
+                    ]
+                }
+            ],
+            "AECC": [
+                {
+                    "code": "EVS-A-121",
+                    "title": "ENVIRONMENTAL STUDIES"
+                }
+            ],
+            "general_elective": [
+                {
+                    "code": "ZOL-GE-121",
+                    "subject": "ZOOLOGY",
+                    "title": "HUMAN PHYSIOLOGY"
+                },
+                {
+                    "code": "BOT-GE-002",
+                    "subject": "BOTANY",
+                    "title": "PHANEROGAMS AND PALAEOBOTANY"
+                },
+                {
+                    "code": "CHE-GE-002",
+                    "subject": "CHEMISTRY",
+                    "title": "GENERAL CHEMISTRY-II"
+                },
+                {
+                    "code": "MAT-GE-002",
+                    "subject": "MATHEMATICS",
+                    "title": "ELEMENTARY ALGEBRA"
+                },
+                {
+                    "subject": "PHYSICS",
+                    "code": "PHY-GE-002",
+                    "title": "ELECTRICITY AND MAGNETISM GENERIC PHYSICS LAB2"
+                }
+            ],
+            "skill_enhancement_course": [
+                {
+                    "code": "ZOL-SE-004",
+                    "subject": "ZOOLOGY",
+                    "title": "MEDICAL LABORATORY DIAGNOSTICS"
+                },
+                {
+                    "code": "BOT-SE-002",
+                    "subject": "BOTANY",
+                    "title": "MUSHROOM CULTIVATION"
+                },
+                {
+                    "code": "CHE-SE-002",
+                    "subject": "CHEMISTRY",
+                    "title": "WATER TREATMENT AND ANALYSIS-II"
+                },
+                {
+                    "code": "MAT-SE-004",
+                    "subject": "MATHEMATICS",
+                    "title": "PROGRAMMING IN C"
+                },
+                {
+                    "code": "PHY-SE- 005",
+                    "subject": "PHYSICS",
+                    "title": "ELECTRONICS IN DAILY LIFE PROJECT ON ELECTRONIC VEHICLES"
+                }
+            ]
+        }
+    }
+]
