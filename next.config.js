@@ -4,9 +4,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'bit.ly',
-        port: '',
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '5555',
       },
     ],
   }

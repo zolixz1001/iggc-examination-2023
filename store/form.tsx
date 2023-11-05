@@ -19,7 +19,7 @@ export const usePersonalDetailsStore = create<PersonalDetailsState>((set) => ({
   mobile: "",
   email: "",
   dob: "",
-  update: (key, value) => set((state) => ({ ...state, [key]: value }))
+  update: (key, value) => set((state) => ({ ...state, [key]: value })),
 }));
 
 interface PhotoAndSignatureState {
@@ -43,6 +43,7 @@ interface AcademicDetailsState {
   applyingForBackPapers: boolean;
   applyingForImprovement: boolean;
   examinationPattern: string;
+  error: Record<string, string> | null;
   update: (key: string, value: string | boolean | string[]) => void;
 }
 
@@ -55,6 +56,7 @@ export const useAcademicDetailsStore = create<AcademicDetailsState>((set) => ({
   applyingForBackPapers: false,
   applyingForImprovement: false,
   examinationPattern: "",
+  error: null,
   update: (key: string, value: string | boolean | string[]) => set((state) => ({ ...state, [key]: value }))
 }));
 
@@ -77,12 +79,14 @@ interface NepSubjectCombinationState {
   semesters: {
     semester: string;
     combination: NepSubjectCombination;
-  }[]
+  }[],
+  error: Record<string, string> | null;
   update: (semester: string, value: NepSubjectCombination) => void;
 }
 
 export const useNepCombinationStore = create<NepSubjectCombinationState>((set) => ({
   semesters: [],
+  error: null,
   update: (semester: string, value: NepSubjectCombination) => set((state) => ({
     ...state,
     semesters: state.semesters.map(el => {
@@ -109,11 +113,13 @@ interface CbcsSubjectCombinationState {
     semester: string;
     combination: CbcsSubjectCombination;
   }[];
+  error: Record<string, string> | null;
   update: (semester: string, value: CbcsSubjectCombination) => void;
 }
 
 export const useCbcsSubjectCombination = create<CbcsSubjectCombinationState>((set) => ({
   semesters: [],
+  error: null,
   update: (semester: string, value: CbcsSubjectCombination) => set((state) => ({
     ...state,
     semesters: state.semesters.map(el => {
@@ -135,11 +141,13 @@ interface OldSubjectCombination {
 
 interface OldSubjectCombinationState {
   semesters: OldSubjectCombination[];
+  error: Record<string, string> | null;
   update: (semester: string, value: SubjectDetails[]) => void;
 }
 
 export const useOldCombinationStore = create<OldSubjectCombinationState>((set) => ({
   semesters: [],
+  error: null,
   update: (semester: string, value: SubjectDetails[]) => set((state) => ({
     ...state,
     semesters: state.semesters.map(el => {
@@ -161,11 +169,13 @@ export interface Document {
 
 interface DocumentState {
   documents: Document[];
+  error: Record<string, string> | null;
   update: (value: Document[]) => void;
 }
 
 export const useDocumentStore = create<DocumentState>((set) => ({
   documents: [],
+  error: null,
   update: (value: Document[]) => set((state) => ({ ...state, documents: value }))
 }));
 
@@ -339,3 +349,15 @@ useAcademicDetailsStore.subscribe((state, prevState) => {
     examinationPattern: state.examinationPattern
   });
 })
+
+interface FormErrorsState {
+  errors: string[];
+  onError: (value: string[]) => void;
+  onErrorReset: () => void;
+}
+
+export const useFormErrors = create<FormErrorsState>((set) => ({
+  errors: [],
+  onError: (value: string[]) => set((state) => ({ ...state, errors: value })),
+  onErrorReset: () => set((state) => ({ ...state, errors: [] }))
+}));

@@ -1,7 +1,9 @@
+import { useState } from "react";
 import clsx from "clsx";
 import Image from "next/image";
 import Button from "@/components/Button";
 import { ChangeEvent, ChangeEventHandler, useRef } from "react";
+import { uploadUrl } from "@/constants";
 
 export default function UploadInput({
     value,
@@ -18,6 +20,7 @@ export default function UploadInput({
 }) {
     const wrapperClasses = clsx("flex justify-center items-center border-2 border-dashed border-gray-200 rounded-md", className);
     const inputRef = useRef<HTMLInputElement | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files instanceof FileList) {
@@ -27,11 +30,21 @@ export default function UploadInput({
             } else if (file.size > (maxSize * 1000)) {
                 return alert(`File size is greater than ${maxSize} kb`);
             } else {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    onChange(e.target!.result);
-                }
-                reader.readAsDataURL(file);
+                setIsLoading(true);
+                const formData = new FormData();
+                formData.append("file", file);
+                fetch(
+                    `${uploadUrl}/upload`,
+                    {
+                        method: "POST",
+                        body: formData
+                    }
+                )
+                    .then(res => res.json())
+                    .then(data => {
+                        onChange(data.url);
+                    })
+                    .finally(() => setIsLoading(false))
             }
         }
         if (inputRef.current?.value) inputRef.current.value = "";
@@ -124,7 +137,14 @@ export default function UploadInput({
                     <p className="text-center text-sm mt-4 font-semibold">Choose an image (.jpg, .jpeg, .png) to upload</p>
                     <p className="text-center text-xs mt-2 font-thin text-gray-500">Maximum upload file size: 5 MB</p>
                     <div className="mt-4 flex justify-center items-center">
-                        <Button size="sm" onClick={() => inputRef.current?.click()}>Upload</Button>
+                        <Button
+                            size="sm"
+                            isLoading={isLoading}
+                            isDisabled={isLoading}
+                            onClick={() => inputRef.current?.click()}
+                        >
+                            Upload
+                        </Button>
                     </div>
                 </div>
             </div>

@@ -7,9 +7,6 @@ export default function DocumentUpload({ position }: { position: number; }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const documents = useDocumentStore((state) => state.documents);
     const update = useDocumentStore((state) => state.update);
-
-    console.log(documents)
-
     return (
         <>
             <FormSectionHeder
