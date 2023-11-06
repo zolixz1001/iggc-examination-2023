@@ -10,13 +10,17 @@ export default function UploadInput({
     onChange,
     className,
     label,
-    maxSize = 500
+    maxSize = 500,
+    imgWidth = 240,
+    imgHeight = 340
 }: {
     value: string;
     onChange: Function;
     label?: string;
     maxSize?: number;
     className?: string;
+    imgWidth?: number;
+    imgHeight?: number;
 }) {
     const wrapperClasses = clsx("flex justify-center items-center border-2 border-dashed border-gray-200 rounded-md", className);
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -52,9 +56,9 @@ export default function UploadInput({
 
     if (value) {
         return (
-            <div className="relative">
+            <div className="relative w-full">
                 {label && (<label className="block text-md font-medium mb-2">{label}</label>)}
-                <div className="absolute w-[100%] z-10 flex justify-end">
+                <div className="absolute w-full z-10 flex justify-end overflow-hidden">
                     <div className="flex">
                         {/* <div className="bg-blue-500 text-white p-2 cursor-pointer flex justify-center items-center">
                             <svg
@@ -97,16 +101,16 @@ export default function UploadInput({
                 <Image
                     src={value}
                     alt="photo"
-                    width="240"
-                    height="340"
-                    className="object-cover"
+                    width={imgWidth}
+                    height={imgHeight}
+                    className="object-contain w-full h-full"
                 />
             </div>
         )
     }
 
     return (
-        <div>
+        <div className="w-full">
             {label && (<label className="block text-md font-medium mb-2">{label}</label>)}
             <div className={wrapperClasses}>
                 <input

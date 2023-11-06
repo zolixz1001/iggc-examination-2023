@@ -1,4 +1,4 @@
-import { ROMAN_NUMERIC_MAP } from "@/constants";
+import { CURRENT_SEMESTERS, ROMAN_NUMERIC_MAP } from "@/constants";
 import { use } from "react";
 import { create } from "zustand";
 
@@ -361,3 +361,203 @@ export const useFormErrors = create<FormErrorsState>((set) => ({
   onError: (value: string[]) => set((state) => ({ ...state, errors: value })),
   onErrorReset: () => set((state) => ({ ...state, errors: [] }))
 }));
+
+function isValidatedForm() {
+  useFormErrors.setState({ ...useFormErrors.getState(), errors: [] });
+  let isValid = true;
+  const errors = [];
+  // personal details
+  const personalDetails = usePersonalDetailsStore.getState();
+  if (!personalDetails.name || personalDetails.name.length < 2) {
+    isValid = false;
+    errors.push("Please enter applicant name");
+  }
+  if (!personalDetails.fatherName || personalDetails.fatherName.length < 2) {
+    isValid = false;
+    errors.push("Please enter applicant's father name");
+  }
+  if (!/^[6-9]\d{9}$/.test(personalDetails.mobile)) {
+    isValid = false;
+    errors.push("Please enter a valid mobile number");
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(personalDetails.email)) {
+    isValid = false;
+    errors.push("Please enter a valid email");
+  }
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(personalDetails.dob)) {
+    isValid = false;
+    errors.push("Please select your data of birth");
+  }
+  if (!personalDetails.gender) {
+    isValid = false;
+    errors.push("Please select your gender");
+  }
+  if (!isValid) {
+    useFormErrors.setState({ ...useFormErrors.getState(), errors });
+    return isValid;
+  }
+  // photo and signature
+  const photoAndSignature = usePhotoAndSignatureStore.getState();
+  if (!/^(ftp|http|https):\/\/[^ "]+$/.test(photoAndSignature.photo)) {
+    isValid = false;
+    errors.push("Please upload your photo");
+  }
+  if (!/^(ftp|http|https):\/\/[^ "]+$/.test(photoAndSignature.signature)) {
+    isValid = false;
+    errors.push("Please upload your signature");
+  }
+  if (!isValid) {
+    useFormErrors.setState({ ...useFormErrors.getState(), errors });
+    return isValid;
+  }
+  // academic details
+  const academicDetails = useAcademicDetailsStore.getState();
+  if (!academicDetails.rguRollNo || academicDetails.rguRollNo.length < 8) {
+    isValid = false;
+    errors.push("Please enter a valid RGU Roll no.");
+  }
+  if (!academicDetails.rguRegNo || academicDetails.rguRegNo.length < 8) {
+    isValid = false;
+    errors.push("Please enter a valid RGU Registration no.");
+  }
+  if (!["b.a", "b.com", "b.sc"].includes(academicDetails.programme)) {
+    isValid = false;
+    errors.push("Please select a programme");
+  }
+  // regular
+  if (!academicDetails.applyingForBackPapers && !academicDetails.applyingForImprovement) {
+    if (!CURRENT_SEMESTERS.includes(String(academicDetails.semester))) {
+      isValid = false;
+      errors.push("Please select a semester");
+    } else {
+      if (!academicDetails.examinationPattern) {
+        isValid = false;
+        errors.push("Please select a examination pattern");
+      }
+    }
+  } else {
+    if (academicDetails.semesters.length === 0) {
+      isValid = false;
+      errors.push("Please select semesters");
+    }
+    if (!academicDetails.examinationPattern) {
+      isValid = false;
+      errors.push("Please select a examination pattern");
+    }
+  }
+  if (!isValid) {
+    useFormErrors.setState({ ...useFormErrors.getState(), errors });
+    return isValid;
+  }
+  // subject combination
+  // regular
+  if (!academicDetails.applyingForBackPapers && !academicDetails.applyingForImprovement) {
+    if (academicDetails.examinationPattern === "NEP") {
+      const subjectCombination = useNepCombinationStore.getState();
+      for (const semesterDetails of subjectCombination.semesters) {
+        if (!semesterDetails.combination.major) {
+          isValid = false;
+          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} Major course`);
+        }
+        if (!semesterDetails.combination.minor) {
+          isValid = false;
+          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} Minor course`);
+        }
+        if (!semesterDetails.combination.mdc) {
+          isValid = false;
+          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} MDC course`);
+        }
+        if (!semesterDetails.combination.sec) {
+          isValid = false;
+          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} SEC`);
+        }
+        if (!semesterDetails.combination.aec) {
+          isValid = false;
+          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} AEC`);
+        }
+        if (!semesterDetails.combination.vac) {
+          isValid = false;
+          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} VAC`);
+        }
+      }
+    } else if (academicDetails.examinationPattern === "CBCS") {
+      const subjectCombination = useCbcsSubjectCombination.getState();
+      for (const semesterDetails of subjectCombination.semesters) {
+        if (!semesterDetails.combination.core || semesterDetails.combination.core.length === 0) {
+          isValid = false;
+          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} Core courses`);
+        }
+        if (!semesterDetails.combination.aecc) {
+          isValid = false;
+          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} AEC`);
+        }
+        if (!semesterDetails.combination.ge) {
+          isValid = false;
+          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} GE`);
+        }
+      }
+    } else if (academicDetails.examinationPattern === "OLD") {
+      const subjectCombination = useOldCombinationStore.getState();
+      for (const semesterDetails of subjectCombination.semesters) {
+        if (semesterDetails.subjects.length < 4) {
+          isValid = false;
+          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} subjects`);
+        }
+      }
+    }
+  } else {
+    if (academicDetails.examinationPattern === "CBCS") {
+      const subjectCombination = useCbcsSubjectCombination.getState();
+      for (const semesterDetails of subjectCombination.semesters) {
+        if (
+          (!semesterDetails.combination.core || semesterDetails.combination.core.length === 0) &&
+          !semesterDetails.combination.aecc &&
+          !semesterDetails.combination.ge &&
+          !semesterDetails.combination.sec
+        ) {
+          isValid = false;
+          errors.push(`Please select a Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} subject`);
+        }
+      }
+    } else if (academicDetails.examinationPattern === "OLD") {
+      const subjectCombination = useOldCombinationStore.getState();
+      for (const semesterDetails of subjectCombination.semesters) {
+        if (semesterDetails.subjects.length < 1) {
+          isValid = false;
+          errors.push(`Please select a Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} subject`);
+        }
+      }
+    }
+  }
+  if (!isValid) {
+    useFormErrors.setState({ ...useFormErrors.getState(), errors });
+    return isValid;
+  }
+  // documents
+  const documents = useDocumentStore.getState();
+  for (const doc of documents.documents) {
+    if (!/^(ftp|http|https):\/\/[^ "]+$/.test(doc.url)) {
+      isValid = false;
+      errors.push(`Please upload ${doc.title}`);
+    }
+  }
+  if (!isValid) {
+    useFormErrors.setState({ ...useFormErrors.getState(), errors });
+    return isValid;
+  }
+  return isValid;
+}
+
+export async function submitForm() {
+  try {
+    if (isValidatedForm()) {
+      alert("SUCCESS!!!");
+    } else {
+      if (typeof window !== "undefined") {
+        window.scrollTo(0, 0);
+      }
+    }
+  } catch (error) {
+    alert("Something went wrong. Please try again later")
+  }
+}
