@@ -8,4 +8,4 @@ export const ROMAN_NUMERIC_MAP: Record<string, string> = {
     5: "V",
     6: "VI",
 };
-export const CURRENT_SEMESTERS = ["1", "3", "6"];
+export const CURRENT_SEMESTERS = ["1", "3", "5"];

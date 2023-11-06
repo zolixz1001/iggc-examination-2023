@@ -42,6 +42,7 @@ interface AcademicDetailsState {
   semesters: string[];
   applyingForBackPapers: boolean;
   applyingForImprovement: boolean;
+  haveBackPapers: boolean;
   examinationPattern: string;
   error: Record<string, string> | null;
   update: (key: string, value: string | boolean | string[]) => void;
@@ -55,6 +56,7 @@ export const useAcademicDetailsStore = create<AcademicDetailsState>((set) => ({
   semesters: [],
   applyingForBackPapers: false,
   applyingForImprovement: false,
+  haveBackPapers: false,
   examinationPattern: "",
   error: null,
   update: (key: string, value: string | boolean | string[]) => set((state) => ({ ...state, [key]: value }))
@@ -186,7 +188,8 @@ function resetAndUpdateStates(
     semesters,
     applyingForBackPapers,
     applyingForImprovement,
-    examinationPattern
+    examinationPattern,
+    haveBackPapers
   }: {
     programme: string;
     semester: string;
@@ -194,6 +197,7 @@ function resetAndUpdateStates(
     applyingForBackPapers: boolean;
     applyingForImprovement: boolean;
     examinationPattern: string;
+    haveBackPapers: boolean;
   }) {
   const documents: Document[] = [];
   const nepSubjectCombinationSemesters: { semester: string; combination: NepSubjectCombination }[] = [];
@@ -279,6 +283,22 @@ function resetAndUpdateStates(
           }
         );
       }
+      if (haveBackPapers && semesters.length > 0) {
+        for (const sem of semesters) {
+          documents.push(
+            {
+              title: `Payment receipt for back paper of Semester ${ROMAN_NUMERIC_MAP[sem]}`,
+              url: ""
+            }
+          );
+          documents.push(
+            {
+              title: `Mark sheet for back paper of Semester ${ROMAN_NUMERIC_MAP[Number(sem)]}`,
+              url: ""
+            }
+          );
+        }
+      }
       if (examinationPattern === "NEP") {
         nepSubjectCombinationSemesters.push({
           semester: String(semester),
@@ -291,6 +311,21 @@ function resetAndUpdateStates(
             vac: null
           }
         });
+        if (haveBackPapers && semesters.length > 0) {
+          for (const sem of semesters) {
+            nepSubjectCombinationSemesters.push({
+              semester: String(sem),
+              combination: {
+                major: null,
+                minor: null,
+                mdc: null,
+                aec: null,
+                sec: null,
+                vac: null
+              }
+            });
+          }
+        }
       } else if (examinationPattern === "CBCS") {
         cbcsSubjectCombinationSemesters.push({
           semester: String(semester),
@@ -301,11 +336,32 @@ function resetAndUpdateStates(
             aecc: null,
           }
         });
+        if (haveBackPapers && semesters.length > 0) {
+          for (const sem of semesters) {
+            cbcsSubjectCombinationSemesters.push({
+              semester: String(sem),
+              combination: {
+                core: [],
+                ge: null,
+                sec: null,
+                aecc: null,
+              }
+            });
+          }
+        }
       } else if (examinationPattern === "OLD") {
         oldSubjectCombinationSemesters.push({
           semester: String(semester),
           subjects: []
         });
+        if (haveBackPapers && semesters.length > 0) {
+          for (const sem of semesters) {
+            oldSubjectCombinationSemesters.push({
+              semester: String(sem),
+              subjects: []
+            });
+          }
+        }
       }
     }
   }
@@ -322,7 +378,8 @@ useAcademicDetailsStore.subscribe((state, prevState) => {
     semesters: state.semesters,
     applyingForBackPapers: state.applyingForBackPapers,
     applyingForImprovement: state.applyingForImprovement,
-    examinationPattern: state.examinationPattern
+    examinationPattern: state.examinationPattern,
+    haveBackPapers: state.haveBackPapers
   });
   if (state.semester !== prevState.semester) return resetAndUpdateStates({
     programme: state.programme,
@@ -330,7 +387,8 @@ useAcademicDetailsStore.subscribe((state, prevState) => {
     semesters: state.semesters,
     applyingForBackPapers: state.applyingForBackPapers,
     applyingForImprovement: state.applyingForImprovement,
-    examinationPattern: state.examinationPattern
+    examinationPattern: state.examinationPattern,
+    haveBackPapers: state.haveBackPapers
   });
   if (state.semesters.some(el => !prevState.semesters.includes(el))) return resetAndUpdateStates({
     programme: state.programme,
@@ -338,7 +396,8 @@ useAcademicDetailsStore.subscribe((state, prevState) => {
     semesters: state.semesters,
     applyingForBackPapers: state.applyingForBackPapers,
     applyingForImprovement: state.applyingForImprovement,
-    examinationPattern: state.examinationPattern
+    examinationPattern: state.examinationPattern,
+    haveBackPapers: state.haveBackPapers
   });
   if (state.examinationPattern !== prevState.examinationPattern) return resetAndUpdateStates({
     programme: state.programme,
@@ -346,7 +405,8 @@ useAcademicDetailsStore.subscribe((state, prevState) => {
     semesters: state.semesters,
     applyingForBackPapers: state.applyingForBackPapers,
     applyingForImprovement: state.applyingForImprovement,
-    examinationPattern: state.examinationPattern
+    examinationPattern: state.examinationPattern,
+    haveBackPapers: state.haveBackPapers
   });
 })
 
@@ -427,9 +487,16 @@ function isValidatedForm() {
   // regular
   if (!academicDetails.applyingForBackPapers && !academicDetails.applyingForImprovement) {
     if (!CURRENT_SEMESTERS.includes(String(academicDetails.semester))) {
+      console.log({ CURRENT_SEMESTERS, semester: academicDetails.semester })
       isValid = false;
       errors.push("Please select a semester");
     } else {
+      if (academicDetails.haveBackPapers) {
+        if (academicDetails.semesters.length === 0) {
+          isValid = false;
+          errors.push("Please select a back semester");
+        }
+      }
       if (!academicDetails.examinationPattern) {
         isValid = false;
         errors.push("Please select a examination pattern");
@@ -546,6 +613,43 @@ function isValidatedForm() {
     return isValid;
   }
   return isValid;
+}
+
+function buildPostObject() {
+  const personalDetails = usePersonalDetailsStore.getState();
+  const photoAndSignature = usePhotoAndSignatureStore.getState();
+  const academicDetails = useAcademicDetailsStore.getState();
+  const nepSubjectCombination = useNepCombinationStore.getState();
+  const cbcsSubjectCombination = useCbcsSubjectCombination.getState();
+  const oldSubjectCombination = useOldCombinationStore.getState();
+  const documents = useDocumentStore.getState();
+  const dobDate = new Date(personalDetails.dob);
+  // personal details 
+  let data: any = {
+    name: personalDetails.name,
+    fatherName: personalDetails.fatherName,
+    gender: personalDetails.gender,
+    mobile: personalDetails.mobile,
+    email: personalDetails.email,
+    dob: `${dobDate.getFullYear()}-${String(dobDate.getMonth()).padStart(2, "0")}-${String(dobDate.getDate()).padStart(2, "0")}`,
+    photo: photoAndSignature.photo,
+    signature: photoAndSignature.signature,
+  };
+  // academic details
+  data = {
+    ...data,
+    rguRollNo: academicDetails.rguRollNo,
+    rguRegNo: academicDetails.rguRegNo,
+    programme: academicDetails.programme,
+  };
+  if (!academicDetails.applyingForBackPapers && !academicDetails.applyingForImprovement) {
+    data.semester = Number(academicDetails.semester);
+    data.onlyHaveBackPapers = false;
+    data.haveBackPapers = false;
+    data.onlyImprovementPapers = false;
+  } else {
+
+  }
 }
 
 export async function submitForm() {

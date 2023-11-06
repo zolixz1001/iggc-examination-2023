@@ -16,6 +16,7 @@ export default function AcademicDetails({ position }: { position: number }) {
     const selectedSemesters = useAcademicDetailsStore((state) => state.semesters);
     const applyingForImprovement = useAcademicDetailsStore((state) => state.applyingForImprovement);
     const applyingForBackPapers = useAcademicDetailsStore((state) => state.applyingForBackPapers);
+    const haveBackPapers = useAcademicDetailsStore((state) => state.haveBackPapers);
     const examinationPattern = useAcademicDetailsStore((state) => state.examinationPattern);
     const update = useAcademicDetailsStore((state) => state.update);
     const [isExpanded, setIsExpanded] = useState(false);
@@ -68,6 +69,7 @@ export default function AcademicDetails({ position }: { position: number }) {
                         update("semester", "");
                         update("semesters", []);
                         update("examinationPattern", "");
+                        update("haveBackPapers", false);
                     }}
                     isChecked={applyingForImprovement}
                     label="Only Applying improvement"
@@ -81,6 +83,7 @@ export default function AcademicDetails({ position }: { position: number }) {
                         update("semesters", []);
                         update("semester", "");
                         update("examinationPattern", "");
+                        update("haveBackPapers", false);
                     }}
                     isChecked={applyingForBackPapers}
                     label="Only Applying for back papers"
@@ -130,14 +133,60 @@ export default function AcademicDetails({ position }: { position: number }) {
                                 </div>
                             ) :
                             (
-                                <RadioGroup
-                                    options={semesters}
-                                    value={semester}
-                                    onChange={value => {
-                                        update("semester", value);
-                                        update("examinationPattern", "");
-                                    }}
-                                />
+                                <>
+                                    <RadioGroup
+                                        options={semesters}
+                                        value={semester}
+                                        onChange={value => {
+                                            update("semester", value);
+                                            update("examinationPattern", "");
+                                            update("haveBackPapers", false);
+                                            update("semesters", []);
+                                        }}
+                                    />
+                                    {
+                                        semester &&
+                                        Number(semester) > 2 &&
+                                        (
+                                            <div className="mt-2">
+                                                <Checkbox
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        e.stopPropagation();
+                                                        update("haveBackPapers", !haveBackPapers);
+                                                        update("semesters", []);
+                                                    }}
+                                                    isChecked={haveBackPapers}
+                                                    label="Do you have back papers in previous semester?"
+                                                />
+                                            </div>
+                                        )
+                                    }
+                                    {
+                                        haveBackPapers &&
+                                        (
+                                            <div>
+                                                <label className="block text-md font-medium mt-2 mb-2">Back Semesters</label>
+                                                <div className="flex gap-4">
+                                                    {
+                                                        (Number(semester) === 3 ? ["1"]: ["1", "3"]).map(sem => (
+                                                            <Checkbox
+                                                                key={sem}
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    e.stopPropagation();
+                                                                    update("semesters", selectedSemesters.includes(sem) ? selectedSemesters.filter(el => el !== sem) : [...selectedSemesters, sem]);
+                                                                }}
+                                                                isChecked={selectedSemesters.includes(sem)}
+                                                                label={sem}
+                                                            />
+                                                        ))
+                                                    }
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                </>
                             )
                     }
                     {
