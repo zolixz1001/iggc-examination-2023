@@ -73,14 +73,6 @@
           "paper": "INDIAN CONSTITUTION"
         }
       ],
-      "aecc": [
-        {
-          "subject": "",
-          "code": "ENG-A-111",
-          "paper": "ENGLISH FOR COMMUNICATION"
-        },
-        { "subject": "", "code": "HIN-A-111", "paper": "HINDI SHIKHAN" }
-      ],
       "ge": [
         {
           "subject": "ECONOMICS",
@@ -116,6 +108,18 @@
           "subject": "POLITICAL SCIENCE",
           "code": "POL-G-114",
           "paper": "GLOBALIZATION AND POLITICS"
+        }
+      ],
+      "aecc": [
+        {
+          "subject": "",
+          "code": "ENG-A-111",
+          "title": "ENGLISH FOR COMMUNICATION"
+        },
+        {
+          "subject": "",
+          "code": "HIN-A-111",
+          "title": "HINDI SHIKHAN"
         }
       ],
       "sec": []
@@ -193,9 +197,6 @@
           "paper": "POLITICAL THEORY"
         }
       ],
-      "aecc": [
-        { "subject": "", "code": "EVS-A-121", "paper": "ENVIRONMENTAL STUDIES" }
-      ],
       "ge": [
         {
           "subject": "ECONOMICS",
@@ -233,6 +234,458 @@
           "paper": "FEMINISM THEORY AND PRACTICE"
         }
       ],
+      "aecc": [
+        {
+          "subject": "",
+          "code": "EVS-A-121",
+          "title": "ENVIRONMENTAL STUDIES"
+        }
+      ],
+      "sec": []
+    },
+    "3": {
+      "core": [
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-C-211",
+          "paper": "MATHEMATICAL METHODS FOR ECONOMICS-I"
+        },
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-C-212",
+          "paper": "DEVELOPMENT ECONOMICS"
+        },
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-213",
+          "paper": "INDIAN ECONOMY"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-C-211",
+          "paper": "TEACHING LEARNING PROCESS"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-C-212",
+          "paper": "INDIAN EDUCATION AND ITS PROBLEMS"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-C-213",
+          "paper": "LANGUAGE EDUCATION"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-C-211",
+          "paper": "AMERICAN LITERATURE"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-C-212",
+          "paper": "POPULAR LITERATURE"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-C-213",
+          "paper": "BRITISH POETRY AND DRAMA: 17TH AND 18TH CENTURIES"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-C-231",
+          "paper": "CLIMATOLOGY AND OCEANOGRAPHY"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-C-232",
+          "paper": "FUNDAMENTALS OF REMOTE SENSING"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-C-233",
+          "paper": "GEOGRAPHY OF INDIA"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-C-211",
+          "paper": "KATHA SAHITYA : KAHANI & UPANYAS"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-C-212",
+          "paper": "HINDI NATYA SAHITYA"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-C-213",
+          "paper": "KATHETTAR GADYA SAHITYA"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-C-211",
+          "paper": "HISTORY OF INDIA : 550CE-1200CE"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-C-212",
+          "paper": "HISTORY OF EUROPE: 1789-1919"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-C-213",
+          "paper": "HISTORY OF INDIA : 1200-1707"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-C-211",
+          "paper": "COMPARATIVE GOVERNMENT AND POLITICS"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-C-212",
+          "paper": "THEORIES OF INTERNATIONAL RELATIONS"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-C-213",
+          "paper": "PUBLIC ADMINISTRATION"
+        }
+      ],
+      "ge": [
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-G-215",
+          "paper": "PUBLIC FINANCE"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-G-215",
+          "paper": "TEACHING LEARNING PROCESS"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-G-215",
+          "paper": "LANGUAGE AND LINGUISTICS"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-G-236",
+          "paper": "CLIMATE CHANGE, VULNERABILITY AND ADAPTATION"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-G-215",
+          "paper": "SAHITYA AUR CINEMA"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-G-215A",
+          "paper": "DELHI: MODERN"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-G-215",
+          "paper": "HUMAN RIGHTS"
+        }
+      ],
+      "aecc": [],
+      "sec": [
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-S-214B",
+          "paper": "TOURISM ECONOMICS"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-S-214",
+          "paper": "TEACHING AT ELEMENTARY LEVEL"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-S-214B",
+          "paper": "SOFT SKILLS"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-S-234",
+          "paper": "GEOGRAPHICAL INFORMATION SYSTEM (PRACTICAL)"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-S-214",
+          "paper": "LEKHAN KAUSHAL"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-S-214B",
+          "paper": "ARCHIVES AND MUSEUM"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-S-214",
+          "paper": "MANAGING ELECTIONS AND ELECTION CAMPAIGN"
+        }
+      ]
+    },
+    "4": {
+      "core": [
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-C-221",
+          "paper": "MATHEMATICAL METHODS FOR ECONOMICS-II"
+        },
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-C-222",
+          "paper": "INTERNATIONAL ECONOMICS"
+        },
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-223",
+          "paper": "PUBLIC ECONOMICS"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-C-221",
+          "paper": "EDUCATIONAL TECHNOLOGY"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-C-222",
+          "paper": "CURRICULUM DEVELOPMENT"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-C-223",
+          "paper": "EDUCATIONAL MEASUREMENT AND EVALUATION"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-C-221",
+          "paper": "BRITISH LITERATURE: 18TH CENTURY"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-C-222",
+          "paper": "BRITISH ROMANTIC LITERATURE"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-C-223",
+          "paper": "BRITISH LITERATURE: 19TH CENTURY"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-C-241",
+          "paper": "INTRODUCTION TO GLOBAL ECONOMIC SYSTEM"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-C-242",
+          "paper": "ENVIRONMENT AND NATURAL RESOURCE MANAGEMENT"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-C-243",
+          "paper": "DIGITAL REMOTE SENSING (PRACTICAL)"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-C-221",
+          "paper": "HINDI GAD SAHITYA KA ITIHAS"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-C-222",
+          "paper": "HINDI AALOCHANA"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-C-223",
+          "paper": "HINDI BHASHA EVAM BHASHA VIGYAN"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-C-221",
+          "paper": "HISTORY OF MODERN WORLD: 1919-1945"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-C-222",
+          "paper": "HISTORY OF INDIA: 1707-1857"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-C-223",
+          "paper": "INDIAN NATIONAL MOVEMENT 1857-1947"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-C-221",
+          "paper": "PUBLIC POLICY"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-C-222",
+          "paper": "POLITICS IN INDIA"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-C-223",
+          "paper": "WESTERN POLITICAL THINKERS"
+        }
+      ],
+      "ge": [
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-G-225",
+          "paper": "ISSUES OF INDIAN ECONOMY"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-G-225",
+          "paper": "EDUCATIONAL TECHNOLOGY"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-G-225",
+          "paper": "LANGUAGE LITERATURE AND CULTURE"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-G-247",
+          "paper": "SUSTAINABLE RESOURCE MANAGEMENT"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-G-225",
+          "paper": "SOCIAL MEDIA AUR HINDI"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-G-225",
+          "paper": "ISSUES IN CONTEMPORARY WORLD"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-G-225",
+          "paper": "UNDERSTANDING GANDHI"
+        }
+      ],
+      "aecc": [],
+      "sec": [
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-S-224A",
+          "paper": "INTRODUCATION TO DATA ANALYSIS"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-S-224",
+          "paper": "HUMAN RIGHTS"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-S-224B",
+          "paper": "CREATIVE WRITING"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-S-244",
+          "paper": "INTRODUCATION TO GI SCIENCE (PRACTICAL)"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-S-224",
+          "paper": "KARYALAYI HINDI"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-S-224B",
+          "paper": "UNDERSTANDING POPULAR CULTURE OF INDIA"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-S-224",
+          "paper": "PUBLIC POLICY MANAGEMENT"
+        }
+      ]
+    },
+    "5": {
+      "core": [
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-C-311",
+          "paper": "Statistical Methods"
+        },
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-C-312",
+          "paper": "Monetary and Financial Economics"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-C-311",
+          "paper": "Assessment for Learning"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-C-312",
+          "paper": "Elementary Statistics in Education"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-C-311",
+          "paper": "Women's Writing"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-C-312",
+          "paper": "British  Literature: the Early 20th Century"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-C-351",
+          "paper": "Geography of North East India: special reference to Arunachal Pradesh"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-C-352",
+          "paper": "Field Techniques, Surveying and research methods(Practical)"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-C-311",
+          "paper": "Bharatiya Kavyashastra"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-C-312",
+          "paper": "Pashchatya Kavyashastra"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-C-311",
+          "paper": "History of Modern India : 1947-2000"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-C-312",
+          "paper": "Cultural Heritage of India"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-C-311",
+          "paper": "Modern Political Thinkers"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-C-312",
+          "paper": "India's Foreign Policy"
+        }
+      ],
+      "ge": [],
+      "aecc": [],
       "sec": []
     }
   },
@@ -244,32 +697,18 @@
           "code": "COM-C-112",
           "paper": "FINANCIAL ACCOUNTING"
         },
-        { "subject": "COMMERCE", "code": "COM-C-113", "paper": "BUSINESS LAW" },
+        {
+          "subject": "COMMERCE",
+          "code": "COM-C-113",
+          "paper": "BUSINESS LAW"
+        },
         {
           "subject": "COMMERCE",
           "code": "COM-C-114",
           "paper": "BUSINESS STATISTICS"
         }
       ],
-      "aecc": [
-        {
-          "subject": "",
-          "code": "ENG-A-111",
-          "paper": "ENGLISH FOR COMMUNICATION"
-        },
-        { "subject": "", "code": "HIN-A-111", "paper": "HINDI SHIKHAN" }
-      ],
       "ge": [
-        {
-          "subject": "COMMERCE",
-          "code": "COM-G-115 (A)",
-          "paper": "PERSONAL FINANCE & PLANNING"
-        },
-        {
-          "subject": "COMMERCE",
-          "code": "COM-G-115 (B)",
-          "paper": "ACCOUNTING FOR EVERYONE"
-        },
         {
           "subject": "ECONOMICS",
           "code": "ECO-G-114",
@@ -296,14 +735,21 @@
           "paper": "SRIJANATAMAK LEKHAN"
         },
         {
-          "subject": "HISTORY",
-          "code": "HIS-G-114 A",
-          "paper": "DELHI : ANCIENT"
-        },
-        {
           "subject": "POLITICAL SCIENCE",
           "code": "POL-G-114",
           "paper": "GLOBALIZATION AND POLITICS"
+        }
+      ],
+      "aecc": [
+        {
+          "subject": "",
+          "code": "ENG-A-111",
+          "title": "ENGLISH FOR COMMUNICATION"
+        },
+        {
+          "subject": "",
+          "code": "HIN-A-111",
+          "title": "HINDI SHIKHAN"
         }
       ],
       "sec": []
@@ -326,9 +772,6 @@
           "paper": "BUSINESS ORGANISATION & MANAGEMENT"
         }
       ],
-      "aecc": [
-        { "subject": "", "code": "EVS-A-121", "paper": "ENVIRONMENTAL STUDIES" }
-      ],
       "ge": [
         {
           "subject": "ECONOMICS",
@@ -346,6 +789,128 @@
           "paper": "COUPLED HUMAN AND ENVIRONMENTAL SYSTEM"
         }
       ],
+      "aecc": [
+        {
+          "subject": "",
+          "code": "EVS-A-121",
+          "title": "ENVIRONMENTAL STUDIES"
+        }
+      ],
+      "sec": []
+    },
+    "3": {
+      "core": [
+        {
+          "subject": "COMMERCE",
+          "code": "COM-C-211",
+          "paper": "BUSINESS ECONOMICS"
+        },
+        {
+          "subject": "COMMERCE",
+          "code": "COM-C-212",
+          "paper": "INCOME TAX AND PRACTICES"
+        }
+      ],
+      "ge": [
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-G-215",
+          "paper": "PUBLIC FINANCE"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-G-215",
+          "paper": "TEACHING LEARNING PROCESS"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-G-215",
+          "paper": "LANGUAGE AND LINGUISTICS"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-G-236",
+          "paper": "CLIMATE CHANGE, VULNERABILITY AND ADAPTATION"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-G-215",
+          "paper": "SAHITYA AUR CINEMA"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-G-215B",
+          "paper": "MAKING CONTEMPORARY INDIA"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-G-215",
+          "paper": "HUMAN RIGHTS"
+        }
+      ],
+      "aecc": [],
+      "sec": [
+        {
+          "subject": "COMMERCE",
+          "code": "COM-S-214A",
+          "paper": "E-COMMERCE"
+        }
+      ]
+    },
+    "4": {
+      "core": [
+        {
+          "subject": "COMMERCE",
+          "code": "COM-C-221",
+          "paper": "COST ACCOUNTING"
+        },
+        {
+          "subject": "COMMERCE",
+          "code": "COM-C-222",
+          "paper": "BUSINESS MATHEMATICS"
+        }
+      ],
+      "ge": [
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-G-225",
+          "paper": "ISSUES OF INDIAN ECONOMY"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-G-225",
+          "paper": "LANGUAGE LITERATURE AND CULTURE"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-G-247",
+          "paper": "SUSTAINABLE RESOURCE MANAGEMENT"
+        }
+      ],
+      "aecc": [],
+      "sec": [
+        {
+          "subject": "COMMERCE",
+          "code": "COM-S-224D",
+          "paper": "EVENT MANAGEMENT"
+        }
+      ]
+    },
+    "5": {
+      "core": [
+        {
+          "subject": "COMMERCE",
+          "code": "COM-C-311",
+          "paper": "Principles of Marketing"
+        },
+        {
+          "subject": "COMMERCE",
+          "code": "COM-C-312",
+          "paper": "Financial Management"
+        }
+      ],
+      "ge": [],
+      "aecc": [],
       "sec": []
     }
   },
@@ -382,7 +947,11 @@
           "code": "CHE-CC-112",
           "paper": "PHYSICAL CHEMISTRY"
         },
-        { "subject": "MATHEMATICS", "code": "MAT-CC-111", "paper": "CALCULUS" },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-CC-111",
+          "paper": "CALCULUS"
+        },
         {
           "subject": "MATHEMATICS",
           "code": "MAT-CC-122",
@@ -393,15 +962,11 @@
           "code": "PHY-CC-111",
           "paper": "MATHEMATICAL PHYSICS"
         },
-        { "subject": "PHYSICS", "code": "PHY-CC-122", "paper": "MECHANICS" }
-      ],
-      "aecc": [
         {
-          "subject": "",
-          "code": "ENG-A-111",
-          "paper": "ENGLISH FOR COMMUNICATION"
-        },
-        { "subject": "", "code": "HIN-A-111", "paper": "HINDI SHIKHAN" }
+          "subject": "PHYSICS",
+          "code": "PHY-CC-122",
+          "paper": "MECHANICS"
+        }
       ],
       "ge": [
         {
@@ -421,13 +986,33 @@
         },
         {
           "subject": "MATHEMATICS",
-          "code": "MAT-GE-003",
-          "paper": "DISCRETE MATHEMATICS"
+          "code": "MAT-GE-001",
+          "paper": "DIFFERENTIAL AND INTEGRAL CALCULUS"
         },
-        { "subject": "PHYSICS", "code": "PHY-GE-001", "paper": "MECHANICS" }
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-GE-001",
+          "paper": "MECHANICS"
+        }
+      ],
+      "aecc": [
+        {
+          "subject": "",
+          "code": "ENG-A-111",
+          "title": "ENGLISH FOR COMMUNICATION"
+        },
+        {
+          "subject": "",
+          "code": "HIN-A-111",
+          "title": "HINDI SHIKHAN"
+        }
       ],
       "sec": [
-        { "subject": "ZOOLOGY", "code": "ZOL-SE-010", "paper": "APICULTURE" },
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOL-SE-010",
+          "paper": "APICULTURE"
+        },
         {
           "subject": "BOTANY",
           "code": "BOT-SE-001",
@@ -475,12 +1060,12 @@
         {
           "subject": "CHEMISTRY",
           "code": "CHE-CC-121",
-          "paper": "INORGANIC CHEMISTRY"
+          "paper": "ORGANIC CHEMISTRY I"
         },
         {
           "subject": "CHEMISTRY",
           "code": "CHE-CC-122",
-          "paper": "PHYSICAL CHEMISTRY"
+          "paper": "PHYSICAL CHEMISTRY II"
         },
         {
           "subject": "MATHEMATICS",
@@ -495,16 +1080,13 @@
         {
           "subject": "PHYSICS",
           "code": "PHY-CC-121",
-          "paper": "ELECTRICITY AND MAGNETISM PHYSICS LAB"
+          "paper": "ELECTRICITY AND MAGNETISM"
         },
         {
           "subject": "PHYSICS",
           "code": "PHY-CC-122",
-          "paper": "WAVES AND OPTICS PHYSICS LAB"
+          "paper": "WAVES AND OPTICS"
         }
-      ],
-      "aecc": [
-        { "subject": "", "code": "EVS-A-121", "paper": "ENVIRONMENTAL STUDIES" }
       ],
       "ge": [
         {
@@ -530,9 +1112,10 @@
         {
           "subject": "PHYSICS",
           "code": "PHY-GE-002",
-          "paper": "ELECTRICITY AND MAGNETISM GENERIC PHYSICS LAB2"
+          "paper": "WAVES AND OPTICS"
         }
       ],
+      "aecc": [],
       "sec": [
         {
           "subject": "ZOOLOGY",
@@ -557,9 +1140,339 @@
         {
           "subject": "PHYSICS",
           "code": "PHY-SE- 005",
-          "paper": "ELECTRONICS IN DAILY LIFE PROJECT ON ELECTRONIC VEHICLES"
+          "paper": "ELECTRONICS EVERYDAY LIFE"
         }
       ]
+    },
+    "3": {
+      "core": [
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-CC-231",
+          "paper": "PHYSIOLOGY OF CHORDATES"
+        },
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-CC-232",
+          "paper": "GENETICS"
+        },
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-CC-233",
+          "paper": "BIOCHEMISTRY"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-CC-231",
+          "paper": "ANATOMY OF ANGIOSPERM"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-CC-232",
+          "paper": "ECONOMIC BOTANY AND PLANT RESOURCE UTILIZATION"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-CC-233",
+          "paper": "GENETICS AND CYTOGENETICS"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-CC-231",
+          "paper": "INORGANIC CHEMISTRY-II"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-CC-232",
+          "paper": "ORGANIC CHEMISTRY-II"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-CC-234",
+          "paper": "PHYSICAL CHEMISTRY-III"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-CC-231",
+          "paper": "ABSTRACT ALGEBRA"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-CC-232",
+          "paper": "DIFFERENTIAL EQUATIONS"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-CC-233",
+          "paper": "STATICS"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-CC-231",
+          "paper": "MATHEMATICAL PHYSICS-II"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-CC-232",
+          "paper": "THERMAL PHYSICS"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-CC-233",
+          "paper": "ANALOG SYSTEMS AND APPLICATIONS"
+        }
+      ],
+      "ge": [
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-GE-231",
+          "paper": "GLOBAL CLIMATE CHANGE"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-GE-003",
+          "paper": "ECONOMIC BOTANY AND PLANT RESOURCE ORGANIZATION"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-GE-003",
+          "paper": "GENERAL CHEMISTRY-III"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-GE-001",
+          "paper": "DIFFERENTIAL AND INTEGRAL CALCULUS"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-GE-003",
+          "paper": "DISCRETE MATHEMATICS"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-GE-003",
+          "paper": "WAVES AND OPTICS"
+        }
+      ],
+      "aecc": [],
+      "sec": [
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-SE-003",
+          "paper": "SERICULTURE"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-SE-003",
+          "paper": "BOTANICAL GARDENING AND LANDSCAPING"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-SE-003",
+          "paper": "SOIL CHEMISTRY"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-SE-003",
+          "paper": "LOGICS AND SETS"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-SE-003",
+          "paper": "SCIENTIFIC WRITING THROUGH LATEX"
+        }
+      ]
+    },
+    "4": {
+      "core": [
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-CC-241",
+          "paper": "BEHAVIOUR AND CHRONOBIOLOGY"
+        },
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-CC-242",
+          "paper": "ECOLOGY"
+        },
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-CC-243",
+          "paper": "MOLECULAR BIOLOGY"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-CC-241",
+          "paper": "MOLECULAR BIOLOGY"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-CC-242",
+          "paper": "PLANT ECOLOGY AND PHYTOGEOGRAPHY"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-CC-243",
+          "paper": "PLANT SYSTEMATICS"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-CC-241",
+          "paper": "INORGANIC CHEMNISTRY III"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-CC-242",
+          "paper": "ORGANIC CHEMISTRY III"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-CC-243",
+          "paper": "PHYSICAL CHEMISTRY IV"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-CC-241",
+          "paper": "PARTICLE DYNAMICS"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-CC-242",
+          "paper": "FINITE DIFFERENCES AND NUMERICAL ANALYSIS"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-CC-243",
+          "paper": "COMPLEX ANALYSIS"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-CC-241",
+          "paper": "MATHEMATICAL PHYSICS III"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-CC-242",
+          "paper": "ELEMENTS OF MODERN PHYSICS"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-CC-243",
+          "paper": "DIGITAL SYSTEM AND APPLICATIONS"
+        }
+      ],
+      "ge": [
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-GE-041",
+          "paper": "SYSTEMATICS AND EVOLUTIONARY BIOLOGY"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-GE-004",
+          "paper": "BIODIVERSITY AND CONSERVATION"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-GE-005",
+          "paper": "GENERAL CHEMISTRY V"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-GE-004",
+          "paper": "DIFFERENTIAL EQUATIONS"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-GE-004",
+          "paper": "THERMAL PHYSICS AND STATISTICAL MECHANICS"
+        }
+      ],
+      "aecc": [],
+      "sec": [
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-SE-006",
+          "paper": "PUBLIC HEALTH AND HYGIENE"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-SE-004",
+          "paper": "NURSERY AND GARDENING"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-SE-004",
+          "paper": "FERTILIZERS AND PESTICIDES CHEMISTRY"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-SE-008",
+          "paper": "NUMERAL INTERPOLATION AND CURVE FITTING"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-SE-006",
+          "paper": "ELECTRIC AND HYBRID VEHICLES"
+        }
+      ]
+    },
+    "5": {
+      "core": [
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-CC-351",
+          "paper": "Quantum Mechanics and Applications"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-CC-352",
+          "paper": "Solid State Physics"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-CC-351",
+          "paper": "Organic Chemistry-IV"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-CC-352",
+          "paper": "Inorganic Chemistry-IV"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-CC-351",
+          "paper": "Metric Space"
+        },
+        {
+          "subject": "MATHEMATICS",
+          "code": "MAT-CC-352",
+          "paper": "Linear Algebra"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-CC-351",
+          "paper": "Plant Physiology"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-CC-352",
+          "paper": "Reproductive Biology of Angiosperms"
+        },
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-CC-351",
+          "paper": "Biotechniques"
+        },
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-CC-352",
+          "paper": "Microbiology,Parasitology & Immunology"
+        }
+      ],
+      "ge": [],
+      "aecc": [],
+      "sec": []
     }
   }
 }

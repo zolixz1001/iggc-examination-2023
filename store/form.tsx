@@ -1,6 +1,6 @@
 import { CURRENT_SEMESTERS, ROMAN_NUMERIC_MAP } from "@/constants";
-import { use } from "react";
 import { create } from "zustand";
+import cbcs from "@/data/cbcs.json";
 
 interface PersonalDetailsState {
   name: string;
@@ -81,6 +81,7 @@ interface NepSubjectCombinationState {
   semesters: {
     semester: string;
     combination: NepSubjectCombination;
+    isBack?: boolean;
   }[],
   error: Record<string, string> | null;
   update: (semester: string, value: NepSubjectCombination) => void;
@@ -114,6 +115,7 @@ interface CbcsSubjectCombinationState {
   semesters: {
     semester: string;
     combination: CbcsSubjectCombination;
+    isBack?: boolean;
   }[];
   error: Record<string, string> | null;
   update: (semester: string, value: CbcsSubjectCombination) => void;
@@ -139,6 +141,7 @@ export const useCbcsSubjectCombination = create<CbcsSubjectCombinationState>((se
 interface OldSubjectCombination {
   semester: string;
   subjects: SubjectDetails[];
+  isBack?: boolean;
 }
 
 interface OldSubjectCombinationState {
@@ -167,6 +170,13 @@ export const useOldCombinationStore = create<OldSubjectCombinationState>((set) =
 export interface Document {
   title: string;
   url: string;
+  info?: {
+    name?: string;
+    isBack?: boolean;
+    onlyBack?: boolean;
+    isImprovement?: boolean;
+    semester?: string;
+  };
 }
 
 interface DocumentState {
@@ -200,36 +210,65 @@ function resetAndUpdateStates(
     haveBackPapers: boolean;
   }) {
   const documents: Document[] = [];
-  const nepSubjectCombinationSemesters: { semester: string; combination: NepSubjectCombination }[] = [];
-  const cbcsSubjectCombinationSemesters: { semester: string; combination: CbcsSubjectCombination }[] = [];
-  const oldSubjectCombinationSemesters: { semester: string; subjects: SubjectDetails[] }[] = [];
+  const nepSubjectCombinationSemesters: { semester: string; combination: NepSubjectCombination; isBack?: boolean; }[] = [];
+  const cbcsSubjectCombinationSemesters: { semester: string; combination: CbcsSubjectCombination; isBack?: boolean; }[] = [];
+  const oldSubjectCombinationSemesters: { semester: string; subjects: SubjectDetails[]; isBack?: boolean; }[] = [];
   if (programme) {
+    documents.push(
+      {
+        title: `RGU Registration Card`,
+        url: "",
+        info: {
+          name: "reg",
+        }
+      }
+    );
     if (applyingForImprovement || applyingForBackPapers) {
       if (semesters.length > 0) {
         if (applyingForImprovement) {
           for (const sem of semesters) {
             documents.push(
               {
-                title: `Payment receipt for the back paper of Semester ${ROMAN_NUMERIC_MAP[sem]}`,
-                url: ""
+                title: `Payment receipt for the improvement paper of Semester ${ROMAN_NUMERIC_MAP[sem]}`,
+                url: "",
+                info: {
+                  name: "receipt",
+                  isImprovement: true,
+                  semester: sem
+                }
               }
             );
             documents.push(
               {
-                title: `Mark sheet of Semester ${ROMAN_NUMERIC_MAP[Number(sem)]}`,
-                url: ""
+                title: `Mark sheet for the improvement paper of Semester ${ROMAN_NUMERIC_MAP[Number(sem)]}`,
+                url: "",
+                info: {
+                  name: "marksheet",
+                  isImprovement: true,
+                  semester: sem
+                }
               }
             );
           }
         } else {
           for (const sem of semesters) {
             documents.push({
-              title: `Payment receipt for the improvement paper of Semester ${ROMAN_NUMERIC_MAP[sem]}`,
-              url: ""
+              title: `Payment receipt for the back paper of Semester ${ROMAN_NUMERIC_MAP[sem]}`,
+              url: "",
+              info: {
+                name: "receipt",
+                onlyBack: true,
+                semester: sem
+              }
             });
             documents.push({
-              title: `Mark sheet of Semester ${ROMAN_NUMERIC_MAP[Number(sem)]}`,
-              url: ""
+              title: `Mark sheet for the back paper of Semester ${ROMAN_NUMERIC_MAP[Number(sem)]}`,
+              url: "",
+              info: {
+                name: "marksheet",
+                onlyBack: true,
+                semester: sem
+              }
             });
           }
         }
@@ -272,14 +311,22 @@ function resetAndUpdateStates(
       documents.push(
         {
           title: `Payment receipt for Semester ${ROMAN_NUMERIC_MAP[semester]}`,
-          url: ""
+          url: "",
+          info: {
+            name: "receipt",
+            semester
+          }
         }
       );
       if (Number(semester) > 1) {
         documents.push(
           {
             title: `Mark sheet of Semester ${ROMAN_NUMERIC_MAP[Number(semester) - 1]}`,
-            url: ""
+            url: "",
+            info: {
+              name: "marksheet",
+              semester
+            }
           }
         );
       }
@@ -288,13 +335,23 @@ function resetAndUpdateStates(
           documents.push(
             {
               title: `Payment receipt for back paper of Semester ${ROMAN_NUMERIC_MAP[sem]}`,
-              url: ""
+              url: "",
+              info: {
+                name: "receipt",
+                isBack: true,
+                semester
+              }
             }
           );
           documents.push(
             {
               title: `Mark sheet for back paper of Semester ${ROMAN_NUMERIC_MAP[Number(sem)]}`,
-              url: ""
+              url: "",
+              info: {
+                name: "marksheet",
+                isBack: true,
+                semester
+              }
             }
           );
         }
@@ -315,6 +372,7 @@ function resetAndUpdateStates(
           for (const sem of semesters) {
             nepSubjectCombinationSemesters.push({
               semester: String(sem),
+              isBack: true,
               combination: {
                 major: null,
                 minor: null,
@@ -340,6 +398,7 @@ function resetAndUpdateStates(
           for (const sem of semesters) {
             cbcsSubjectCombinationSemesters.push({
               semester: String(sem),
+              isBack: true,
               combination: {
                 core: [],
                 ge: null,
@@ -358,6 +417,7 @@ function resetAndUpdateStates(
           for (const sem of semesters) {
             oldSubjectCombinationSemesters.push({
               semester: String(sem),
+              isBack: true,
               subjects: []
             });
           }
@@ -487,7 +547,6 @@ function isValidatedForm() {
   // regular
   if (!academicDetails.applyingForBackPapers && !academicDetails.applyingForImprovement) {
     if (!CURRENT_SEMESTERS.includes(String(academicDetails.semester))) {
-      console.log({ CURRENT_SEMESTERS, semester: academicDetails.semester })
       isValid = false;
       errors.push("Please select a semester");
     } else {
@@ -550,25 +609,58 @@ function isValidatedForm() {
     } else if (academicDetails.examinationPattern === "CBCS") {
       const subjectCombination = useCbcsSubjectCombination.getState();
       for (const semesterDetails of subjectCombination.semesters) {
-        if (!semesterDetails.combination.core || semesterDetails.combination.core.length === 0) {
-          isValid = false;
-          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} Core courses`);
-        }
-        if (!semesterDetails.combination.aecc) {
-          isValid = false;
-          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} AEC`);
-        }
-        if (!semesterDetails.combination.ge) {
-          isValid = false;
-          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} GE`);
+        // current semester
+        if (Number(academicDetails.semester) === Number(semesterDetails.semester)) {
+          const data = {
+            core: [],
+            aecc: [],
+            ge: [],
+            sec: []
+          };
+          if (cbcs && (cbcs as any)[academicDetails.programme] && (cbcs as any)[academicDetails.programme][academicDetails.semester]) {
+            data.core = (cbcs as any)[academicDetails.programme][academicDetails.semester]?.core || [];
+            data.aecc = (cbcs as any)[academicDetails.programme][academicDetails.semester]?.aecc || [];
+            data.ge = (cbcs as any)[academicDetails.programme][academicDetails.semester]?.ge || [];
+            data.sec = (cbcs as any)[academicDetails.programme][academicDetails.semester]?.sec || [];
+          }
+          if (data.core.length > 0 && (!semesterDetails.combination.core || semesterDetails.combination.core.length === 0)) {
+            isValid = false;
+            errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} Core courses`);
+          }
+          if (data.aecc.length > 0 && !semesterDetails.combination.aecc) {
+            isValid = false;
+            errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} AEC`);
+          }
+          if (data.aecc.length > 0 && !semesterDetails.combination.ge) {
+            isValid = false;
+            errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} GE`);
+          }
+        } else {
+          if (
+            (!semesterDetails.combination.core || semesterDetails.combination.core.length === 0) &&
+            !semesterDetails.combination.aecc &&
+            !semesterDetails.combination.ge &&
+            !semesterDetails.combination.sec
+          ) {
+            isValid = false;
+            errors.push(`Please select a Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} back subject`);
+          }
         }
       }
     } else if (academicDetails.examinationPattern === "OLD") {
       const subjectCombination = useOldCombinationStore.getState();
       for (const semesterDetails of subjectCombination.semesters) {
-        if (semesterDetails.subjects.length < 4) {
-          isValid = false;
-          errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} subjects`);
+        // current semester
+        if (Number(academicDetails.semester) === Number(semesterDetails.semester)) {
+          if (semesterDetails.subjects.length < 4) {
+            isValid = false;
+            errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} subjects`);
+          }
+        } else {
+          if (semesterDetails.subjects.length < 1) {
+            isValid = false;
+            errors.push(`Please select Semester ${ROMAN_NUMERIC_MAP[semesterDetails.semester]} back subjects`);
+          }
         }
       }
     }
@@ -645,16 +737,223 @@ function buildPostObject() {
   if (!academicDetails.applyingForBackPapers && !academicDetails.applyingForImprovement) {
     data.semester = Number(academicDetails.semester);
     data.onlyHaveBackPapers = false;
-    data.haveBackPapers = false;
+    data.haveBackPapers = academicDetails.haveBackPapers;
     data.onlyImprovementPapers = false;
+    if (academicDetails.examinationPattern === "CBCS") {
+      const currentSemesterSubjectCombination = cbcsSubjectCombination.semesters.find(el => Number(el.semester) === Number(academicDetails.semester))?.combination;
+      data.subjects = {
+        core: {
+          papers: currentSemesterSubjectCombination?.core.map(el => ({
+            code: el.code,
+            title: el.paper,
+            type: ""
+          })),
+          title: currentSemesterSubjectCombination?.core[0].subject
+        },
+        ...currentSemesterSubjectCombination?.ge && {
+          general_elective: {
+            code: currentSemesterSubjectCombination.ge.code,
+            tile: currentSemesterSubjectCombination.ge.paper,
+            subject: currentSemesterSubjectCombination.ge.subject
+          }
+        },
+        ...currentSemesterSubjectCombination?.sec && {
+          skill_enhancement_course: {
+            code: currentSemesterSubjectCombination.sec.code,
+            tile: currentSemesterSubjectCombination.sec.paper,
+            subject: currentSemesterSubjectCombination.sec.subject
+          }
+        },
+        ...currentSemesterSubjectCombination?.aecc && {
+          aecc: {
+            code: currentSemesterSubjectCombination.aecc.code,
+            tile: currentSemesterSubjectCombination.aecc.paper,
+          }
+        }
+      };
+      if (academicDetails.haveBackPapers) {
+        const backSemesterSubjectCombinations = cbcsSubjectCombination.semesters.filter(el => Number(el.semester) !== Number(academicDetails.semester));
+        const backPapers: any = {};
+        for (const semesterDetails of backSemesterSubjectCombinations) {
+          const subjects: any[] = [];
+          if (semesterDetails.combination.core.length > 0) {
+            subjects.push(...semesterDetails.combination.core.map(el => ({ code: el.code, title: el.paper, type: "" })));
+          }
+          if (semesterDetails.combination.ge) {
+            subjects.push({
+              code: semesterDetails.combination.ge.code,
+              title: semesterDetails.combination.ge.paper,
+              subject: semesterDetails.combination.ge.subject
+            });
+          }
+          if (semesterDetails.combination.sec) {
+            subjects.push({
+              code: semesterDetails.combination.sec.code,
+              title: semesterDetails.combination.sec.paper,
+              subject: semesterDetails.combination.sec.subject
+            });
+          }
+          if (semesterDetails.combination.aecc) {
+            subjects.push({
+              code: semesterDetails.combination.aecc.code,
+              title: semesterDetails.combination.aecc.paper,
+            });
+          }
+          backPapers[semesterDetails.semester] = {
+            subjects,
+            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
+          }
+        }
+        data.backPapers = backPapers;
+        data.backPaperSemesters = academicDetails.semesters.map(el => Number(el));
+      }
+    } else if (academicDetails.examinationPattern === "NEP") {
+      const currentSemesterSubjectCombination = nepSubjectCombination.semesters.find(el => Number(el.semester) === Number(academicDetails.semester))?.combination;
+      data.subjects = currentSemesterSubjectCombination;
+    } else if (academicDetails.examinationPattern === "OLD") {
+      const currentSemesterSubjectCombination = oldSubjectCombination.semesters.find(el => Number(el.semester) === Number(academicDetails.semester))?.subjects || [];
+      data.subjects = currentSemesterSubjectCombination;
+      if (academicDetails.haveBackPapers) {
+        const backSemesterSubjectCombinations = oldSubjectCombination.semesters.filter(el => Number(el.semester) !== Number(academicDetails.semester));
+        const backPapers: any = {};
+        for (const semesterDetails of backSemesterSubjectCombinations) {
+          backPapers[semesterDetails.semester] = {
+            subjects: semesterDetails.subjects,
+            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
+          };
+        }
+        data.backPapers = backPapers;
+        data.backPaperSemesters = academicDetails.semesters.map(el => Number(el));
+      }
+    }
   } else {
-
+    if (academicDetails.applyingForBackPapers) {
+      data.semester = "";
+      data.onlyHaveBackPapers = true;
+      data.haveBackPapers = false;
+      data.onlyImprovementPapers = false;
+      if (academicDetails.examinationPattern === "CBCS") {
+        const backSemesterSubjectCombinations = cbcsSubjectCombination.semesters.filter(el => Number(el.semester) !== Number(academicDetails.semester));
+        const backPapers: any = {};
+        for (const semesterDetails of backSemesterSubjectCombinations) {
+          const subjects: any[] = [];
+          if (semesterDetails.combination.core.length > 0) {
+            subjects.push(...semesterDetails.combination.core.map(el => ({ code: el.code, title: el.paper, type: "" })));
+          }
+          if (semesterDetails.combination.ge) {
+            subjects.push({
+              code: semesterDetails.combination.ge.code,
+              title: semesterDetails.combination.ge.paper,
+              subject: semesterDetails.combination.ge.subject
+            });
+          }
+          if (semesterDetails.combination.sec) {
+            subjects.push({
+              code: semesterDetails.combination.sec.code,
+              title: semesterDetails.combination.sec.paper,
+              subject: semesterDetails.combination.sec.subject
+            });
+          }
+          if (semesterDetails.combination.aecc) {
+            subjects.push({
+              code: semesterDetails.combination.aecc.code,
+              title: semesterDetails.combination.aecc.paper,
+            });
+          }
+          backPapers[semesterDetails.semester] = {
+            subjects,
+            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
+          }
+        }
+        data.backPapers = backPapers;
+        data.backPaperSemesters = academicDetails.semesters.map(el => Number(el));
+      } if (academicDetails.examinationPattern === "OLD") {
+        const backSemesterSubjectCombinations = oldSubjectCombination.semesters.filter(el => Number(el.semester) !== Number(academicDetails.semester));
+        const backPapers: any = {};
+        for (const semesterDetails of backSemesterSubjectCombinations) {
+          backPapers[semesterDetails.semester] = {
+            subjects: semesterDetails.subjects,
+            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
+          };
+        }
+        data.backPapers = backPapers;
+        data.backPaperSemesters = academicDetails.semesters.map(el => Number(el));
+      }
+    } else if (academicDetails.applyingForImprovement) {
+      data.semester = "";
+      data.onlyHaveBackPapers = false;
+      data.haveBackPapers = false;
+      data.onlyImprovementPapers = true;
+      if (academicDetails.examinationPattern === "CBCS") {
+        const improvementSemesterSubjectCombinations = cbcsSubjectCombination.semesters.filter(el => Number(el.semester) !== Number(academicDetails.semester));
+        const improvementPapers: any = {};
+        for (const semesterDetails of improvementSemesterSubjectCombinations) {
+          const subjects: any[] = [];
+          if (semesterDetails.combination.core.length > 0) {
+            subjects.push(...semesterDetails.combination.core.map(el => ({ code: el.code, title: el.paper, type: "" })));
+          }
+          if (semesterDetails.combination.ge) {
+            subjects.push({
+              code: semesterDetails.combination.ge.code,
+              title: semesterDetails.combination.ge.paper,
+              subject: semesterDetails.combination.ge.subject
+            });
+          }
+          if (semesterDetails.combination.sec) {
+            subjects.push({
+              code: semesterDetails.combination.sec.code,
+              title: semesterDetails.combination.sec.paper,
+              subject: semesterDetails.combination.sec.subject
+            });
+          }
+          if (semesterDetails.combination.aecc) {
+            subjects.push({
+              code: semesterDetails.combination.aecc.code,
+              title: semesterDetails.combination.aecc.paper,
+            });
+          }
+          improvementPapers[semesterDetails.semester] = {
+            subjects,
+            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            improvementPaymentReceipt: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
+          }
+        }
+        data.improvementPapers = improvementPapers;
+        data.improvementSemesters = academicDetails.semesters.map(el => Number(el));
+      } if (academicDetails.examinationPattern === "OLD") {
+        const improvementSemesterSubjectCombinations = oldSubjectCombination.semesters.filter(el => Number(el.semester) !== Number(academicDetails.semester));
+        const improvementPapers: any = {};
+        for (const semesterDetails of improvementSemesterSubjectCombinations) {
+          improvementPapers[semesterDetails.semester] = {
+            subjects: semesterDetails.subjects,
+            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            improvementPaymentReceipt: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
+          };
+        }
+        data.improvementPapers = improvementPapers;
+        data.improvementSemesters = academicDetails.semesters.map(el => Number(el));
+      }
+    }
   }
+  // documents
+  if (academicDetails.semester) {
+    data.currentSemesterMarkSheet = documents.documents.find(el => el?.info?.name === "marksheet" && Number(el?.info?.semester) === Number(academicDetails.semester))?.url || "";
+    data.currentSemesterPaymentReceipt = documents.documents.find(el => el?.info?.name === "receipt" && Number(el?.info?.semester) === Number(academicDetails.semester))?.url || "";
+    data.registrationCard = documents.documents.find(el => el?.info?.name === "reg")?.url || "";
+  }
+  return data;
 }
 
 export async function submitForm() {
   try {
     if (isValidatedForm()) {
+      console.log(buildPostObject());
       alert("SUCCESS!!!");
     } else {
       if (typeof window !== "undefined") {

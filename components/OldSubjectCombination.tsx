@@ -12,7 +12,7 @@ export default function OldSubjectCombination() {
 
     return semesters.map((item) => (
         <div key={item.semester}>
-            <label className="block text-md font-medium mb-2">Semester {ROMAN_NUMERIC_MAP[(item.semester)]}</label>
+            <label className="block text-md font-medium mb-2">Semester {ROMAN_NUMERIC_MAP[(item.semester)]} {item.isBack ? "(Back)" : ""}</label>
             <SemesterCombination
                 semester={item.semester}
                 programme={programme}
