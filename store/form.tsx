@@ -339,7 +339,7 @@ function resetAndUpdateStates(
               info: {
                 name: "receipt",
                 isBack: true,
-                semester
+                semester: sem
               }
             }
           );
@@ -350,7 +350,7 @@ function resetAndUpdateStates(
               info: {
                 name: "marksheet",
                 isBack: true,
-                semester
+                semester: sem
               }
             }
           );
@@ -745,7 +745,7 @@ function buildPostObject() {
         core: {
           papers: currentSemesterSubjectCombination?.core.map(el => ({
             code: el.code,
-            title: el.paper,
+            title: el.paper || "",
             type: ""
           })),
           title: currentSemesterSubjectCombination?.core[0].subject
@@ -753,21 +753,21 @@ function buildPostObject() {
         ...currentSemesterSubjectCombination?.ge && {
           general_elective: {
             code: currentSemesterSubjectCombination.ge.code,
-            tile: currentSemesterSubjectCombination.ge.paper,
+            tile: currentSemesterSubjectCombination.ge.paper || "",
             subject: currentSemesterSubjectCombination.ge.subject
           }
         },
         ...currentSemesterSubjectCombination?.sec && {
           skill_enhancement_course: {
-            code: currentSemesterSubjectCombination.sec.code,
-            tile: currentSemesterSubjectCombination.sec.paper,
+            code: currentSemesterSubjectCombination.sec.code || "",
+            tile: currentSemesterSubjectCombination.sec.paper || "",
             subject: currentSemesterSubjectCombination.sec.subject
           }
         },
         ...currentSemesterSubjectCombination?.aecc && {
           aecc: {
-            code: currentSemesterSubjectCombination.aecc.code,
-            tile: currentSemesterSubjectCombination.aecc.paper,
+            code: currentSemesterSubjectCombination.aecc.code || "",
+            tile: currentSemesterSubjectCombination.aecc.paper || "",
           }
         }
       };
@@ -777,26 +777,26 @@ function buildPostObject() {
         for (const semesterDetails of backSemesterSubjectCombinations) {
           const subjects: any[] = [];
           if (semesterDetails.combination.core.length > 0) {
-            subjects.push(...semesterDetails.combination.core.map(el => ({ code: el.code, title: el.paper, type: "" })));
+            subjects.push(...semesterDetails.combination.core.map(el => ({ code: el.code || "", title: el.paper || "", type: "" })));
           }
           if (semesterDetails.combination.ge) {
             subjects.push({
-              code: semesterDetails.combination.ge.code,
-              title: semesterDetails.combination.ge.paper,
-              subject: semesterDetails.combination.ge.subject
+              code: semesterDetails.combination.ge.code || "",
+              title: semesterDetails.combination.ge.paper || "",
+              subject: semesterDetails.combination.ge.subject || ""
             });
           }
           if (semesterDetails.combination.sec) {
             subjects.push({
-              code: semesterDetails.combination.sec.code,
-              title: semesterDetails.combination.sec.paper,
-              subject: semesterDetails.combination.sec.subject
+              code: semesterDetails.combination.sec.code || "",
+              title: semesterDetails.combination.sec.paper || "",
+              subject: semesterDetails.combination.sec.subject || ""
             });
           }
           if (semesterDetails.combination.aecc) {
             subjects.push({
-              code: semesterDetails.combination.aecc.code,
-              title: semesterDetails.combination.aecc.paper,
+              code: semesterDetails.combination.aecc.code || "",
+              title: semesterDetails.combination.aecc.paper || "",
             });
           }
           backPapers[semesterDetails.semester] = {
@@ -834,38 +834,39 @@ function buildPostObject() {
       data.onlyHaveBackPapers = true;
       data.haveBackPapers = false;
       data.onlyImprovementPapers = false;
+      console.log(documents.documents)
       if (academicDetails.examinationPattern === "CBCS") {
         const backSemesterSubjectCombinations = cbcsSubjectCombination.semesters.filter(el => Number(el.semester) !== Number(academicDetails.semester));
         const backPapers: any = {};
         for (const semesterDetails of backSemesterSubjectCombinations) {
           const subjects: any[] = [];
           if (semesterDetails.combination.core.length > 0) {
-            subjects.push(...semesterDetails.combination.core.map(el => ({ code: el.code, title: el.paper, type: "" })));
+            subjects.push(...semesterDetails.combination.core.map(el => ({ code: el.code || "", title: el.paper || "", type: "" })));
           }
           if (semesterDetails.combination.ge) {
             subjects.push({
-              code: semesterDetails.combination.ge.code,
-              title: semesterDetails.combination.ge.paper,
-              subject: semesterDetails.combination.ge.subject
+              code: semesterDetails.combination.ge.code || "",
+              title: semesterDetails.combination.ge.paper || "",
+              subject: semesterDetails.combination.ge.subject || ""
             });
           }
           if (semesterDetails.combination.sec) {
             subjects.push({
-              code: semesterDetails.combination.sec.code,
-              title: semesterDetails.combination.sec.paper,
-              subject: semesterDetails.combination.sec.subject
+              code: semesterDetails.combination.sec.code || "",
+              title: semesterDetails.combination.sec.paper || "",
+              subject: semesterDetails.combination.sec.subject || ""
             });
           }
           if (semesterDetails.combination.aecc) {
             subjects.push({
-              code: semesterDetails.combination.aecc.code,
-              title: semesterDetails.combination.aecc.paper,
+              code: semesterDetails.combination.aecc.code || "",
+              title: semesterDetails.combination.aecc.paper || "",
             });
           }
           backPapers[semesterDetails.semester] = {
             subjects,
-            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
-            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
+            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.onlyBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.onlyBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
           }
         }
         data.backPapers = backPapers;
@@ -876,8 +877,8 @@ function buildPostObject() {
         for (const semesterDetails of backSemesterSubjectCombinations) {
           backPapers[semesterDetails.semester] = {
             subjects: semesterDetails.subjects,
-            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
-            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
+            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.onlyBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.onlyBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
           };
         }
         data.backPapers = backPapers;
@@ -894,33 +895,33 @@ function buildPostObject() {
         for (const semesterDetails of improvementSemesterSubjectCombinations) {
           const subjects: any[] = [];
           if (semesterDetails.combination.core.length > 0) {
-            subjects.push(...semesterDetails.combination.core.map(el => ({ code: el.code, title: el.paper, type: "" })));
+            subjects.push(...semesterDetails.combination.core.map(el => ({ code: el.code || "", title: el.paper || "", type: "" })));
           }
           if (semesterDetails.combination.ge) {
             subjects.push({
-              code: semesterDetails.combination.ge.code,
-              title: semesterDetails.combination.ge.paper,
-              subject: semesterDetails.combination.ge.subject
+              code: semesterDetails.combination.ge.code || "",
+              title: semesterDetails.combination.ge.paper || "",
+              subject: semesterDetails.combination.ge.subject || ""
             });
           }
           if (semesterDetails.combination.sec) {
             subjects.push({
-              code: semesterDetails.combination.sec.code,
-              title: semesterDetails.combination.sec.paper,
-              subject: semesterDetails.combination.sec.subject
+              code: semesterDetails.combination.sec.code || "",
+              title: semesterDetails.combination.sec.paper || "",
+              subject: semesterDetails.combination.sec.subject || ""
             });
           }
           if (semesterDetails.combination.aecc) {
             subjects.push({
-              code: semesterDetails.combination.aecc.code,
-              title: semesterDetails.combination.aecc.paper,
+              code: semesterDetails.combination.aecc.code || "",
+              title: semesterDetails.combination.aecc.paper || "",
             });
           }
           improvementPapers[semesterDetails.semester] = {
             subjects,
-            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
-            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
-            improvementPaymentReceipt: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
+            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isImprovement && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isImprovement && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            improvementPaymentReceipt: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isImprovement && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
           }
         }
         data.improvementPapers = improvementPapers;
@@ -931,9 +932,9 @@ function buildPostObject() {
         for (const semesterDetails of improvementSemesterSubjectCombinations) {
           improvementPapers[semesterDetails.semester] = {
             subjects: semesterDetails.subjects,
-            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
-            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
-            improvementPaymentReceipt: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
+            markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isImprovement && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isImprovement && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
+            improvementPaymentReceipt: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isImprovement && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
           };
         }
         data.improvementPapers = improvementPapers;

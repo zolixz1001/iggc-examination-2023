@@ -4,8 +4,9 @@ import Input from "@/components/Input";
 import RadioGroup from "@/components/RadioGroup";
 import Checkbox from "@/components/Checkbox";
 import { useAcademicDetailsStore } from "@/store/form";
+import { CURRENT_SEMESTERS } from "@/constants";
 
-const semesters = ["1", "3", "5"];
+const semesters = CURRENT_SEMESTERS;
 const examinationPatterns = ["NEP", "CBCS", "OLD"];
 
 export default function AcademicDetails({ position }: { position: number }) {

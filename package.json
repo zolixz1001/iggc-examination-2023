@@ -16,6 +16,7 @@
     "react-date-picker": "^10.5.2",
     "react-day-picker": "^8.9.1",
     "react-dom": "^18",
+    "swr": "^2.2.4",
     "zustand": "^4.4.6"
   },
   "devDependencies": {

@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import SubjectTable from "@/components/SubjectTable";
 import Checkbox from "@/components/Checkbox";
 import { SubjectDetails, useCbcsSubjectCombination, CbcsSubjectCombination } from "@/store/form";
+import { useAcademicDetailsStore } from "@/store/form";
 import cbcs from "@/data/cbcs.json";
 import { ROMAN_NUMERIC_MAP } from "@/constants";
 
@@ -9,6 +10,9 @@ export default function CbcsSubjectCombination() {
     const programme = "b.a";
     const semesters = useCbcsSubjectCombination((state) => state.semesters);
     const update = useCbcsSubjectCombination((state) => state.update);
+    const applyingForImprovement = useAcademicDetailsStore((state) => state.applyingForImprovement);
+    const applyingForBackPapers = useAcademicDetailsStore((state) => state.applyingForBackPapers);
+
     return semesters.map((item) => (
         <div key={item.semester}>
             <label className="block text-md font-medium mb-2">Semester {ROMAN_NUMERIC_MAP[(item.semester)]} {item.isBack ? "(Back)" : ""}</label>
@@ -17,7 +21,7 @@ export default function CbcsSubjectCombination() {
                 programme={programme}
                 selected={item.combination}
                 onChange={value => update(item.semester, value)}
-                isBack={!!item.isBack}
+                isBack={!!item.isBack || applyingForImprovement || applyingForBackPapers}
             />
         </div>
     ));
