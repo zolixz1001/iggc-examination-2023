@@ -48,6 +48,7 @@ export default function UploadInput({
                     .then(data => {
                         onChange(data.url);
                     })
+                    .catch(() => alert("Something went wrong on server. Please try again later"))
                     .finally(() => setIsLoading(false))
             }
         }

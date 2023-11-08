@@ -1,4 +1,4 @@
-import { CURRENT_SEMESTERS, ROMAN_NUMERIC_MAP } from "@/constants";
+import { CURRENT_SEMESTERS, ROMAN_NUMERIC_MAP, baseUrl } from "@/constants";
 import { create } from "zustand";
 import cbcs from "@/data/cbcs.json";
 
@@ -834,7 +834,6 @@ function buildPostObject() {
       data.onlyHaveBackPapers = true;
       data.haveBackPapers = false;
       data.onlyImprovementPapers = false;
-      console.log(documents.documents)
       if (academicDetails.examinationPattern === "CBCS") {
         const backSemesterSubjectCombinations = cbcsSubjectCombination.semesters.filter(el => Number(el.semester) !== Number(academicDetails.semester));
         const backPapers: any = {};
@@ -942,6 +941,8 @@ function buildPostObject() {
       }
     }
   }
+  data.examinationPattern = academicDetails.examinationPattern;
+  data.courseType = academicDetails.examinationPattern === "CBCS" ? "cbcs": "non-cbcs";
   // documents
   if (academicDetails.semester) {
     data.currentSemesterMarkSheet = documents.documents.find(el => el?.info?.name === "marksheet" && Number(el?.info?.semester) === Number(academicDetails.semester))?.url || "";
@@ -954,8 +955,19 @@ function buildPostObject() {
 export async function submitForm() {
   try {
     if (isValidatedForm()) {
-      console.log(buildPostObject());
-      alert("SUCCESS!!!");
+      // /examination-form
+      const res = await fetch(
+        `${baseUrl}/v2/examination-form`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(buildPostObject())
+        }
+        );
+        const data = await res.json();
+        console.log(data);
     } else {
       if (typeof window !== "undefined") {
         window.scrollTo(0, 0);
