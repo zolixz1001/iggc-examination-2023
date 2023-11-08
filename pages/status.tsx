@@ -4,12 +4,13 @@ import useSWR from "swr";
 import Layout from "@/components/Layout";
 import { baseUrl } from "@/constants";
 import formatFormData from "@/utils/formatFormData";
+import { ExaminationData } from "@/types";
 
 const fetcher = (url: string | URL) => fetch(url).then((res) => res.json());
 
 export default function Status() {
     const router = useRouter();
-    const { data, error, isLoading } = useSWR(
+    const { data, error, isLoading } = useSWR<ExaminationData>(
         `${baseUrl}/examination-form/rgu-roll-no/${router.query?.rollNo || ""}`,
         fetcher
     );

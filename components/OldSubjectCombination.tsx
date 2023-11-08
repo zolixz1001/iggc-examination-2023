@@ -1,8 +1,9 @@
 import { useMemo } from "react";
 import SubjectTable from "@/components/SubjectTable";
 import Checkbox from "@/components/Checkbox";
-import { SubjectDetails, useOldCombinationStore } from "@/store/form";
+import { useOldCombinationStore } from "@/store/form";
 import { ROMAN_NUMERIC_MAP } from "@/constants";
+import {SubjectDetails  } from "@/types";
 import oldPattern from "@/data/old.json";
 
 export default function OldSubjectCombination() {

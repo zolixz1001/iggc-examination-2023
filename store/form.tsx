@@ -1,5 +1,12 @@
 import { CURRENT_SEMESTERS, ROMAN_NUMERIC_MAP, baseUrl } from "@/constants";
 import { create } from "zustand";
+import {
+  SubjectDetails,
+  NepSubjectCombination,
+  CbcsSubjectCombination,
+  OldSubjectCombination,
+  Document
+} from "@/types";
 import cbcs from "@/data/cbcs.json";
 
 interface PersonalDetailsState {
@@ -61,22 +68,6 @@ export const useAcademicDetailsStore = create<AcademicDetailsState>((set) => ({
   error: null,
   update: (key: string, value: string | boolean | string[]) => set((state) => ({ ...state, [key]: value }))
 }));
-
-export interface SubjectDetails {
-  subject?: string;
-  code: string;
-  paper: string;
-}
-
-export interface NepSubjectCombination {
-  major: SubjectDetails | null;
-  minor: SubjectDetails | null;
-  mdc: SubjectDetails | null;
-  sec: SubjectDetails | null;
-  aec: SubjectDetails | null;
-  vac: SubjectDetails | null;
-}
-
 interface NepSubjectCombinationState {
   semesters: {
     semester: string;
@@ -103,13 +94,6 @@ export const useNepCombinationStore = create<NepSubjectCombinationState>((set) =
     })
   }))
 }));
-
-export interface CbcsSubjectCombination {
-  core: SubjectDetails[];
-  aecc: SubjectDetails | null;
-  ge: SubjectDetails | null;
-  sec: SubjectDetails | null;
-}
 
 interface CbcsSubjectCombinationState {
   semesters: {
@@ -138,12 +122,6 @@ export const useCbcsSubjectCombination = create<CbcsSubjectCombinationState>((se
   }))
 }));
 
-interface OldSubjectCombination {
-  semester: string;
-  subjects: SubjectDetails[];
-  isBack?: boolean;
-}
-
 interface OldSubjectCombinationState {
   semesters: OldSubjectCombination[];
   error: Record<string, string> | null;
@@ -167,17 +145,6 @@ export const useOldCombinationStore = create<OldSubjectCombinationState>((set) =
   }))
 }));
 
-export interface Document {
-  title: string;
-  url: string;
-  info?: {
-    name?: string;
-    isBack?: boolean;
-    onlyBack?: boolean;
-    isImprovement?: boolean;
-    semester?: string;
-  };
-}
 
 interface DocumentState {
   documents: Document[];
@@ -753,21 +720,21 @@ function buildPostObject() {
         ...currentSemesterSubjectCombination?.ge && {
           general_elective: {
             code: currentSemesterSubjectCombination.ge.code,
-            tile: currentSemesterSubjectCombination.ge.paper || "",
-            subject: currentSemesterSubjectCombination.ge.subject
+            title: currentSemesterSubjectCombination.ge.paper || "",
+            subject: currentSemesterSubjectCombination.ge.subject || ""
           }
         },
         ...currentSemesterSubjectCombination?.sec && {
           skill_enhancement_course: {
             code: currentSemesterSubjectCombination.sec.code || "",
-            tile: currentSemesterSubjectCombination.sec.paper || "",
-            subject: currentSemesterSubjectCombination.sec.subject
+            title: currentSemesterSubjectCombination.sec.paper || "",
+            subject: currentSemesterSubjectCombination.sec.subject || ""
           }
         },
         ...currentSemesterSubjectCombination?.aecc && {
           aecc: {
             code: currentSemesterSubjectCombination.aecc.code || "",
-            tile: currentSemesterSubjectCombination.aecc.paper || "",
+            title: currentSemesterSubjectCombination.aecc.paper || "",
           }
         }
       };
@@ -812,14 +779,22 @@ function buildPostObject() {
       const currentSemesterSubjectCombination = nepSubjectCombination.semesters.find(el => Number(el.semester) === Number(academicDetails.semester))?.combination;
       data.subjects = currentSemesterSubjectCombination;
     } else if (academicDetails.examinationPattern === "OLD") {
-      const currentSemesterSubjectCombination = oldSubjectCombination.semesters.find(el => Number(el.semester) === Number(academicDetails.semester))?.subjects || [];
+      const currentSemesterSubjectCombination = oldSubjectCombination.semesters.find(el => Number(el.semester) === Number(academicDetails.semester))?.subjects?.map(el => ({
+        code: el.code,
+        title: el.paper,
+        subject: el.subject || ""
+      })) || [];
       data.subjects = currentSemesterSubjectCombination;
       if (academicDetails.haveBackPapers) {
         const backSemesterSubjectCombinations = oldSubjectCombination.semesters.filter(el => Number(el.semester) !== Number(academicDetails.semester));
         const backPapers: any = {};
         for (const semesterDetails of backSemesterSubjectCombinations) {
           backPapers[semesterDetails.semester] = {
-            subjects: semesterDetails.subjects,
+            subjects: semesterDetails.subjects.map(el => ({
+              code: el.code,
+              title: el.paper,
+              subject: el.subject || ""
+            })),
             markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
             paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
           };
@@ -875,7 +850,11 @@ function buildPostObject() {
         const backPapers: any = {};
         for (const semesterDetails of backSemesterSubjectCombinations) {
           backPapers[semesterDetails.semester] = {
-            subjects: semesterDetails.subjects,
+            subjects: semesterDetails.subjects.map(el => ({
+              code: el.code,
+              title: el.paper,
+              subject: el.subject || ""
+            })),
             markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.onlyBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
             paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.onlyBack && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
           };
@@ -930,7 +909,11 @@ function buildPostObject() {
         const improvementPapers: any = {};
         for (const semesterDetails of improvementSemesterSubjectCombinations) {
           improvementPapers[semesterDetails.semester] = {
-            subjects: semesterDetails.subjects,
+            subjects: semesterDetails.subjects.map(el => ({
+              code: el.code,
+              title: el.paper,
+              subject: el.subject || ""
+            })),
             markSheetUrl: documents.documents.find(el => el?.info?.name === "marksheet" && el?.info?.isImprovement && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
             paymentReceiptUrl: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isImprovement && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || "",
             improvementPaymentReceipt: documents.documents.find(el => el?.info?.name === "receipt" && el?.info?.isImprovement && Number(el?.info?.semester) === Number(semesterDetails.semester))?.url || ""
@@ -942,7 +925,7 @@ function buildPostObject() {
     }
   }
   data.examinationPattern = academicDetails.examinationPattern;
-  data.courseType = academicDetails.examinationPattern === "CBCS" ? "cbcs": "non-cbcs";
+  data.courseType = academicDetails.examinationPattern === "CBCS" ? "cbcs" : "non-cbcs";
   // documents
   if (academicDetails.semester) {
     data.currentSemesterMarkSheet = documents.documents.find(el => el?.info?.name === "marksheet" && Number(el?.info?.semester) === Number(academicDetails.semester))?.url || "";
@@ -965,9 +948,9 @@ export async function submitForm() {
           },
           body: JSON.stringify(buildPostObject())
         }
-        );
-        const data = await res.json();
-        console.log(data);
+      );
+      const data = await res.json();
+      console.log(data);
     } else {
       if (typeof window !== "undefined") {
         window.scrollTo(0, 0);

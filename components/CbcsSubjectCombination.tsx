@@ -1,10 +1,11 @@
 import { useMemo } from "react";
 import SubjectTable from "@/components/SubjectTable";
 import Checkbox from "@/components/Checkbox";
-import { SubjectDetails, useCbcsSubjectCombination, CbcsSubjectCombination } from "@/store/form";
+import { useCbcsSubjectCombination } from "@/store/form";
 import { useAcademicDetailsStore } from "@/store/form";
 import cbcs from "@/data/cbcs.json";
 import { ROMAN_NUMERIC_MAP } from "@/constants";
+import { SubjectDetails, CbcsSubjectCombination } from "@/types";
 
 export default function CbcsSubjectCombination() {
     const programme = "b.a";
@@ -71,7 +72,7 @@ function SemesterCombination(
                                                     } else {
                                                         onChange({
                                                             ...selected,
-                                                            core: [item, ...data.core.filter((el) => String(el.subject).toLowerCase() === String(item.subject).toLowerCase())]
+                                                            core: data.core.filter((el) => String(el.subject).toLowerCase() === String(item.subject).toLowerCase())
                                                         });
                                                     }
                                                 }}
