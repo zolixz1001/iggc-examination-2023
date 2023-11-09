@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useRouter } from "next/router";
 import FormSectionHeder from "@/components/FormSectionHeader";
 import Input from "@/components/Input";
 import RadioGroup from "@/components/RadioGroup";
@@ -10,6 +11,7 @@ const semesters = CURRENT_SEMESTERS;
 const examinationPatterns = ["NEP", "CBCS", "OLD"];
 
 export default function AcademicDetails({ position }: { position: number }) {
+    const router = useRouter();
     const rguRollNo = useAcademicDetailsStore((state) => state.rguRollNo);
     const rguRegNo = useAcademicDetailsStore((state) => state.rguRegNo);
     const programme = useAcademicDetailsStore((state) => state.programme);
@@ -39,6 +41,11 @@ export default function AcademicDetails({ position }: { position: number }) {
         }
         return examinationPattern;
     }, [examinationPattern]);
+    useEffect(() => {
+        if (typeof  router.query?.rollNo === "string") {
+            update("rguRollNo", router.query.rollNo);
+        }
+    }, [router.query.rollNo, update]);
 
     return (
         <>

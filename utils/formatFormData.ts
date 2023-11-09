@@ -306,6 +306,7 @@ export default function formatFormData(data: ExaminationData) {
           const dt = papersDt![semester] as PaperDetails;
           const oldSubjects = (old as any)[data.programme][semester];
           for (const subject of dt.subjects) {
+            const subjects: SubjectDetails[] = [];
             for (const item of oldSubjects) {
               if (
                 (String(item.code).toLowerCase() ===
@@ -317,25 +318,22 @@ export default function formatFormData(data: ExaminationData) {
                   !subject.title &&
                   !item.title)
               ) {
-                oldSubjectCombinations.push({
-                  semester: String(semester),
-                  subjects: (data.subjects as OldPaperDetails[]).map((el) => ({
-                    code: el.code,
-                    paper: el.title,
-                    subject: el.subject || "",
-                  })),
-                  ...(data.haveBackPapers && {
-                    isBack: true,
-                  }),
-                  ...(data.onlyHaveBackPapers && {
-                    onlyBack: true,
-                  }),
-                  ...(data.onlyImprovementPapers && {
-                    isImprovement: true,
-                  }),
-                });
+                subjects.push(item);
               }
             }
+            oldSubjectCombinations.push({
+              semester: String(semester),
+              subjects,
+              ...(data.haveBackPapers && {
+                isBack: true,
+              }),
+              ...(data.onlyHaveBackPapers && {
+                onlyBack: true,
+              }),
+              ...(data.onlyImprovementPapers && {
+                isImprovement: true,
+              }),
+            });
           }
           documents.push({
             title: data.onlyImprovementPapers

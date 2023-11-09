@@ -9,3 +9,4 @@ export const ROMAN_NUMERIC_MAP: Record<string, string> = {
     6: "VI",
 };
 export const CURRENT_SEMESTERS = ["1", "3", "5"];
+export const EXAMINATION_NAME = "EXAMINATION: DEC 2023";

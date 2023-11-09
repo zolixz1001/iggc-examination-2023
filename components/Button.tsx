@@ -27,7 +27,7 @@ export default function Button({
           </svg>
         )
       }
-      <span>{children}</span>
+      <span className="text-center inline-block">{children}</span>
     </div>
   );
 }

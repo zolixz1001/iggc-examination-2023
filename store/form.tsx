@@ -935,7 +935,7 @@ function buildPostObject() {
   return data;
 }
 
-export async function submitForm() {
+export async function submitForm(): Promise<boolean> {
   try {
     if (isValidatedForm()) {
       // /examination-form
@@ -950,13 +950,22 @@ export async function submitForm() {
         }
       );
       const data = await res.json();
-      console.log(data);
+      if (res.status === 422 && Array.isArray(data)) {
+        useFormErrors.setState({
+          ...useFormErrors.getState(),
+          errors: data.map(el => el.message || "")
+        })
+      } else if (res.status === 200) {
+        return true;
+      }
     } else {
       if (typeof window !== "undefined") {
         window.scrollTo(0, 0);
       }
     }
+    return false;
   } catch (error) {
-    alert("Something went wrong. Please try again later")
+    alert("Something went wrong. Please try again later");
+    return false;
   }
 }
