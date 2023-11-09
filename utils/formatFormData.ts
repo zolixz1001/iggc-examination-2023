@@ -10,6 +10,8 @@ import {
   Document,
   PaperDetails,
   SubjectDetails,
+  CbcsSubjectCombinationInfo,
+  NepSubjectCombinationInfo,
 } from "@/types";
 import cbcs from "@/data/cbcs.json";
 import old from "@/data/old.json";
@@ -33,6 +35,8 @@ export default function formatFormData(data: ExaminationData) {
     Array.isArray(data.backPaperSemesters)
   ) {
     semesters.push(...data.backPaperSemesters);
+  } else if (data.onlyImprovementPapers) {
+    semesters.push(...data.improvementSemesters!);
   }
   const academicDetails = {
     rguRollNo: data.rguRollNo,
@@ -66,68 +70,78 @@ export default function formatFormData(data: ExaminationData) {
       },
     });
   }
-  const nepSubjectCombinations: NepSubjectCombination[] = [];
+  const nepSubjectCombinations: NepSubjectCombinationInfo[] = [];
   if (
     data.examinationPattern === "NEP" &&
     data.subjects &&
     !Array.isArray(data.subjects)
   ) {
     nepSubjectCombinations.push({
-      major: (data.subjects as NepSubjectCombination).major,
-      minor: (data.subjects as NepSubjectCombination).minor,
-      mdc: (data.subjects as NepSubjectCombination).mdc,
-      sec: (data.subjects as NepSubjectCombination).sec,
-      aec: (data.subjects as NepSubjectCombination).aec,
-      vac: (data.subjects as NepSubjectCombination).vac,
+      semester: String(data.semester),
+      combination: {
+        major: (data.subjects as NepSubjectCombination).major,
+        minor: (data.subjects as NepSubjectCombination).minor,
+        mdc: (data.subjects as NepSubjectCombination).mdc,
+        sec: (data.subjects as NepSubjectCombination).sec,
+        aec: (data.subjects as NepSubjectCombination).aec,
+        vac: (data.subjects as NepSubjectCombination).vac,
+      },
+      isBack: false
     });
   }
-  const cbcsSubjecttCombinations: CbcsSubjectCombination[] = [];
-  if (
-    data.examinationPattern === "CBCS" &&
-    data.subjects &&
-    !Array.isArray(data.subjects)
-  ) {
-    if (!data.onlyImprovementPapers && !data.onlyHaveBackPapers) {
-      cbcsSubjecttCombinations.push({
-        ...((data.subjects as unknown as OldCbcsSubjects).core && {
-          core: (data.subjects as unknown as OldCbcsSubjects).core.papers.map(
-            (el) => ({
-              subject: (data.subjects as unknown as OldCbcsSubjects).core.title,
-              code: el.code,
-              paper: el.title,
-            })
-          ),
-        }),
-        ...((data.subjects as unknown as OldCbcsSubjects).aecc && {
-          aecc: {
-            subject: "",
-            code: (data.subjects as unknown as OldCbcsSubjects).aecc.code,
-            paper: (data.subjects as unknown as OldCbcsSubjects).aecc.title,
-          },
-        }),
-        ...((data.subjects as unknown as OldCbcsSubjects).general_elective && {
-          ge: {
-            subject:
-              (data.subjects as unknown as OldCbcsSubjects).general_elective
-                .subject || "",
-            code: (data.subjects as unknown as OldCbcsSubjects).general_elective
-              .code,
-            paper: (data.subjects as unknown as OldCbcsSubjects)
-              .general_elective.title,
-          },
-        }),
-        ...((data.subjects as unknown as OldCbcsSubjects)
-          .skill_enhancement_course && {
-          sec: {
-            subject:
-              (data.subjects as unknown as OldCbcsSubjects)
-                .skill_enhancement_course.subject || "",
-            code: (data.subjects as unknown as OldCbcsSubjects)
-              .skill_enhancement_course.code,
-            paper: (data.subjects as unknown as OldCbcsSubjects)
-              .skill_enhancement_course.title,
-          },
-        }),
+  const cbcsSubjectCombinations: CbcsSubjectCombinationInfo[] = [];
+  if (data.examinationPattern === "CBCS") {
+    if (
+      !data.onlyImprovementPapers &&
+      !data.onlyHaveBackPapers &&
+      !Array.isArray(data.subjects)
+    ) {
+      cbcsSubjectCombinations.push({
+        semester: String(data.semester),
+        isBack: false,
+        combination: {
+          ...((data.subjects as unknown as OldCbcsSubjects).core && {
+            core: (data.subjects as unknown as OldCbcsSubjects).core.papers.map(
+              (el) => ({
+                subject: (data.subjects as unknown as OldCbcsSubjects).core
+                  .title,
+                code: el.code,
+                paper: el.title,
+              })
+            ),
+          }),
+          ...((data.subjects as unknown as OldCbcsSubjects).aecc && {
+            aecc: {
+              subject: "",
+              code: (data.subjects as unknown as OldCbcsSubjects).aecc.code,
+              paper: (data.subjects as unknown as OldCbcsSubjects).aecc.title,
+            },
+          }),
+          ...((data.subjects as unknown as OldCbcsSubjects)
+            .general_elective && {
+            ge: {
+              subject:
+                (data.subjects as unknown as OldCbcsSubjects).general_elective
+                  .subject || "",
+              code: (data.subjects as unknown as OldCbcsSubjects)
+                .general_elective.code,
+              paper: (data.subjects as unknown as OldCbcsSubjects)
+                .general_elective.title,
+            },
+          }),
+          ...((data.subjects as unknown as OldCbcsSubjects)
+            .skill_enhancement_course && {
+            sec: {
+              subject:
+                (data.subjects as unknown as OldCbcsSubjects)
+                  .skill_enhancement_course.subject || "",
+              code: (data.subjects as unknown as OldCbcsSubjects)
+                .skill_enhancement_course.code,
+              paper: (data.subjects as unknown as OldCbcsSubjects)
+                .skill_enhancement_course.title,
+            },
+          }),
+        },
       });
     }
     if (
@@ -162,66 +176,70 @@ export default function formatFormData(data: ExaminationData) {
           for (const subject of dt.subjects) {
             for (const item of cbcsSubjects.core) {
               if (
-                (String(item.code).toLowerCase() ===
-                  String(subject.code).toLowerCase() &&
-                  String(item.paper).toLowerCase() ===
-                    String(subject.title).toLowerCase()) ||
-                (String(item.code).toLowerCase() ===
-                  String(subject.code).toLowerCase() &&
-                  !subject.title &&
-                  !item.title)
+                item.code === subject.code &&
+                (
+                  item.paper === subject.title ||
+                  (
+                    !item.paper &&
+                    !subject.title
+                  )
+                )
               ) {
                 core.push(item);
               }
             }
             for (const item of cbcsSubjects.aecc) {
               if (
-                (String(item.code).toLowerCase() ===
-                  String(subject.code).toLowerCase() &&
-                  String(item.paper).toLowerCase() ===
-                    String(subject.title).toLowerCase()) ||
-                (String(item.code).toLowerCase() ===
-                  String(subject.code).toLowerCase() &&
-                  !subject.title &&
-                  !item.title)
+                item.code === subject.code &&
+                (
+                  item.paper === subject.title ||
+                  (
+                    !item.paper &&
+                    !subject.title
+                  )
+                )
               ) {
                 aecc = item;
               }
             }
             for (const item of cbcsSubjects.ge) {
               if (
-                (String(item.code).toLowerCase() ===
-                  String(subject.code).toLowerCase() &&
-                  String(item.paper).toLowerCase() ===
-                    String(subject.title).toLowerCase()) ||
-                (String(item.code).toLowerCase() ===
-                  String(subject.code).toLowerCase() &&
-                  !subject.title &&
-                  !item.title)
+                item.code === subject.code &&
+                (
+                  item.paper === subject.title ||
+                  (
+                    !item.paper &&
+                    !subject.title
+                  )
+                )
               ) {
                 ge = item;
               }
             }
             for (const item of cbcsSubjects.sec) {
               if (
-                (String(item.code).toLowerCase() ===
-                  String(subject.code).toLowerCase() &&
-                  String(item.paper).toLowerCase() ===
-                    String(subject.title).toLowerCase()) ||
-                (String(item.code).toLowerCase() ===
-                  String(subject.code).toLowerCase() &&
-                  !subject.title &&
-                  !item.title)
+                item.code === subject.code &&
+                (
+                  item.paper === subject.title ||
+                  (
+                    !item.paper &&
+                    !subject.title
+                  )
+                )
               ) {
                 sec = item;
               }
             }
           }
-          cbcsSubjecttCombinations.push({
-            core,
-            aecc: aecc,
-            ge: ge,
-            sec: sec,
+          cbcsSubjectCombinations.push({
+            combination: {
+              core,
+              aecc: aecc,
+              ge: ge,
+              sec: sec,
+            },
+            semester: semester,
+            isBack: data.haveBackPapers || data.onlyHaveBackPapers,
           });
           documents.push({
             title: data.onlyImprovementPapers
@@ -241,12 +259,10 @@ export default function formatFormData(data: ExaminationData) {
           });
           documents.push({
             title: data.onlyImprovementPapers
-              ? `Mark sheet for the improvement paper of Semester ${
-                  ROMAN_NUMERIC_MAP[Number(semester)]
-                }`
-              : `Mark sheet for back paper of Semester ${
-                  ROMAN_NUMERIC_MAP[Number(semester)]
-                }`,
+              ? `Mark sheet for the improvement paper of Semester ${ROMAN_NUMERIC_MAP[Number(semester)]
+              }`
+              : `Mark sheet for back paper of Semester ${ROMAN_NUMERIC_MAP[Number(semester)]
+              }`,
             url: papersDt![semester].paymentReceiptUrl,
             info: {
               name: "marksheet",
@@ -312,7 +328,7 @@ export default function formatFormData(data: ExaminationData) {
                 (String(item.code).toLowerCase() ===
                   String(subject.code).toLowerCase() &&
                   String(item.paper).toLowerCase() ===
-                    String(subject.title).toLowerCase()) ||
+                  String(subject.title).toLowerCase()) ||
                 (String(item.code).toLowerCase() ===
                   String(subject.code).toLowerCase() &&
                   !subject.title &&
@@ -353,12 +369,10 @@ export default function formatFormData(data: ExaminationData) {
           });
           documents.push({
             title: data.onlyImprovementPapers
-              ? `Mark sheet for the improvement paper of Semester ${
-                  ROMAN_NUMERIC_MAP[Number(semester)]
-                }`
-              : `Mark sheet for back paper of Semester ${
-                  ROMAN_NUMERIC_MAP[Number(semester)]
-                }`,
+              ? `Mark sheet for the improvement paper of Semester ${ROMAN_NUMERIC_MAP[Number(semester)]
+              }`
+              : `Mark sheet for back paper of Semester ${ROMAN_NUMERIC_MAP[Number(semester)]
+              }`,
             url: papersDt![semester].paymentReceiptUrl,
             info: {
               name: "marksheet",
@@ -380,7 +394,7 @@ export default function formatFormData(data: ExaminationData) {
     photoAndSignature,
     academicDetails,
     nepSubjectCombinations,
-    cbcsSubjecttCombinations,
+    cbcsSubjectCombinations,
     oldSubjectCombinations,
     documents,
     status: data.status,

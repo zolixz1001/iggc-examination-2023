@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Button from "@/components/Button";
 import { submitForm, useAcademicDetailsStore } from "@/store/form";
 
-export default function FormSubmitButton() {
+export default function FormSubmitButton({ id = "" }: { id?: string; }) {
     const router = useRouter();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const rguRollNo = useAcademicDetailsStore((state) => state.rguRollNo);
@@ -11,7 +11,7 @@ export default function FormSubmitButton() {
     const handleSubmit = async () => {
         try {
             setIsSubmitting(true);
-            const success = await submitForm();
+            const success = await submitForm(id);
             if (success) {
                 router.push(`/status?rollNo=${rguRollNo}`);
             }

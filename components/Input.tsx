@@ -6,7 +6,8 @@ export default function Input({
   value,
   onChange,
   type = "text",
-  error
+  error,
+  isDisabled
 }: {
   label: string;
   id: string;
@@ -14,6 +15,7 @@ export default function Input({
   onChange: ChangeEventHandler<HTMLInputElement>;
   type?: string;
   error?: string;
+  isDisabled?: boolean;
 }) {
   return (
     <div>
@@ -25,8 +27,9 @@ export default function Input({
           type={type}
           id={id}
           value={value}
+          disabled={isDisabled}
           onChange={onChange}
-          className="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0  p-2"
+          className={`peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0  p-2 ${isDisabled ? "cursor-not-allowed opacity-75": ""}`}
           placeholder={label}
         />
 

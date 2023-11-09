@@ -10,7 +10,7 @@ import { CURRENT_SEMESTERS } from "@/constants";
 const semesters = CURRENT_SEMESTERS;
 const examinationPatterns = ["NEP", "CBCS", "OLD"];
 
-export default function AcademicDetails({ position }: { position: number }) {
+export default function AcademicDetails({ position, isEdit }: { position: number; isEdit: boolean; }) {
     const router = useRouter();
     const rguRollNo = useAcademicDetailsStore((state) => state.rguRollNo);
     const rguRegNo = useAcademicDetailsStore((state) => state.rguRegNo);
@@ -57,6 +57,7 @@ export default function AcademicDetails({ position }: { position: number }) {
             />
             <div className={`p-4 flex-col gap-6 ${isExpanded ? "flex" : "hidden"}`}>
                 <Input
+                    isDisabled={isEdit}
                     id="rguRollNo"
                     label="RGU Roll No."
                     value={rguRollNo}

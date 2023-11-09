@@ -1,5 +1,5 @@
 import { ROMAN_NUMERIC_MAP } from '@/constants';
-import { AcademicDetails, Examination, OldSubjectCombination, PersonalDetails, PhotoAndSignature, SubjectDetails } from '@/types';
+import { AcademicDetails, CbcsSubjectCombination, CbcsSubjectCombinationInfo, Examination, NepSubjectCombination, NepSubjectCombinationInfo, OldSubjectCombination, PersonalDetails, PhotoAndSignature, SubjectDetails } from '@/types';
 import { Document, Page, Text, View, Image as PdfImage, Font, StyleSheet } from '@react-pdf/renderer';
 import { Fragment, useMemo } from 'react';
 
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const Header = ({ examinationName }: { examinationName: string }) => (
+export const Header = ({ examinationName, title = "Admit Card" }: { examinationName: string; title?: string; }) => (
     <View style={styles.header}>
         <View style={[styles.center, { marginVertical: 4 }]}>
             <PdfImage
@@ -166,7 +166,7 @@ const Header = ({ examinationName }: { examinationName: string }) => (
             <Text style={styles.uniText}>Rajiv Gandhi University</Text>
         </View>
         <View>
-            <Text style={styles.admitCardText}>Admit Card</Text>
+            <Text style={styles.admitCardText}>{title}</Text>
         </View>
         <View style={{ width: "100%" }}>
             <Text style={styles.examinationNameText}>{examinationName}</Text>
@@ -174,7 +174,7 @@ const Header = ({ examinationName }: { examinationName: string }) => (
     </View>
 );
 
-const SignaturesContainer = ({ signatureLink }: { signatureLink: string }) => {
+export const SignaturesContainer = ({ signatureLink }: { signatureLink: string }) => {
     return (
         <View style={styles.signaturesContainer}>
             <View style={styles.studentSignatureBlock}>
@@ -208,7 +208,7 @@ const PaperColumnHeader = () => (
 
 const PaperColumnDt = ({ code, paper }: { code: string; paper: string; }) => (
     <View style={styles.row}>
-        <Text style={[styles.paperText, { marginRight: 18 }]}>{code}</Text>
+        <Text style={[styles.paperText, { maxWidth: 80, width: 80 }]}>{code}</Text>
         <Text style={styles.paperText}>{paper}</Text>
     </View>
 )
@@ -218,7 +218,7 @@ interface OldSubjectInfo {
     subjects: SubjectDetails[];
     isBack?: boolean;
 };
-const OldSubjectCombination = ({
+export const OldSubjectCombinationContent = ({
     oldSubjectCombination,
     academicDetails,
 }: {
@@ -226,16 +226,18 @@ const OldSubjectCombination = ({
     academicDetails: AcademicDetails;
 }) => {
     const regular: OldSubjectInfo | undefined = useMemo(() => {
-        return oldSubjectCombination.find(el => {
-            return !el.isBack;
-        });
-    }, [oldSubjectCombination]);
-    const backs: OldSubjectInfo[] = useMemo(() => {
-        if (academicDetails.haveBackPapers || academicDetails.applyingForBackPapers) {
-            return oldSubjectCombination.filter(el => el.isBack);
+        if (!academicDetails.applyingForBackPapers && !academicDetails.applyingForImprovement) {
+            return oldSubjectCombination.find(el => {
+                return Number(el.semester) === Number(academicDetails.semester);
+            });
+        }
+    }, [academicDetails.applyingForBackPapers, academicDetails.applyingForImprovement, academicDetails.semester, oldSubjectCombination]);
+    const backsImprovements: OldSubjectInfo[] = useMemo(() => {
+        if (academicDetails.haveBackPapers || academicDetails.applyingForBackPapers || academicDetails.applyingForImprovement) {
+            return oldSubjectCombination.filter(el => academicDetails.semesters.findIndex((semester) => Number(semester) === Number(el.semester)) !== -1);
         }
         return [];
-    }, [academicDetails.applyingForBackPapers, academicDetails.haveBackPapers, oldSubjectCombination]);
+    }, [academicDetails.applyingForBackPapers, academicDetails.applyingForImprovement, academicDetails.haveBackPapers, academicDetails.semesters, oldSubjectCombination]);
 
     return (
         <View>
@@ -259,12 +261,30 @@ const OldSubjectCombination = ({
                 )
             }
             {
-                backs.length > 0 &&
+                backsImprovements.length > 0 &&
                 (
                     <Fragment>
-                        <Text style={styles.subHeadingText2xl}>Back Papers</Text>
                         {
-                            backs.map((item, index) => (
+                            (
+                                academicDetails.applyingForBackPapers ||
+                                academicDetails.haveBackPapers
+                            ) &&
+                            (
+                                <Text style={styles.subHeadingText2xl}>
+                                    Back Papers
+                                </Text>
+                            )
+                        }
+                        {
+                            academicDetails.applyingForImprovement &&
+                            (
+                                <Text style={styles.subHeadingText2xl}>
+                                    Improvement Papers
+                                </Text>
+                            )
+                        }
+                        {
+                            backsImprovements.map((item, index) => (
                                 <Fragment key={index}>
                                     <Text style={[styles.boldText, { textDecoration: "underline" }]}>Semester {ROMAN_NUMERIC_MAP[item.semester]}</Text>
                                     <PaperColumnHeader />
@@ -287,7 +307,226 @@ const OldSubjectCombination = ({
     )
 }
 
-const StudentBasicDetails = ({
+export const CbcsSubjectCombinationContent = (
+    {
+        academicDetails,
+        cbcsSubjectCombination
+    }:
+        {
+            academicDetails: AcademicDetails,
+            cbcsSubjectCombination: CbcsSubjectCombinationInfo[]
+        }
+) => {
+    const regular: CbcsSubjectCombinationInfo | undefined = useMemo(() => {
+        if (!academicDetails.applyingForBackPapers && !academicDetails.applyingForImprovement) {
+            return cbcsSubjectCombination.find((el) => {
+                return Number(el.semester) === Number(academicDetails.semester);
+            });
+        }
+    }, [academicDetails.applyingForBackPapers, academicDetails.applyingForImprovement, academicDetails.semester, cbcsSubjectCombination]);
+    const backsImprovements: CbcsSubjectCombinationInfo[] = useMemo(() => {
+        if (academicDetails.haveBackPapers || academicDetails.applyingForBackPapers || academicDetails.applyingForImprovement) {
+            return cbcsSubjectCombination.filter(el => academicDetails.semesters.findIndex((semester) => Number(semester) === Number(el.semester)) !== -1);
+        }
+        return [];
+    }, [academicDetails.applyingForBackPapers, academicDetails.applyingForImprovement, academicDetails.haveBackPapers, academicDetails.semesters, cbcsSubjectCombination]);
+
+    return (
+        <View>
+            {
+                regular &&
+                regular.combination &&
+                (
+                    <>
+                        <Text style={styles.subHeadingText2xl}>Regular Papers</Text>
+                        <PaperColumnHeader />
+                        {
+                            Object.keys(regular.combination).map(key => {
+                                const combinationKey = key as keyof CbcsSubjectCombination;
+                                if (!regular.combination[combinationKey]) return null;
+                                if (combinationKey === "core") {
+                                    return regular.combination[combinationKey].map((el, i) => (
+                                        <PaperColumnDt
+                                            key={i}
+                                            code={el.code}
+                                            paper={el.paper}
+                                        />
+                                    ))
+                                }
+                                return (
+                                    <PaperColumnDt
+                                        key={key}
+                                        code={(regular.combination[combinationKey] as SubjectDetails)?.code}
+                                        paper={(regular.combination[combinationKey] as SubjectDetails)?.paper}
+                                    />
+                                )
+                            })
+                        }
+                    </>
+                )
+            }
+            {
+                backsImprovements.length > 0 &&
+                (
+                    <Fragment>
+                        {
+                            (
+                                academicDetails.applyingForBackPapers ||
+                                academicDetails.haveBackPapers
+                            ) &&
+                            (
+                                <Text style={styles.subHeadingText2xl}>
+                                    Back Papers
+                                </Text>
+                            )
+                        }
+                        {
+                            academicDetails.applyingForImprovement &&
+                            (
+                                <Text style={styles.subHeadingText2xl}>
+                                    Improvement Papers
+                                </Text>
+                            )
+                        }
+                        {
+                            backsImprovements.map((item, index) => (
+                                <Fragment key={index}>
+                                    <Text style={[styles.boldText, { textDecoration: "underline" }]}>Semester {ROMAN_NUMERIC_MAP[item.semester]}</Text>
+                                    <PaperColumnHeader />
+                                    {
+                                        item.combination &&
+                                        Object.keys(item.combination).map(key => {
+                                            const combinationKey = key as keyof CbcsSubjectCombination;
+                                            if (!item.combination[combinationKey]) return null;
+                                            if (combinationKey === "core") {
+                                                return item.combination[combinationKey].map((el, i) => (
+                                                    <PaperColumnDt
+                                                        key={i}
+                                                        code={el.code}
+                                                        paper={el.paper}
+                                                    />
+                                                ))
+                                            }
+                                            return (
+                                                <PaperColumnDt
+                                                    key={key}
+                                                    code={(item.combination[combinationKey] as SubjectDetails)?.code}
+                                                    paper={(item.combination[combinationKey] as SubjectDetails)?.paper}
+                                                />
+                                            )
+                                        })
+                                    }
+                                </Fragment>
+                            ))
+                        }
+                    </Fragment>
+                )
+            }
+        </View>
+    );
+}
+
+export const NepSubjectCombinationContent = (
+    {
+        academicDetails,
+        nepSubjectCombinations
+    }:
+        {
+            academicDetails: AcademicDetails,
+            nepSubjectCombinations: NepSubjectCombinationInfo[]
+        }
+) => {
+    const regular: NepSubjectCombinationInfo | undefined = useMemo(() => {
+        if (!academicDetails.applyingForBackPapers && !academicDetails.applyingForImprovement) {
+            return nepSubjectCombinations.find((el) => {
+                return Number(el.semester) === Number(academicDetails.semester);
+            });
+        }
+    }, [academicDetails.applyingForBackPapers, academicDetails.applyingForImprovement, academicDetails.semester, nepSubjectCombinations]);
+    const backsImprovements: NepSubjectCombinationInfo[] = useMemo(() => {
+        if (academicDetails.haveBackPapers || academicDetails.applyingForBackPapers || academicDetails.applyingForImprovement) {
+            return nepSubjectCombinations.filter(el => academicDetails.semesters.findIndex((semester) => Number(semester) === Number(el.semester)) !== -1);
+        }
+        return [];
+    }, [academicDetails.applyingForBackPapers, academicDetails.applyingForImprovement, academicDetails.haveBackPapers, academicDetails.semesters, nepSubjectCombinations]);
+    return (
+        <View>
+            {
+                regular &&
+                regular.combination &&
+                (
+                    <>
+                        <Text style={styles.subHeadingText2xl}>Regular Papers</Text>
+                        <PaperColumnHeader />
+                        {
+                            Object.keys(regular.combination).map(key => {
+                                const combinationKey = key as keyof NepSubjectCombination;
+                                if (!regular.combination[combinationKey]) return null;
+                                return (
+                                    <PaperColumnDt
+                                        key={key}
+                                        code={(regular.combination[combinationKey] as SubjectDetails)?.code}
+                                        paper={(regular.combination[combinationKey] as SubjectDetails)?.paper}
+                                    />
+                                )
+                            })
+                        }
+                        {
+                            backsImprovements.length > 0 &&
+                            (
+                                <Fragment>
+                                    {
+                                        (
+                                            academicDetails.applyingForBackPapers ||
+                                            academicDetails.haveBackPapers
+                                        ) &&
+                                        (
+                                            <Text style={styles.subHeadingText2xl}>
+                                                Back Papers
+                                            </Text>
+                                        )
+                                    }
+                                    {
+                                        academicDetails.applyingForImprovement &&
+                                        (
+                                            <Text style={styles.subHeadingText2xl}>
+                                                Improvement Papers
+                                            </Text>
+                                        )
+                                    }
+                                    {
+                                        backsImprovements.map((item, index) => (
+                                            <Fragment key={index}>
+                                                <Text style={[styles.boldText, { textDecoration: "underline" }]}>Semester {ROMAN_NUMERIC_MAP[item.semester]}</Text>
+                                                <PaperColumnHeader />
+                                                {
+                                                    item.combination &&
+                                                    Object.keys(item.combination).map(key => {
+                                                        const combinationKey = key as keyof NepSubjectCombination;
+                                                        if (!item.combination[combinationKey]) return null;
+                                                        return (
+                                                            <PaperColumnDt
+                                                                key={key}
+                                                                code={(item.combination[combinationKey] as SubjectDetails)?.code}
+                                                                paper={(item.combination[combinationKey] as SubjectDetails)?.paper}
+                                                            />
+                                                        )
+                                                    })
+                                                }
+                                            </Fragment>
+                                        ))
+                                    }
+                                </Fragment>
+                            )
+                        }
+                    </>
+                )
+            }
+        </View>
+    );
+}
+
+export const StudentBasicDetails = ({
     personDetails,
     academicDetails,
     photoAndSignature
@@ -296,11 +535,6 @@ const StudentBasicDetails = ({
     academicDetails: AcademicDetails;
     photoAndSignature: PhotoAndSignature;
 }) => {
-    console.log({
-        personDetails,
-        academicDetails,
-        photoAndSignature
-    })
     return (
         <View style={{ flexDirection: "row", justifyContent: "space-between", width: "100%" }}>
             <View style={styles.studentBasicDetailsContainer}>
@@ -353,7 +587,7 @@ const StudentBasicDetails = ({
 };
 
 
-export default function AdmitCard({ examinationName, examination }: { examinationName: string; examination: Examination }) {
+export function AdmitCard({ examinationName, examination }: { examinationName: string; examination: Examination }) {
     return (
         <Document>
             <Page size="A4" style={styles.page}>
@@ -367,8 +601,26 @@ export default function AdmitCard({ examinationName, examination }: { examinatio
                     {
                         examination.academicDetails.examinationPattern === "OLD" &&
                         (
-                            <OldSubjectCombination
+                            <OldSubjectCombinationContent
                                 oldSubjectCombination={examination.oldSubjectCombinations}
+                                academicDetails={examination.academicDetails}
+                            />
+                        )
+                    }
+                    {
+                        examination.academicDetails.examinationPattern === "CBCS" &&
+                        (
+                            <CbcsSubjectCombinationContent
+                                cbcsSubjectCombination={examination.cbcsSubjectCombinations}
+                                academicDetails={examination.academicDetails}
+                            />
+                        )
+                    }
+                    {
+                        examination.academicDetails.examinationPattern === "NEP" &&
+                        (
+                            <NepSubjectCombinationContent
+                                nepSubjectCombinations={examination.nepSubjectCombinations}
                                 academicDetails={examination.academicDetails}
                             />
                         )
@@ -376,6 +628,50 @@ export default function AdmitCard({ examinationName, examination }: { examinatio
                     <SignaturesContainer
                         signatureLink={examination.photoAndSignature.signature}
                     />
+                </View>
+            </Page>
+        </Document>
+    )
+}
+
+export function ExaminationReceipt({ examinationName, examination }: { examinationName: string; examination: Examination }) {
+    return (
+        <Document>
+            <Page size="A4" style={styles.page}>
+                <View style={{ width: "100%" }}>
+                    <Header examinationName={examinationName} title="Examination Receipt" />
+                    <StudentBasicDetails
+                        personDetails={examination.personalDetails}
+                        academicDetails={examination.academicDetails}
+                        photoAndSignature={examination.photoAndSignature}
+                    />
+                    {
+                        examination.academicDetails.examinationPattern === "OLD" &&
+                        (
+                            <OldSubjectCombinationContent
+                                oldSubjectCombination={examination.oldSubjectCombinations}
+                                academicDetails={examination.academicDetails}
+                            />
+                        )
+                    }
+                    {
+                        examination.academicDetails.examinationPattern === "CBCS" &&
+                        (
+                            <CbcsSubjectCombinationContent
+                                cbcsSubjectCombination={examination.cbcsSubjectCombinations}
+                                academicDetails={examination.academicDetails}
+                            />
+                        )
+                    }
+                    {
+                        examination.academicDetails.examinationPattern === "NEP" &&
+                        (
+                            <NepSubjectCombinationContent
+                                nepSubjectCombinations={examination.nepSubjectCombinations}
+                                academicDetails={examination.academicDetails}
+                            />
+                        )
+                    }
                 </View>
             </Page>
         </Document>

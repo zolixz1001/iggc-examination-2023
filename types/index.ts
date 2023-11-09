@@ -39,13 +39,23 @@ export interface NepSubjectCombination {
   vac: SubjectDetails | null;
 }
 
+export interface NepSubjectCombinationInfo {
+  semester: string;
+  combination: NepSubjectCombination;
+  isBack?: boolean;
+}
+
 export interface CbcsSubjectCombination {
   core: SubjectDetails[];
   aecc: SubjectDetails | null;
   ge: SubjectDetails | null;
   sec: SubjectDetails | null;
 }
-
+export interface CbcsSubjectCombinationInfo {
+  semester: string;
+  combination: CbcsSubjectCombination;
+  isBack?: boolean;
+}
 export interface OldSubjectCombination {
   semester: string;
   subjects: SubjectDetails[];
@@ -68,8 +78,8 @@ export interface Examination {
   personalDetails: PersonalDetails;
   photoAndSignature: PhotoAndSignature;
   academicDetails: AcademicDetails;
-  nepSubjectCombinations: NepSubjectCombination[];
-  cbcsSubjecttCombinations: CbcsSubjectCombination[];
+  nepSubjectCombinations: NepSubjectCombinationInfo[];
+  cbcsSubjectCombinations: CbcsSubjectCombinationInfo[];
   oldSubjectCombinations: OldSubjectCombination[];
   documents: Document[];
   status?: string;

@@ -5,7 +5,8 @@ import {
   NepSubjectCombination,
   CbcsSubjectCombination,
   OldSubjectCombination,
-  Document
+  Document,
+  Examination
 } from "@/types";
 import cbcs from "@/data/cbcs.json";
 
@@ -935,14 +936,15 @@ function buildPostObject() {
   return data;
 }
 
-export async function submitForm(): Promise<boolean> {
+export async function submitForm(id = ""): Promise<boolean> {
   try {
     if (isValidatedForm()) {
       // /examination-form
+      //examination-form/rgu-roll-no/:id
       const res = await fetch(
-        `${baseUrl}/v2/examination-form`,
+        `${baseUrl}${id ? "/" : "/v2/"}examination-form${id ? `/rgu-roll-no/${id}` : ""}`,
         {
-          method: "POST",
+          method: id ? "PUT" : "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -968,4 +970,20 @@ export async function submitForm(): Promise<boolean> {
     alert("Something went wrong. Please try again later");
     return false;
   }
+}
+
+export function setFormStates(data: Examination) {
+  usePersonalDetailsStore.setState({ ...usePersonalDetailsStore.getState(), ...data.personalDetails });
+  useAcademicDetailsStore.setState({ ...useAcademicDetailsStore.getState(), ...data.academicDetails });
+  usePhotoAndSignatureStore.setState({ ...usePhotoAndSignatureStore.getState(), ...data.photoAndSignature });
+  if (data.nepSubjectCombinations) {
+    useNepCombinationStore.setState({ ...useNepCombinationStore.getState(), semesters: data.nepSubjectCombinations });
+  }
+  if (data.cbcsSubjectCombinations) {
+    useCbcsSubjectCombination.setState({ ...useCbcsSubjectCombination.getState(), semesters: data.cbcsSubjectCombinations });
+  }
+  if (data.oldSubjectCombinations) {
+    useOldCombinationStore.setState({ ...useOldCombinationStore.getState(), semesters: data.oldSubjectCombinations });
+  }
+  useDocumentStore.setState({ ...useDocumentStore.getState(), documents: data.documents });
 }
