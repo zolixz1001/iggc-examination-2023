@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="h-full flex justify-center items-center">
+      <div className="h-[82vh] flex justify-center items-center">
         <div className="flex flex-col gap-4">
           <p className="font-semibold text-2xl text-gray-600">Please enter your RGU roll number to check your examination application status</p>
           <div className="w-full flex items-center gap-5 p-2 rounded-full justify-between border border-blue-500">
