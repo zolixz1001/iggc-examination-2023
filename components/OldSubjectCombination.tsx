@@ -1,13 +1,13 @@
 import { useMemo } from "react";
 import SubjectTable from "@/components/SubjectTable";
 import Checkbox from "@/components/Checkbox";
-import { useOldCombinationStore } from "@/store/form";
+import { useOldCombinationStore, useAcademicDetailsStore } from "@/store/form";
 import { ROMAN_NUMERIC_MAP } from "@/constants";
 import {SubjectDetails  } from "@/types";
 import oldPattern from "@/data/old.json";
 
 export default function OldSubjectCombination() {
-    const programme = "b.a";
+    const programme = useAcademicDetailsStore((state) => state.programme);
     const semesters = useOldCombinationStore((state) => state.semesters);
     const update = useOldCombinationStore((state) => state.update);
 

@@ -942,7 +942,7 @@ export async function submitForm(id = ""): Promise<boolean> {
       // /examination-form
       //examination-form/rgu-roll-no/:id
       const res = await fetch(
-        `${baseUrl}${id ? "/" : "/v2/"}examination-form${id ? `/rgu-roll-no/${id}` : ""}`,
+        `${baseUrl}${id ? "/" : "/v2/"}examination-form${id ? `/${id}` : ""}`,
         {
           method: id ? "PUT" : "POST",
           headers: {

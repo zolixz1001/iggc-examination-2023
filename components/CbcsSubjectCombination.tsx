@@ -8,7 +8,7 @@ import { ROMAN_NUMERIC_MAP } from "@/constants";
 import { SubjectDetails, CbcsSubjectCombination } from "@/types";
 
 export default function CbcsSubjectCombination() {
-    const programme = "b.a";
+    const programme =  useAcademicDetailsStore((state) => state.programme);
     const semesters = useCbcsSubjectCombination((state) => state.semesters);
     const update = useCbcsSubjectCombination((state) => state.update);
     const applyingForImprovement = useAcademicDetailsStore((state) => state.applyingForImprovement);

@@ -2,13 +2,13 @@ import { useMemo } from "react";
 import Checkbox from "@/components/Checkbox";
 import { Option } from "@/components/RadioGroup";
 import SubjectTable from "@/components/SubjectTable";
-import { useNepCombinationStore, } from "@/store/form";
+import { useNepCombinationStore, useAcademicDetailsStore } from "@/store/form";
 import nep from "@/data/nep.json";
 import { ROMAN_NUMERIC_MAP } from "@/constants";
 import { NepSubjectCombination, SubjectDetails } from "@/types";
 
 export default function NepSubjectCombination() {
-    const programme = "b.a";
+    const programme = useAcademicDetailsStore((state) => state.programme);
     const semesters = useNepCombinationStore((state) => state.semesters);
     const update = useNepCombinationStore((state) => state.update);
     return semesters.map((item) => (
@@ -56,8 +56,7 @@ function SemesterCombination(
                                             onChange({
                                                 ...selected,
                                                 major: item,
-                                                minor: data.minor.find(el => String(el.subject).toLowerCase() === String(item.subject).toLowerCase()) || null,
-                                                mdc: data.mdc.find(el => String(el.subject).toLowerCase() === String(item.subject).toLowerCase()) || null
+                                                sec: data.sec.find(el => String(el.subject).toLowerCase() === String(item.subject).toLowerCase()) || null
                                             });
                                         }}
                                         isChecked={!!selected.major && selected.major?.code === item.code && selected.major?.paper === item.paper}
@@ -80,8 +79,7 @@ function SemesterCombination(
                             <tr key={index}>
                                 <td className="sticky inset-y-0 start-0 bg-white pl-5  w-5">
                                     <Checkbox
-                                        onClick={() => { }}
-                                        isDisabled
+                                        onClick={() => onChange({ ...selected, minor: item })}
                                         isChecked={!!selected.minor && selected.minor?.code === item.code && selected.minor?.paper === item.paper}
                                     />
                                 </td>
@@ -93,14 +91,6 @@ function SemesterCombination(
                         ))
                     }
                 </SubjectTable>
-                <div
-                    className="mx-2 my-4 border border-gray-400 rounded-md shadow-sm p-2 bg-blue-100"
-                >
-                    <p className="font-bold text-sm">Note:</p>
-                    <ul className="pl-1">
-                        <li className="text-sm">The appropriate Minor course will be automatically selected upon choosing the Major course.</li>
-                    </ul>
-                </div>
             </div>
             <div>
                 <label className="block text-md font-medium mb-2">MDC(Multidisciplinary Course)</label>
@@ -110,8 +100,7 @@ function SemesterCombination(
                             <tr key={index}>
                                 <td className="sticky inset-y-0 start-0 bg-white pl-5  w-5">
                                     <Checkbox
-                                        onClick={() => { }}
-                                        isDisabled
+                                        onClick={() => onChange({ ...selected, mdc: item })}
                                         isChecked={!!selected.mdc && selected.mdc?.code === item.code && selected.mdc?.paper === item.paper}
                                     />
                                 </td>
@@ -123,14 +112,6 @@ function SemesterCombination(
                         ))
                     }
                 </SubjectTable>
-                <div
-                    className="mx-2 my-4 border border-gray-400 rounded-md shadow-sm p-2 bg-blue-100"
-                >
-                    <p className="font-bold text-sm">Note:</p>
-                    <ul className="pl-1">
-                        <li className="text-sm">The appropriate Multidisciplinary Course (MDC) will be automatically selected upon choosing the Major course.</li>
-                    </ul>
-                </div>
             </div>
             <div>
                 <label className="block text-md font-medium mb-2">SEC(Skill Enhancement Course)</label>
@@ -140,7 +121,8 @@ function SemesterCombination(
                             <tr key={index}>
                                 <td className="sticky inset-y-0 start-0 bg-white pl-5  w-5">
                                     <Checkbox
-                                        onClick={() => onChange({ ...selected, sec: item })}
+                                        isDisabled
+                                        onClick={() => { }}
                                         isChecked={!!selected.sec && selected.sec?.code === item.code && selected.sec?.paper === item.paper}
                                     />
                                 </td>
@@ -152,10 +134,25 @@ function SemesterCombination(
                         ))
                     }
                 </SubjectTable>
+                <div
+                    className="mx-2 my-4 border border-gray-400 rounded-md shadow-sm p-2 bg-blue-100"
+                >
+                    <p className="font-bold text-sm">Note:</p>
+                    <ul className="pl-1">
+                        <li className="text-sm">The appropriate SEC(Skill Enhancement Course) will be automatically selected upon choosing the Major course.</li>
+                    </ul>
+                </div>
             </div>
             <div>
                 <label className="block text-md font-medium mb-2">AEC(Ability Enhancement Course)</label>
-                <div className="flex flex-col gap-2">
+                <div
+                    className="flex flex-col gap-2"
+                    ref={() => {
+                        if (!selected.aec?.code && Array.isArray(data.aec) && data.aec.length > 0) {
+                            onChange({ ...selected, aec: data.aec[0] })
+                        }
+                    }}
+                >
                     {
                         data.aec.map((item, index) => (
                             <Option
@@ -170,7 +167,14 @@ function SemesterCombination(
             </div>
             <div>
                 <label className="block text-md font-medium mb-2">VAC(Value-Added Course)</label>
-                <div className="flex flex-col gap-2">
+                <div
+                    className="flex flex-col gap-2"
+                    ref={() => {
+                        if (!selected.vac?.code && Array.isArray(data.vac) && data.vac.length > 0) {
+                            onChange({ ...selected, vac: data.vac[0] })
+                        }
+                    }}
+                >
                     {
                         data.vac.map((item, index) => (
                             <Option

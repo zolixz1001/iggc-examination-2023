@@ -210,30 +210,90 @@
     "1": {
       "major": [
         {
-          "subject": "",
-          "code": "",
-          "paper": ""
+          "subject": "Botany",
+          "code": "BOT-CC-1110",
+          "paper": "Microbiology and Phycology"
+        },
+        {
+          "subject": "Chemistry",
+          "code": "CHE-CC-1110",
+          "paper": "General Chemistry I"
+        },
+        {
+          "subject": "Mathematic",
+          "code": "MAT-CC-1110",
+          "paper": "Calculus"
+        },
+        {
+          "subject": "Physics",
+          "code": "PHY-CC-1110",
+          "paper": "Mathematical Physics"
+        },
+        {
+          "subject": "Zoology",
+          "code": "ZOO-CC-1110",
+          "paper": "Systematics and Diversity of Protists and Non-Chordates"
         }
       ],
       "minor": [
         {
-          "subject": "",
-          "code": "",
-          "paper": ""
+          "subject": "Botany",
+          "code": "BOT-MC-1110",
+          "paper": "Plant Life Forms I; Microbes and Crytogams"
+        },
+        {
+          "subject": "Chemistry",
+          "code": "CHE-MC-1110",
+          "paper": "Fundamental of Chemistry I"
+        },
+        {
+          "subject": "Mathematic",
+          "code": "MAT-MC-1110",
+          "paper": "Differential and Integral Calculus"
+        },
+        {
+          "subject": "Physics",
+          "code": "PHY-MN-1110",
+          "paper": " Mechanics"
+        },
+        {
+          "subject": "Zoology",
+          "code": "ZOO-MC-1110",
+          "paper": "Animal Diversity"
         }
       ],
       "mdc": [
         {
-          "subject": "",
-          "code": "",
-          "paper": ""
+          "subject": "Botany",
+          "code": " BOT-MD-1110",
+          "paper": "Biodiversity and Conservation"
         }
       ],
       "sec": [
         {
-          "subject": "",
-          "code": "",
-          "paper": ""
+          "subject": "Botany",
+          "code": "BOT-SE-1110",
+          "paper": "Organic Farming"
+        },
+        {
+          "subject": "Chemistry",
+          "code": "CHE-SE-0010",
+          "paper": "Water Treatment and Analysis"
+        },
+        {
+          "subject": "Mathematic",
+          "code": "MAT-SEC-0010",
+          "paper": "Fundamentals of Computers"
+        },
+        {
+          "subject": "Physics",
+          "code": "PHY-SE-0010",
+          "paper": " Basics of Electronic circuits"
+        },
+        {
+          "subject": "Zoology",
+          "code": "ZOO-SE-1110",
+          "paper": "Apiculture"
         }
       ],
       "aec": [

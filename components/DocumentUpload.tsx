@@ -3,7 +3,7 @@ import FormSectionHeder from "@/components/FormSectionHeader";
 import UploadInput from "@/components/UploadInput";
 import { useDocumentStore } from "@/store/form";
 
-export default function DocumentUpload({ position }: { position: number; }) {
+export default function DocumentUpload({ position, isEdit }: { position: number; isEdit?: boolean; }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const documents = useDocumentStore((state) => state.documents);
     const update = useDocumentStore((state) => state.update);
@@ -13,6 +13,7 @@ export default function DocumentUpload({ position }: { position: number; }) {
                 title="Documents"
                 position={position}
                 isExpanded={isExpanded}
+                isDone={isEdit}
                 onClick={() => setIsExpanded(prevState => documents.length === 0 ? false : !prevState)}
             />
             <div className={`p-4 flex-col gap-6 ${isExpanded ? "flex" : "hidden"}`}>

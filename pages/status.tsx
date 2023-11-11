@@ -17,7 +17,11 @@ export default function Status() {
     const router = useRouter();
     const { data, error, isLoading } = useSWR<ExaminationData>(
         router.query?.rollNo ? `${baseUrl}/examination-form/rgu-roll-no/${router.query?.rollNo}` : null,
-        fetcher
+        fetcher,
+        {
+            revalidateOnFocus: false,
+            revalidateOnReconnect: false,
+        }
     );
     const formattedData: Examination = useMemo(() => {
         if (data) {

@@ -53,6 +53,7 @@ export default function AcademicDetails({ position, isEdit }: { position: number
                 title="Academic Details"
                 position={position}
                 isExpanded={isExpanded}
+                isDone={isEdit}
                 onClick={() => setIsExpanded(prevState => !prevState)}
             />
             <div className={`p-4 flex-col gap-6 ${isExpanded ? "flex" : "hidden"}`}>

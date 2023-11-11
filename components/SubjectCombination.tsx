@@ -5,7 +5,7 @@ import CbcsSubjectCombination from "@/components/CbcsSubjectCombination";
 import OldSubjectCombination from "@/components/OldSubjectCombination";
 import { useAcademicDetailsStore } from "@/store/form";
 
-export default function SubjectCombination({ position }: { position: number; }) {
+export default function SubjectCombination({ position, isEdit }: { position: number; isEdit?: boolean; }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const examinationPattern = useAcademicDetailsStore((state) => state.examinationPattern);
 
@@ -15,6 +15,7 @@ export default function SubjectCombination({ position }: { position: number; }) 
                 title="Subject Combination"
                 position={position}
                 isExpanded={isExpanded}
+                isDone={isEdit}
                 onClick={() => setIsExpanded(prevState => !prevState)}
             />
             <div className={`p-4 flex-col gap-6 ${isExpanded ? "flex" : "hidden"}`}>

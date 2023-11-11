@@ -84,6 +84,8 @@ export interface Examination {
   documents: Document[];
   status?: string;
   _id?: string;
+  createdOn?: string;
+  receipt?: number;
 }
 
 export interface OldPaperDetails {
@@ -143,4 +145,5 @@ export interface ExaminationData {
   improvementPapers?: {
     [key: string]: PaperDetails;
   };
+  receipt?: number;
 }

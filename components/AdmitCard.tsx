@@ -1,7 +1,8 @@
-import { ROMAN_NUMERIC_MAP } from '@/constants';
+import { EXAMINATION_NAME, RECEIPT_EXAMINATION_NAME, ROMAN_NUMERIC_MAP } from '@/constants';
 import { AcademicDetails, CbcsSubjectCombination, CbcsSubjectCombinationInfo, Examination, NepSubjectCombination, NepSubjectCombinationInfo, OldSubjectCombination, PersonalDetails, PhotoAndSignature, SubjectDetails } from '@/types';
 import { Document, Page, Text, View, Image as PdfImage, Font, StyleSheet } from '@react-pdf/renderer';
 import { Fragment, useMemo } from 'react';
+import { convertISODateToDDMMYYYY } from "@/utils/formateDate";
 
 Font.register({ family: 'Poppins', src: "/fonts/Poppins/Poppins-Regular.ttf" });
 Font.register({ family: 'Poppins-Bold', src: "/fonts/Poppins/Poppins-Bold.ttf" });
@@ -634,17 +635,75 @@ export function AdmitCard({ examinationName, examination }: { examinationName: s
     )
 }
 
+function KeyValueRow({ name, value }: { name: string; value: string; }) {
+    return (
+        <View style={styles.row}>
+            <Text style={[styles.paperText, { maxWidth: 120, width: 120 }]}>{name}</Text>
+            <Text style={styles.paperText}>{value}</Text>
+        </View>
+    )
+}
+
+function StudentInformation(
+    {
+        personDetails,
+        academicDetails
+    }:
+        {
+            personDetails: PersonalDetails;
+            academicDetails: AcademicDetails;
+        }
+) {
+    return (
+        <>
+            <Text style={styles.subHeadingText2xl}>Student Information:</Text>
+            <KeyValueRow
+                name="Name:"
+                value={personDetails.name}
+            />
+            <KeyValueRow
+                name="RGU Roll No.:"
+                value={academicDetails.rguRollNo}
+            />
+            <KeyValueRow
+                name="Mobile:"
+                value={personDetails.mobile}
+            />
+        </>
+    )
+}
+
+function ExaminationInformation() {
+    return (
+        <>
+            <Text style={styles.subHeadingText2xl}>Examination Information:</Text>
+            <KeyValueRow
+                name="Examination Name:"
+                value={RECEIPT_EXAMINATION_NAME}
+            />
+            <KeyValueRow
+                name="Examination Center:"
+                value={"Indira Gandhi Government College, Tezu"}
+            />
+        </>
+    );
+}
+
 export function ExaminationReceipt({ examinationName, examination }: { examinationName: string; examination: Examination }) {
     return (
         <Document>
             <Page size="A4" style={styles.page}>
                 <View style={{ width: "100%" }}>
-                    <Header examinationName={examinationName} title="Examination Receipt" />
-                    <StudentBasicDetails
+                    <Header
+                        examinationName={examinationName}
+                        title="Examination Receipt"
+                    />
+                    <StudentInformation
                         personDetails={examination.personalDetails}
                         academicDetails={examination.academicDetails}
-                        photoAndSignature={examination.photoAndSignature}
                     />
+                    <ExaminationInformation />
+                    <Text style={styles.subHeadingText2xl}>Subjects Information:</Text>
                     {
                         examination.academicDetails.examinationPattern === "OLD" &&
                         (
@@ -672,9 +731,25 @@ export function ExaminationReceipt({ examinationName, examination }: { examinati
                             />
                         )
                     }
+                    <Text style={styles.subHeadingText2xl}>Submission Information:</Text>
+                    <KeyValueRow
+                        name="Submission Date:"
+                        value={convertISODateToDDMMYYYY(examination.createdOn as string)}
+                    />
+                    <KeyValueRow
+                        name="Receipt Number:"
+                        value={String(examination.receipt)}
+                    />
+                    <Text style={styles.subHeadingText2xl}>Instruction:</Text>
+                    <Text style={styles.paperText}>* Please retain a copy of this submission receipt for your records</Text>
+                    <Text style={styles.paperText}>* You may be required to present this receipt for verification purposes when visiting the college.</Text>
+                    <Text style={styles.paperText}>* This receipt serves as proof of your examination application submission. Ensure you keep it with you until the examination process is complete.</Text>
+                    <Text style={styles.paperText}>* When presenting this receipt for verification, be prepared to provide additional identification if required.</Text>
+                    <Text style={styles.subHeadingText2xl}>Confirmation:</Text>
+                    <Text style={styles.paperText}>Your examination form has been successfully submitted.</Text>
+
                 </View>
             </Page>
         </Document>
     )
 }
-

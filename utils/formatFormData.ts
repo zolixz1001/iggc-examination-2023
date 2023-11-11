@@ -20,7 +20,7 @@ export default function formatFormData(data: ExaminationData) {
   const personalDetails = {
     name: data.name,
     fatherName: data.name,
-    dob: data.dob,
+    dob: data.dob ? new Date(data.dob).toISOString() : data.dob,
     gender: data.gender,
     mobile: data.mobile,
     email: data.email,
@@ -399,5 +399,7 @@ export default function formatFormData(data: ExaminationData) {
     documents,
     status: data.status,
     _id: data._id,
+    createdOn: data.createdOn,
+    receipt: data.receipt,
   } as unknown as Examination;
 }

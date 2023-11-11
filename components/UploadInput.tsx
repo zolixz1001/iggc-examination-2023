@@ -140,7 +140,7 @@ export default function UploadInput({
                         </svg>
                     </div>
                     <p className="text-center text-sm mt-4 font-semibold">Choose an image (.jpg, .jpeg, .png) to upload</p>
-                    <p className="text-center text-xs mt-2 font-thin text-gray-500">Maximum upload file size: 5 MB</p>
+                    <p className="text-center text-xs mt-2 font-thin text-gray-500">Maximum upload file size: {maxSize} KB</p>
                     <div className="mt-4 flex justify-center items-center">
                         <Button
                             size="sm"

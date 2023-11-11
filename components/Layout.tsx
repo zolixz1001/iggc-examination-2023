@@ -12,7 +12,7 @@ export default function Layout({ children, bgColor }: LayoutProps) {
     <>
       <Header />
       <main className={`h-[100%] ${bgColor && bgColor}`}>
-        <div className="container mx-auto min-h-[88dvh]">
+        <div className="container mx-auto min-h-[88dvh] relative">
           {children}
         </div>
       </main>

@@ -3,7 +3,7 @@ import FormSectionHeder from "@/components/FormSectionHeader";
 import UploadInput from "@/components/UploadInput";
 import { usePhotoAndSignatureStore } from "@/store/form";
 
-export default function PhotoAndSignature({ position }: { position: number }) {
+export default function PhotoAndSignature({ position, isEdit }: { position: number; isEdit?: boolean; }) {
     const photo = usePhotoAndSignatureStore((state) => state.photo);
     const signature = usePhotoAndSignatureStore((state) => state.signature);
     const update = usePhotoAndSignatureStore((state) => state.update);
@@ -15,6 +15,7 @@ export default function PhotoAndSignature({ position }: { position: number }) {
                 title="Photo And Signature"
                 position={position}
                 isExpanded={isExpanded}
+                isDone={isEdit}
                 onClick={() => setIsExpanded(prevState => !prevState)}
             />
             <div className={`p-4 flex-col gap-6 ${isExpanded ? "flex" : "hidden"}`}>

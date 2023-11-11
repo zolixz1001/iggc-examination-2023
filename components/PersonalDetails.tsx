@@ -10,7 +10,7 @@ import 'react-calendar/dist/Calendar.css';
 type DatePickerDate = Date | null;
 type DatePickerDateValue = DatePickerDate | [DatePickerDate, DatePickerDate];
 
-export default function PersonalDetails({ position }: { position: number }) {
+export default function PersonalDetails({ position, isEdit }: { position: number; isEdit?: boolean; }) {
     const name = usePersonalDetailsStore(state => state.name);
     const fatherName = usePersonalDetailsStore(state => state.fatherName);
     const mobile = usePersonalDetailsStore(state => state.mobile);
@@ -25,6 +25,7 @@ export default function PersonalDetails({ position }: { position: number }) {
                 title="Personal Details"
                 position={position}
                 isExpanded={isExpanded}
+                isDone={isEdit}
                 onClick={() => setIsExpanded(prevState => !prevState)}
             />
             <div className={`p-4 flex-col gap-6 ${isExpanded ? "flex" : "hidden"}`}>
@@ -56,7 +57,9 @@ export default function PersonalDetails({ position }: { position: number }) {
                     <label className="block text-md font-medium mb-2">Date Of Birth</label>
                     <DatePicker
                         format="dd-MM-y"
-                        onChange={(value) => update("dob", value instanceof Date ? value.toISOString() : "  ")}
+                        onChange={(value) => {
+                            update("dob", value instanceof Date ? value.toISOString() : "")
+                        }}
                         value={dob}
                     />
                 </div>
