@@ -401,5 +401,6 @@ export default function formatFormData(data: ExaminationData) {
     _id: data._id,
     createdOn: data.createdOn,
     receipt: data.receipt,
+    falseAccepted: !!data.falseAccepted,
   } as unknown as Examination;
 }

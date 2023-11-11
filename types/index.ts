@@ -86,6 +86,7 @@ export interface Examination {
   _id?: string;
   createdOn?: string;
   receipt?: number;
+  falseAccepted?: boolean;
 }
 
 export interface OldPaperDetails {
@@ -146,4 +147,5 @@ export interface ExaminationData {
     [key: string]: PaperDetails;
   };
   receipt?: number;
+  falseAccepted?: boolean;
 }

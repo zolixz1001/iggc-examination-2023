@@ -957,9 +957,8 @@ export async function submitForm(id = ""): Promise<boolean> {
           ...useFormErrors.getState(),
           errors: data.map(el => el.message || "")
         })
-      } else if (res.status === 200) {
-        return true;
       }
+      return true;
     } else {
       if (typeof window !== "undefined") {
         window.scrollTo(0, 0);

@@ -48,7 +48,7 @@ export default function Status() {
             const asPdf = pdf();
             asPdf.updateContainer(doc);
             const blob = await asPdf.toBlob();
-            saveAs(blob, `test_admit_card.pdf`);
+            saveAs(blob, `${formattedData.personalDetails.name.split(" ").join("_")}_admit_card.pdf`);
         } catch (error) {
 
         } finally {
@@ -68,7 +68,7 @@ export default function Status() {
             const asPdf = pdf();
             asPdf.updateContainer(doc);
             const blob = await asPdf.toBlob();
-            saveAs(blob, `test_admit_card.pdf`);
+            saveAs(blob, `${formattedData.personalDetails.name.split(" ").join("_")}_examination_receipt.pdf`);
         } catch (error) {
 
         } finally {
@@ -89,7 +89,19 @@ export default function Status() {
                                 <p className="text-lg font-bold">
                                     {
                                         formattedData.status === "APPLIED" &&
-                                        "Your application for the examination has been received and is currently being reviewed"
+                                        "Your application for the examination has been received and is currently being reviewed."
+                                    }
+                                    {
+                                        (formattedData as any).status === "REAPPLIED" &&
+                                        "Your application for the examination has been received and is currently being reviewed."
+                                    }
+                                    {
+                                        (formattedData as any).status === "CANCELED" &&
+                                        "Your application for the examination has been canceled. If you have any concerns, please contact our Academic cell."
+                                    }
+                                    {
+                                        (formattedData.status as string) === "ACCEPTED" &&
+                                        "Congratulations! Your application for the examination has been accepted. You are now officially registered for the upcoming examination."
                                     }
                                 </p>
                                 <div className="flex gap-4 flex-col md:flex-row">
@@ -98,7 +110,7 @@ export default function Status() {
                                             formattedData.status === "APPLIED" ||
                                             formattedData.status === "REAPPLIED" ||
                                             formattedData.status === "CANCELED"
-                                            // || formattedData.falseAccepted
+                                            || formattedData.falseAccepted
                                         ) &&
                                         (
                                             <Button
