@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   output: "export",
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'http',
@@ -16,7 +17,8 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "file.danlu.online"
+        hostname: "file.danlu.online",
+        port: "80"
       }
     ],
   },
