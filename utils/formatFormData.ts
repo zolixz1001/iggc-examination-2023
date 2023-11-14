@@ -19,7 +19,7 @@ import old from "@/data/old.json";
 export default function formatFormData(data: ExaminationData) {
   const personalDetails = {
     name: data.name,
-    fatherName: data.name,
+    fatherName: data.fatherName,
     dob: data.dob ? new Date(data.dob).toISOString() : data.dob,
     gender: data.gender,
     mobile: data.mobile,

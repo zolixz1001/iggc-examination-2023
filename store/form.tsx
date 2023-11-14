@@ -691,7 +691,7 @@ function buildPostObject() {
     gender: personalDetails.gender,
     mobile: personalDetails.mobile,
     email: personalDetails.email,
-    dob: `${dobDate.getFullYear()}-${String(dobDate.getMonth()).padStart(2, "0")}-${String(dobDate.getDate()).padStart(2, "0")}`,
+    dob: dobDate.toISOString(),
     photo: photoAndSignature.photo,
     signature: photoAndSignature.signature,
   };
@@ -951,12 +951,15 @@ export async function submitForm(id = ""): Promise<boolean> {
           body: JSON.stringify(buildPostObject())
         }
       );
-      const data = await res.json();
-      if (res.status === 422 && Array.isArray(data)) {
-        useFormErrors.setState({
-          ...useFormErrors.getState(),
-          errors: data.map(el => el.message || "")
-        })
+      if (res.status === 422) {
+        const data = await res.json();
+        if (Array.isArray(data?.errors)) {
+          useFormErrors.setState({
+            ...useFormErrors.getState(),
+            errors: data.errors.map((el: any) => el.msg || "")
+          })
+        }
+        return false;
       }
       return true;
     } else {
