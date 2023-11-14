@@ -178,9 +178,34 @@
       ],
       "mdc": [
         {
-          "subject": "Commerce",
-          "code": "COM-MD-1110",
-          "paper": "Personal Finance and Planning"
+          "subject": "Economics",
+          "code": "ECO-MD-1110",
+          "paper": "Economic Theory-I"
+        },
+        {
+          "subject": "Education",
+          "code": "EDU-MD-1110",
+          "paper": "Foundation of Education"
+        },
+        {
+          "subject": "Geography",
+          "code": "GEOG-MDC-1001",
+          "paper": "DISASTER MANAGEMENT"
+        },
+        {
+          "subject": "Hindi",
+          "code": "HIN-MD-1110",
+          "paper": "Rashtriya Chetna ki Kabita"
+        },
+        {
+          "subject": "History",
+          "code": "HIS-MD-1120",
+          "paper": "Art, Architecture, and Heritage in India"
+        },
+        {
+          "subject": "Political Science",
+          "code": "POL-MDC-01",
+          "paper": "Indian Polity"
         }
       ],
       "sec": [
@@ -264,9 +289,34 @@
       ],
       "mdc": [
         {
-          "subject": "Botany",
-          "code": " BOT-MD-1110",
-          "paper": "Biodiversity and Conservation"
+          "subject": "Economics",
+          "code": "ECO-MD-1110",
+          "paper": "Economic Theory-I"
+        },
+        {
+          "subject": "Education",
+          "code": "EDU-MD-1110",
+          "paper": "Foundation of Education"
+        },
+        {
+          "subject": "Geography",
+          "code": "GEOG-MDC-1001",
+          "paper": "DISASTER MANAGEMENT"
+        },
+        {
+          "subject": "Hindi",
+          "code": "HIN-MD-1110",
+          "paper": "Rashtriya Chetna ki Kabita"
+        },
+        {
+          "subject": "History",
+          "code": "HIS-MD-1120",
+          "paper": "Art, Architecture, and Heritage in India"
+        },
+        {
+          "subject": "Political Science",
+          "code": "POL-MDC-01",
+          "paper": "Indian Polity"
         }
       ],
       "sec": [

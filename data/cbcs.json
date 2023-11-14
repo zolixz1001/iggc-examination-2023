@@ -624,6 +624,21 @@
           "paper": "Monetary and Financial Economics"
         },
         {
+          "subject": "ECONOMICS",
+          "code": "ECO-D-313 A",
+          "paper": "Indian Agriculture"
+        },
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-D-314 A",
+          "paper": "Introductory Econometrics"
+        },
+        {
+          "subject": "ECONOMICS",
+          "code": "ECO-D-314 B",
+          "paper": "Demography"
+        },
+        {
           "subject": "EDUCATION",
           "code": "EDU-C-311",
           "paper": "Assessment for Learning"
@@ -632,6 +647,16 @@
           "subject": "EDUCATION",
           "code": "EDU-C-312",
           "paper": "Elementary Statistics in Education"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-D-313",
+          "paper": "Environmental Education"
+        },
+        {
+          "subject": "EDUCATION",
+          "code": "EDU-D-315",
+          "paper": "Gender and Education"
         },
         {
           "subject": "ENGLISH",
@@ -644,6 +669,16 @@
           "paper": "British  Literature: the Early 20th Century"
         },
         {
+          "subject": "ENGLISH",
+          "code": "ENG-D-313Ab",
+          "paper": "Literature of the Indian Diaspora"
+        },
+        {
+          "subject": "ENGLISH",
+          "code": "ENG-D-314Aa",
+          "paper": "Literary Criticism"
+        },
+        {
           "subject": "GEOGRAPHY",
           "code": "GEO-C-351",
           "paper": "Geography of North East India: special reference to Arunachal Pradesh"
@@ -652,6 +687,16 @@
           "subject": "GEOGRAPHY",
           "code": "GEO-C-352",
           "paper": "Field Techniques, Surveying and research methods(Practical)"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-E-353",
+          "paper": "Demography and Population Studies"
+        },
+        {
+          "subject": "GEOGRAPHY",
+          "code": "GEO-E-356",
+          "paper": "Agriculture and Food Security"
         },
         {
           "subject": "HINDI",
@@ -664,6 +709,16 @@
           "paper": "Pashchatya Kavyashastra"
         },
         {
+          "subject": "HINDI",
+          "code": "HIN-D-313B",
+          "paper": "Hindi Santh Sahitya"
+        },
+        {
+          "subject": "HINDI",
+          "code": "HIN-D-314 B",
+          "paper": "Chhayabad"
+        },
+        {
           "subject": "HISTORY",
           "code": "HIS-C-311",
           "paper": "History of Modern India : 1947-2000"
@@ -674,6 +729,16 @@
           "paper": "Cultural Heritage of India"
         },
         {
+          "subject": "HISTORY",
+          "code": "HIS-D-313b",
+          "paper": "History of North East India (Earliest Times to 1824)"
+        },
+        {
+          "subject": "HISTORY",
+          "code": "HIS-D-314b",
+          "paper": "History of North East India ( 1824-1972)"
+        },
+        {
           "subject": "POLITICAL SCIENCE",
           "code": "POL-C-311",
           "paper": "Modern Political Thinkers"
@@ -682,6 +747,16 @@
           "subject": "POLITICAL SCIENCE",
           "code": "POL-C-312",
           "paper": "India's Foreign Policy"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-D-313",
+          "paper": "Colonialism and Nationalism in India"
+        },
+        {
+          "subject": "POLITICAL SCIENCE",
+          "code": "POL-D-314",
+          "paper": "Party Politics in India"
         }
       ],
       "ge": [],
@@ -907,6 +982,16 @@
           "subject": "COMMERCE",
           "code": "COM-C-312",
           "paper": "Financial Management"
+        },
+        {
+          "subject": "COMMERCE",
+          "code": "COM-D-313 b",
+          "paper": "Financial Statement Analysis"
+        },
+        {
+          "subject": "COMMERCE",
+          "code": "COM-D-314 b",
+          "paper": "Advanced Financial Accounting"
         }
       ],
       "ge": [],
@@ -1430,6 +1515,16 @@
           "paper": "Solid State Physics"
         },
         {
+          "subject": "PHYSICS",
+          "code": "PHY-DE-353",
+          "paper": "Classical Mechanics"
+        },
+        {
+          "subject": "PHYSICS",
+          "code": "PHY-DE-354",
+          "paper": "Advanced Mathematical Physics"
+        },
+        {
           "subject": "CHEMISTRY",
           "code": "CHE-CC-351",
           "paper": "Organic Chemistry-IV"
@@ -1438,6 +1533,16 @@
           "subject": "CHEMISTRY",
           "code": "CHE-CC-352",
           "paper": "Inorganic Chemistry-IV"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-DE-352",
+          "paper": "Industrial Chemicals and Environment"
+        },
+        {
+          "subject": "CHEMISTRY",
+          "code": "CHE-DE-355",
+          "paper": "Research Methodology for Chemists"
         },
         {
           "subject": "MATHEMATICS",
@@ -1460,6 +1565,16 @@
           "paper": "Reproductive Biology of Angiosperms"
         },
         {
+          "subject": "BOTANY",
+          "code": "BOT-DE-351",
+          "paper": "Research Methodology"
+        },
+        {
+          "subject": "BOTANY",
+          "code": "BOT-DE-352",
+          "paper": "Biostatistics"
+        },
+        {
           "subject": "ZOOLOGY",
           "code": "ZOO-CC-351",
           "paper": "Biotechniques"
@@ -1468,6 +1583,16 @@
           "subject": "ZOOLOGY",
           "code": "ZOO-CC-352",
           "paper": "Microbiology,Parasitology & Immunology"
+        },
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-DE-353",
+          "paper": "Endocrinology"
+        },
+        {
+          "subject": "ZOOLOGY",
+          "code": "ZOO-DE-354",
+          "paper": "Mammalian Physiology"
         }
       ],
       "ge": [],

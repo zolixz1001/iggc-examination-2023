@@ -30,7 +30,7 @@ export default function AcademicDetails({ position, isEdit }: { position: number
             if (Number(semester) === 1) {
                 return ["NEP"];
             } else if (Number(semester) === 3 || Number(semester) === 5) {
-                return examinationPatterns.filter(el => el !== "NEP").map(el => el === "OLD" ? "old pattern" : el);
+                return examinationPatterns.filter(el => el !== "NEP" && el !== "OLD").map(el => el === "OLD" ? "old pattern" : el);
             }
         }
         return [];
