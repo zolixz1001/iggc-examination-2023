@@ -105,6 +105,16 @@
           "subject": "Political Science",
           "code": "POL-MDC-01",
           "paper": "Indian Polity"
+        },
+        {
+          "subject": "Commerce",
+          "code": "COM-CC-1110",
+          "paper": "Financial Accounting"
+        },
+        {
+          "subject": "Botany",
+          "code": " BOT-MD-1110",
+          "paper": "Biodiversity and Conservation"
         }
       ],
       "sec": [
@@ -206,6 +216,11 @@
           "subject": "Political Science",
           "code": "POL-MDC-01",
           "paper": "Indian Polity"
+        },
+        {
+          "subject": "Botany",
+          "code": " BOT-MD-1110",
+          "paper": "Biodiversity and Conservation"
         }
       ],
       "sec": [
@@ -317,6 +332,11 @@
           "subject": "Political Science",
           "code": "POL-MDC-01",
           "paper": "Indian Polity"
+        },
+        {
+          "subject": "Commerce",
+          "code": "COM-CC-1110",
+          "paper": "Financial Accounting"
         }
       ],
       "sec": [
