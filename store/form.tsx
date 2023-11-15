@@ -182,16 +182,16 @@ function resetAndUpdateStates(
   const cbcsSubjectCombinationSemesters: { semester: string; combination: CbcsSubjectCombination; isBack?: boolean; }[] = [];
   const oldSubjectCombinationSemesters: { semester: string; subjects: SubjectDetails[]; isBack?: boolean; }[] = [];
   if (programme) {
-    documents.push(
-      {
-        title: `RGU Registration Card`,
-        url: "",
-        info: {
-          name: "reg",
-        }
-      }
-    );
     if (applyingForImprovement || applyingForBackPapers) {
+      documents.push(
+        {
+          title: `RGU Registration Card`,
+          url: "",
+          info: {
+            name: "reg",
+          }
+        }
+      );
       if (semesters.length > 0) {
         if (applyingForImprovement) {
           for (const sem of semesters) {
@@ -276,6 +276,17 @@ function resetAndUpdateStates(
         }
       }
     } else if (semester) {
+      if (Number(semester) > 1) {
+        documents.push(
+          {
+            title: `RGU Registration Card`,
+            url: "",
+            info: {
+              name: "reg",
+            }
+          }
+        );
+      }
       documents.push(
         {
           title: `Payment receipt for Semester ${ROMAN_NUMERIC_MAP[semester]}`,
