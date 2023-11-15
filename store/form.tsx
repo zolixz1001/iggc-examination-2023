@@ -515,9 +515,11 @@ function isValidatedForm() {
     isValid = false;
     errors.push("Please enter a valid RGU Roll no.");
   }
-  if (!academicDetails.rguRegNo || academicDetails.rguRegNo.length < 8) {
-    isValid = false;
-    errors.push("Please enter a valid RGU Registration no.");
+  if (Number(academicDetails.semester) !== 1) {
+    if (!academicDetails.rguRegNo || academicDetails.rguRegNo.length < 8) {
+      isValid = false;
+      errors.push("Please enter a valid RGU Registration no.");
+    }
   }
   if (!["b.a", "b.com", "b.sc"].includes(academicDetails.programme)) {
     isValid = false;

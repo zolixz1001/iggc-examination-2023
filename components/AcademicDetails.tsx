@@ -42,7 +42,7 @@ export default function AcademicDetails({ position, isEdit }: { position: number
         return examinationPattern;
     }, [examinationPattern]);
     useEffect(() => {
-        if (typeof  router.query?.rollNo === "string") {
+        if (typeof router.query?.rollNo === "string") {
             update("rguRollNo", router.query.rollNo);
         }
     }, [router.query.rollNo, update]);
@@ -57,19 +57,6 @@ export default function AcademicDetails({ position, isEdit }: { position: number
                 onClick={() => setIsExpanded(prevState => !prevState)}
             />
             <div className={`p-4 flex-col gap-6 ${isExpanded ? "flex" : "hidden"}`}>
-                <Input
-                    isDisabled={isEdit}
-                    id="rguRollNo"
-                    label="RGU Roll No."
-                    value={rguRollNo}
-                    onChange={(e) => update("rguRollNo", e.target.value)}
-                />
-                <Input
-                    id="rguRegNo"
-                    label="RGU Reg No."
-                    value={rguRegNo}
-                    onChange={(e) => update("rguRegNo", e.target.value)}
-                />
                 <Checkbox
                     onClick={(e) => {
                         e.preventDefault();
@@ -179,7 +166,7 @@ export default function AcademicDetails({ position, isEdit }: { position: number
                                                 <label className="block text-md font-medium mt-2 mb-2">Back Semesters</label>
                                                 <div className="flex gap-4">
                                                     {
-                                                        (Number(semester) === 3 ? ["1"]: ["1", "3"]).map(sem => (
+                                                        (Number(semester) === 3 ? ["1"] : ["1", "3"]).map(sem => (
                                                             <Checkbox
                                                                 key={sem}
                                                                 onClick={(e) => {
@@ -222,7 +209,29 @@ export default function AcademicDetails({ position, isEdit }: { position: number
                             </div>
                         )
                     }
+
                 </div>
+                <Input
+                    isDisabled={isEdit}
+                    id="rguRollNo"
+                    label="RGU Roll No."
+                    value={rguRollNo}
+                    onChange={(e) => update("rguRollNo", e.target.value)}
+                />
+                {
+                    (
+                        Number(semester) > 1 ||
+                        selectedSemesters.length > 0
+                    ) &&
+                    (
+                        <Input
+                            id="rguRegNo"
+                            label="RGU Reg No."
+                            value={rguRegNo}
+                            onChange={(e) => update("rguRegNo", e.target.value)}
+                        />
+                    )
+                }
             </div>
         </>
     );

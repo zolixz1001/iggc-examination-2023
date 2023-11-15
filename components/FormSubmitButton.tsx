@@ -12,11 +12,13 @@ export default function FormSubmitButton({ id = "" }: { id?: string; }) {
         try {
             setIsSubmitting(true);
             const success = await submitForm(id);
-            setIsSubmitting(false);
             if (success) {
                 setTimeout(() => {
-                    router.push(`/status?rollNo=${rguRollNo}`);
-                }, 500);
+                    window.location.href = `${window.location.origin}/status?rollNo=${rguRollNo}`;
+                    setIsSubmitting(false);
+                }, 1000);
+            } else {
+                setIsSubmitting(false);
             }
         } catch (error) {
             setIsSubmitting(false);
