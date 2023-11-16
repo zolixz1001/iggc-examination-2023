@@ -1334,6 +1334,11 @@
           "paper": "DISCRETE MATHEMATICS"
         },
         {
+          "subject": "MATHEMATICS",
+          "code": "MAT-GE-007",
+          "paper": "COORDINATE GEOMETRY"
+        },
+        {
           "subject": "PHYSICS",
           "code": "PHY-GE-003",
           "paper": "WAVES AND OPTICS"
