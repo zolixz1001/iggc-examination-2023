@@ -281,11 +281,14 @@ export default function formatFormData(data: ExaminationData) {
   }
   const oldSubjectCombinations: OldSubjectCombination[] = [];
   if (
-    data.examinationPattern === "OLD" &&
-    data.subjects &&
-    Array.isArray(data.subjects)
+    data.examinationPattern === "OLD"
   ) {
-    if (!data.onlyHaveBackPapers && !data.onlyImprovementPapers) {
+    if (
+      !data.onlyHaveBackPapers &&
+      !data.onlyImprovementPapers &&
+      data.subjects &&
+      Array.isArray(data.subjects)
+    ) {
       oldSubjectCombinations.push({
         semester: String(data.semester),
         subjects: (data.subjects as OldPaperDetails[]).map((el) => ({
@@ -389,6 +392,12 @@ export default function formatFormData(data: ExaminationData) {
       }
     }
   }
+  console.log({
+    data,
+    nepSubjectCombinations,
+    cbcsSubjectCombinations,
+    oldSubjectCombinations,
+  });
   return {
     personalDetails,
     photoAndSignature,
