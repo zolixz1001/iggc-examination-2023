@@ -392,12 +392,6 @@ export default function formatFormData(data: ExaminationData) {
       }
     }
   }
-  console.log({
-    data,
-    nepSubjectCombinations,
-    cbcsSubjectCombinations,
-    oldSubjectCombinations,
-  });
   return {
     personalDetails,
     photoAndSignature,

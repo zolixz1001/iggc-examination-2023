@@ -82,69 +82,64 @@ export default function Status() {
         <Layout>
             <div className="flex justify-center items-center h-[80dvh] px-4 md:p-0">
                 <div className="md:w-[66vw] border border-gray-300 rounded-md p-4">
-                    {
-                        formattedData.status === "APPLIED" &&
-                        (
-                            <div className="flex flex-col gap-6 items-center">
-                                <p className="text-lg font-bold">
-                                    {
-                                        formattedData.status === "APPLIED" &&
-                                        "Your application for the examination has been received and is currently being reviewed."
-                                    }
-                                    {
-                                        (formattedData as any).status === "REAPPLIED" &&
-                                        "Your application for the examination has been received and is currently being reviewed."
-                                    }
-                                    {
-                                        (formattedData as any).status === "CANCELED" &&
-                                        "Your application for the examination has been canceled. If you have any concerns, please contact our Academic cell."
-                                    }
-                                    {
-                                        (formattedData.status as string) === "ACCEPTED" &&
-                                        "Congratulations! Your application for the examination has been accepted. You are now officially registered for the upcoming examination."
-                                    }
-                                </p>
-                                <div className="flex gap-4 flex-col md:flex-row">
-                                    {
-                                        (
-                                            formattedData.status === "APPLIED" ||
-                                            formattedData.status === "REAPPLIED" ||
-                                            formattedData.status === "CANCELED"
-                                            || formattedData.falseAccepted
-                                        ) &&
-                                        (
-                                            <Button
-                                                onClick={() => {
-                                                    router.push(`/form?rollNo=${formattedData.academicDetails.rguRollNo}`)
-                                                }}
-                                            >
-                                                Edit Application
-                                            </Button>
-                                        )
-                                    }
+                    <div className="flex flex-col gap-6 items-center">
+                        <p className="text-lg font-bold">
+                            {
+                                formattedData.status === "APPLIED" &&
+                                "Your application for the examination has been received and is currently being reviewed."
+                            }
+                            {
+                                (formattedData as any).status === "REAPPLIED" &&
+                                "Your application for the examination has been received and is currently being reviewed."
+                            }
+                            {
+                                (formattedData as any).status === "CANCELED" &&
+                                "Your application for the examination has been canceled. If you have any concerns, please contact our Academic cell."
+                            }
+                            {
+                                (formattedData.status as string) === "ACCEPTED" &&
+                                "Congratulations! Your application for the examination has been accepted. You are now officially registered for the upcoming examination."
+                            }
+                        </p>
+                        <div className="flex gap-4 flex-col md:flex-row">
+                            {
+                                (
+                                    formattedData.status === "APPLIED" ||
+                                    formattedData.status === "REAPPLIED" ||
+                                    formattedData.status === "CANCELED"
+                                    || formattedData.falseAccepted
+                                ) &&
+                                (
                                     <Button
-                                        isLoading={isReceiptDownloading}
-                                        isDisabled={isReceiptDownloading}
-                                        onClick={handleReceiptDownload}
+                                        onClick={() => {
+                                            router.push(`/form?rollNo=${formattedData.academicDetails.rguRollNo}`)
+                                        }}
                                     >
-                                        Download Application Receipt
+                                        Edit Application
                                     </Button>
-                                    {
-                                        (formattedData.status as string) === "ACCEPTED" &&
-                                        (
-                                            <Button
-                                                isLoading={isAdmitCardDownloading}
-                                                isDisabled={isAdmitCardDownloading}
-                                                onClick={handleAdmitCardDownload}
-                                            >
-                                                Download Admit Card
-                                            </Button>
-                                        )
-                                    }
-                                </div>
-                            </div>
-                        )
-                    }
+                                )
+                            }
+                            <Button
+                                isLoading={isReceiptDownloading}
+                                isDisabled={isReceiptDownloading}
+                                onClick={handleReceiptDownload}
+                            >
+                                Download Application Receipt
+                            </Button>
+                            {
+                                (formattedData.status as string) === "ACCEPTED" &&
+                                (
+                                    <Button
+                                        isLoading={isAdmitCardDownloading}
+                                        isDisabled={isAdmitCardDownloading}
+                                        onClick={handleAdmitCardDownload}
+                                    >
+                                        Download Admit Card
+                                    </Button>
+                                )
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </Layout>
