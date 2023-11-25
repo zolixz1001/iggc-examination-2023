@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { pdf } from '@react-pdf/renderer';
 import { saveAs } from "file-saver";
 import Layout from "@/components/Layout";
-import { EXAMINATION_NAME, baseUrl } from "@/constants";
+import { ENABLE_NEW_SUBMISSION, EXAMINATION_NAME, baseUrl } from "@/constants";
 import formatFormData from "@/utils/formatFormData";
 import { Examination, ExaminationData } from "@/types";
 import Button from "@/components/Button";
@@ -32,7 +32,12 @@ export default function Status() {
 
     useEffect(() => {
         if (!data && !isLoading && error?.status === 404) {
-            router.replace(`/form?rollNo=${router.query?.rollNo}`);
+            if (ENABLE_NEW_SUBMISSION) {
+                router.replace(`/form?rollNo=${router.query?.rollNo}`);
+            } else {
+                alert("The submission of new examination forms has been closed.");
+                router.back();
+            }
         }
     }, [data, isLoading, error, router]);
 
