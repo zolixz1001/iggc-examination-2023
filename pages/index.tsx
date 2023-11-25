@@ -8,16 +8,18 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const handleSubmit = () => {
-    if (rollNo.length < 8) return setError("Please enter a valid roll no."); 
+    if (rollNo.length < 8) return setError("Please enter a valid roll no.");
     setError("");
     router.push(`/status?rollNo=${rollNo}`);
   }
 
   return (
     <Layout>
-      <div className="h-[82vh] flex justify-center items-center">
+      <div className="h-[82vh] flex justify-center items-center px-4">
         <div className="flex flex-col gap-4">
-          <p className="font-semibold text-2xl text-gray-600">Please enter your RGU roll number to check your examination application status</p>
+          <p className="font-semibold text-center text-md md:text-2xl text-gray-600">
+            Please enter your RGU roll number to check your examination application status
+          </p>
           <div className="w-full flex items-center gap-5 p-2 rounded-full justify-between border border-blue-500">
             <input
               type="text"
