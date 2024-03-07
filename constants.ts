@@ -11,4 +11,4 @@ export const ROMAN_NUMERIC_MAP: Record<string, string> = {
 export const CURRENT_SEMESTERS = ["1", "3", "5"];
 export const EXAMINATION_NAME = "EXAMINATION: DEC 2023";
 export const RECEIPT_EXAMINATION_NAME = "December 2023";
-export const ENABLE_NEW_SUBMISSION = false; // value can be true or false
+export const ENABLE_NEW_SUBMISSION = true; // value can be true or false
